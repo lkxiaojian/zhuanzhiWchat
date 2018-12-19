@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='status_toolbar'></view>
+  <view class='toolbar'>
+    <text class='toolbar_title'>专知</text>
+  </view>
+  <view class='top_search'>
+    <input type='text' confirm-type='search' placeholder='搜索文章、期刊、作者......' placeholder-class='top_search_placeholder' bindfocus='toSearch'> </input>
+    <view class='top_search_line'></view>
+    <image src='../../image/search.png' class='top_search_icon'></image>
+  </view>
+  <view class='qikan'>
+    <text class='had_qikan'>已订阅的期刊</text>
+    <view class='all_qikan' bindtap='selectAllSpecial'>全部期刊
+      <image src='../../image/right.png'></image>
+    </view>
+  
+  </view>
+  <view class='qikan_line' scroll-x>
+    <view wx:for="{{hasDingYue}}" class='qikan_line_item'>
+      <image class='circle' src='{{imageUrl+item.iamge_icon}}' bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}' src='{{imageUrl+item.iamge_icon}}'></image>
+      <view class='circle_title'>{{item.article_type_name}}</view>
+    </view>
+  </view>
+  <view class='list'>
+    <view class='cart' wx:for="{{arcticleList}}">
+      <view class='cart_head'>
+        <image class='yellow_circle' src='{{imageUrl+item.firstItem.iamge_icon}}'></image> 
+        <text class='name'>{{item.firstItem.article_type_name}}</text>
+        <text class='time'>{{item.firstItem.create_time}}</text>
+      </view>
+      <view class='cart_line'></view>
+      <view class='cart_content'>
+        <text class='title'>{{item.firstItem.article_title}}</text>
+        <text class='sub_title'>{{"#"+item.firstItem.article_keyword}}</text>
+        <view class='content'>{{item.firstItem.content_excerpt}}</view>
+         <view class='cart_line'></view>
+      </view>
+      <view class='cart_content'  wx:for="{{item.childItems}}" >
+        <text class='title'>{{item.article_title}}</text>
+        <text class='sub_title'>{{"#"+item.article_keyword}}</text>
+        <view class='content'>{{item.content_excerpt}}</view>
+        <view class='cart_line'></view>
+      </view>
+      <view class='cart_footer' bindtap='zhankai' data-index='{{index}}'>
+        <text class='not_zhankai'>{{"余下"+(item.firstItem.num_prods)+"篇"}}</text>
+        <image src='{{item.firstItem.num_prods>0? "../../image/down.png" : "../../image/up.png"}}' class='zhankai'></image>
+      </view>
+    </view>
+  </view>
+  <view class='bottom' wx-if="{{isHideNoMore}}">各位看官，专知会继续努力，为大家找到更多更好的内容！</view>
+</view>
