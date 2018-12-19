@@ -98,16 +98,24 @@ App({
    * format：返回格式，支持自定义，但参数必须与formateArr里保持一致
    */
   convertTime: function (time) {
-    var date = new Date().getTime();
-    console.log(date);
-    var curHour = date / 3600000;
-    var hour = time / 3600000;
-    hour = curHour - hour;
+    var curentDate = new Date().getTime();
+    var createDatee = new Date(time).getTime();
+    
+    var hour = Math.ceil((curentDate - createDatee) / (1000 * 60 * 60 * 24));  
     console.log(hour);
-    if (hour < 24) {
-      return hour + "小时前";
-    } else {
-      return hour / 24 + "天前";
+    if (hour < 1) {
+      return  "刚刚更新";
+    } else if (hour<24) {
+      return hour+"小时前更新"
+    }else{
+   var day=   Math.ceil(hour / 24);
+   if(day<=3){
+     return  day+"天前更新"
+   }else{
+     return "很久之前更新";
+   }
+
+    
     }
   },
   setGreenText: function (str, keyword) {
