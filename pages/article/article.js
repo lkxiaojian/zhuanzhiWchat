@@ -56,15 +56,19 @@ Page({
         console.log(res);
         var article = res.data.result;
         if (article.length > 0) { //是不是为空
+     
+          var backUrl = article[0].iamge_back;
           if (that.data.page == 0) { //是不是第一页
             that.setData({
               arcticleList: article,
               isHideNoMore: false,
+              imageBack: backUrl
             })
           } else {
             that.setData({
               arcticleList: that.data.arcticleList.concat(article),
               isHideNoMore: false,
+              imageBack: backUrl
             })
           }
         } else {

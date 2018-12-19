@@ -23,8 +23,8 @@
     </view>
   </view>
   <view class='list'>
-    <view class='cart' wx:for="{{arcticleList}}">
-      <view class='cart_head'>
+    <view class='cart' wx:for="{{arcticleList}}"  wx:for-item="item">
+      <view class='cart_head'  bindtap='startType'  data-index="{{index}}">
         <image class='yellow_circle' src='{{imageUrl+item.firstItem.iamge_icon}}'></image> 
         <text class='name'>{{item.firstItem.article_type_name}}</text>
         <text class='time'>{{item.firstItem.create_time}}</text>
