@@ -59,8 +59,8 @@
 
 .top_search_icon {
   vertical-align: middle;
-  width: 40rpx;
-  height: 45rpx;
+  width: 32rpx;
+  height: 38rpx;
 }
 .top_cancel{
   color: #16af12;
@@ -90,14 +90,15 @@
 }
 
 .toolbar_logo {
-  width: 33rpx;
-  height: 40rpx;
-  margin-left: 72rpx;
+  width: 25rpx;
+  height: 30rpx;
+  margin-left: 20rpx;
+  padding: 5rpx;
 }
 
 .toolbar_title {
   color: #1a222e;
-  font-size: 40rpx;
+  font-size: 33rpx;
   flex: 1;
   text-align: center;
   padding-right: 72rpx;

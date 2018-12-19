@@ -102,7 +102,7 @@ App({
     var createDatee = new Date(time).getTime();
     
     var hour = Math.ceil((curentDate - createDatee) / (1000 * 60 * 60 * 24));  
-    console.log(hour);
+    // console.log(hour);
     if (hour < 1) {
       return  "刚刚更新";
     } else if (hour<24) {

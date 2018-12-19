@@ -6,6 +6,7 @@
     "pages/index/index",
     "pages/special/special",
     "pages/detail/detail"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

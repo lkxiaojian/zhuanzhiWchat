@@ -110,9 +110,11 @@ Page({
     this.requestData();
   },
   back:function(){
-    wx.redirectTo({
-      url: '../index/index'
-    })
+    // wx.redirectTo({
+    //   url: '../index/index'
+    // })
+
+    wx.navigateBack({ changed: true });
   },
   moreType:function(){
     wx.redirectTo({

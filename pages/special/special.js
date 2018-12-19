@@ -78,13 +78,13 @@ Page({
   },
   back:function(){
     console.log('返回上级目录');
-    //wx.navigateBack();
-    wx.redirectTo({
-      url: '../index/index',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
+    wx.navigateBack();
+    // wx.redirectTo({
+    //   url: '../index/index',
+    //   success: function(res) {},
+    //   fail: function(res) {},
+    //   complete: function(res) {},
+    // })
   },
   dingyue:function(e){
     var that = this;

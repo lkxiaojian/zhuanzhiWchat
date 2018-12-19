@@ -37,7 +37,7 @@ Page({
     this.requestData(); //加载数据
   },
   selectAllSpecial: function () {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../special/special'
     })
   },
@@ -93,8 +93,14 @@ Page({
     });
   },
   toSearch: function () {
-    wx.redirectTo({
-      url: '../search/search'
+    wx.showLoading({
+      title: '跳转中',
+    });
+    wx.navigateTo({
+      url: '../search/search',
+      complete: function () {
+        wx.hideLoading()
+      }
     })
   },
   zhankai: function (e) {
@@ -128,11 +134,17 @@ Page({
     })
   },
   selectAll: function (e) {
+    wx.showLoading({
+      title: '跳转中',
+    })
     var name = e.currentTarget.dataset.name;
     var id = e.currentTarget.dataset.id;
     var image = e.currentTarget.dataset.image;
     wx.navigateTo({
       url: '../article/article?typeName=' + name + "&typeId=" + id + "&imageUrl=" + image,
+      complete: function () {
+        wx.hideLoading()
+      }
     })
   }
 })

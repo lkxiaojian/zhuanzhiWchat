@@ -1,4 +1,4 @@
-<!--pages/search/search.wxml-->
+<!-- pages/search/search.wxml -->
 <import src="../../wxParse/wxParse.wxml" />
 <view class='container'>
   <view class='status_toolbar' style='height:{{statusHeight+48}}rpx;'></view>
@@ -6,13 +6,13 @@
     <image src='../../image/back.png' class='toolbar_logo' bindtap='back'></image>
     <text class='toolbar_title'>专知精选</text>
   </view>
-    <view class='top'>
-      <view class='top_search'>
-        <image src='../../image/search.png' class='top_search_icon'></image>
-        <input type='text' confirm-type='search' auto-focus='true' bindconfirm='searchArticle'></input>
-      </view>
-      <text class='top_cancel' bindtap='back'>取消</text>
+  <view class='top'>
+    <view class='top_search'>
+      <image src='../../image/search.png' class='top_search_icon'></image>
+      <input type='text' confirm-type='search'  bindconfirm='searchArticle'></input>
     </view>
+    <text class='top_cancel' bindtap='back'>取消</text>
+  </view>
   <view class='search_result' wx-if='{{searchResult==1}}'>
     <view class='qikan'>
       <view class='had_qikan'>精选</view>

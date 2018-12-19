@@ -88,5 +88,10 @@ Page({
    wx.navigateTo({
      url: '../detail/detail?articleId='+id
    })
-  }
+  },
+  back: function () {
+    console.log('返回上级目录');
+    wx.navigateBack();
+
+  },
 })
