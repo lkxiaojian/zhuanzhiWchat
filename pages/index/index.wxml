@@ -16,12 +16,19 @@
     </view>
   
   </view>
-  <view class='qikan_line' scroll-x>
-    <view wx:for="{{hasDingYue}}" class='qikan_line_item'>
-      <image class='circle' src='{{imageUrl+item.iamge_icon}}' bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}' src='{{imageUrl+item.iamge_icon}}'></image>
+
+  <scroll-view scroll-x >
+   <view class='qikan_line'>
+    <view wx:for="{{hasDingYue}}"  >
+    <view class='qikan_line_item'>
+      <image class='circle' src='{{imageUrl+item.iamge_icon}}' bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}' src='{{imageUrl+item.iamge_icon}}'>
+      </image>
       <view class='circle_title'>{{item.article_type_name}}</view>
+       </view>
     </view>
-  </view>
+   </view>
+</scroll-view>
+
   <view class='list'>
     <view class='cart' wx:for="{{arcticleList}}"  wx:for-item="item">
       <view class='cart_head'  bindtap='startType'  data-index="{{index}}">

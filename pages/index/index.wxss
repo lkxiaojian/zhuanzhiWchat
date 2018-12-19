@@ -64,19 +64,17 @@
 .qikan_line{
   margin-top: 48rpx;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  padding-left: 92rpx;
-  overflow-x: scroll;
+  padding-left: 80rpx;
+  overflow:hidden;
   width: 100%;
   scrollbar-highlight-color: #fff;
   margin-bottom: 20rpx;
+  height: 250rpx;
 }
 .qikan_line_item{
-  display: flex;
-  flex-direction: column;
   margin-right: 78rpx;
   align-items: center;
+  display: inline-block;
 }
 .circle{
   width: 108rpx;
