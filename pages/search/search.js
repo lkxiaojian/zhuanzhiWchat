@@ -91,7 +91,6 @@ Page({
           that.data.searchResult = 1;
         }
         that.setData(that.data);
-        console.log(that.data);
       },
       fail: function(res) {},
       complete: function(res) {
@@ -156,12 +155,12 @@ Page({
     wx.showLoading({
       title: '跳转中',
     })
-    console.log(data)
     var page = this;
     var id = data.currentTarget.dataset['id'];
     var name = data.currentTarget.dataset['name'];
+    var image = data.currentTarget.dataset['image'];
     wx.navigateTo({
-      url: '../article/article?typeName=' + name + "&typeId=" + id ,
+      url: '../article/article?typeName=' + name + "&typeId=" + id +"&imageBack="+image,
       complete: function () {
         wx.hideLoading()
       }

@@ -37,13 +37,13 @@
         <text class='time'>{{item.firstItem.create_time}}</text>
       </view>
       <view class='cart_line'></view>
-      <view class='cart_content'>
+      <view class='cart_content' data-id='{{item.firstItem.article_id}}' bindtap='selectDetail'>
         <text class='title'>{{item.firstItem.article_title}}</text>
         <text class='sub_title'>{{"#"+item.firstItem.article_keyword}}</text>
         <view class='content'>{{item.firstItem.content_excerpt}}</view>
          <view class='cart_line'></view>
       </view>
-      <view class='cart_content'  wx:for="{{item.childItems}}" >
+      <view class='cart_content'  wx:for="{{item.childItems}}" data-id='{{item.article_id}}'  bindtap='selectDetail'>
         <text class='title'>{{item.article_title}}</text>
         <text class='sub_title'>{{"#"+item.article_keyword}}</text>
         <view class='content'>{{item.content_excerpt}}</view>

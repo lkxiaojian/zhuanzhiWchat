@@ -157,7 +157,7 @@ Page({
     var item = page.data.arcticleList[index].firstItem;
     var name = item.article_type_name;
     var id = item.article_type_id;
-    var image = item.iamge_icon;
+    var image = item.iamge_back;
     wx.navigateTo({
       url: '../article/article?typeName=' + name + "&typeId=" + id + "&imageUrl=" + image,
       complete: function () {
@@ -165,5 +165,17 @@ Page({
       }
     })
 
+  },
+  selectDetail:function(data){
+    wx.showLoading({
+      title: '跳转中',
+    })
+    var id = data.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../detail/detail?articleId=' + id,
+      complete: function () {
+        wx.hideLoading()
+      }
+    })
   }
 })

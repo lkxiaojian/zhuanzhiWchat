@@ -11,7 +11,7 @@ Page({
     page: 0,
     arcticleList: [],
     imagUrl: getApp().globalData.imageUrl,
-    imageBack:"/resources/image/articleTypeImages/welcome_logo.png"
+    imageBack:""
   },
 
   /**
@@ -22,7 +22,7 @@ Page({
     this.setData({
       typeName: options.typeName,
       typeId: options.typeId,
-      imageBack:options.imageUrl,
+      imageBack:options.imageBack,
     });
     this.requestData();
   },
@@ -96,6 +96,5 @@ Page({
   back: function () {
     console.log('返回上级目录');
     wx.navigateBack();
-
   },
 })

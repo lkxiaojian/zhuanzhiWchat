@@ -22,8 +22,8 @@
     </view>
     <view class='li_line' style='width:94%'></view>
     <view class='slide'  wx-if='{{articleType.length>0}}'>
-      <view class='silde_item' data-id='{{articleType[0].article_type_id}}'  data-name='{{articleType[0].article_type_name}}'   bindtap='startType'  >
-        <image class='yellow_circle' style='width:102rpx; height:102rpx;' data-image='{{articleType[0].iamge_back}}' src='{{imageUrl+articleType[0].iamge_icon}}'></image>
+      <view class='silde_item' data-id='{{articleType[0].article_type_id}}'  data-name='{{articleType[0].article_type_name}}' data-image='{{articleType[0].iamge_back}}'  bindtap='startType'  >
+        <image class='yellow_circle' style='width:102rpx; height:102rpx;' src='{{imageUrl+articleType[0].iamge_icon}}'></image>
         <view class='green_text' style="{{articleType[0].article_type_name == keyword ? 'color:#16af12' : '' }}">{{articleType[0].article_type_name}}</view>
       </view>
     </view>
