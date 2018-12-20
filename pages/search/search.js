@@ -117,12 +117,22 @@ Page({
     wx.navigateBack({ changed: true });
   },
   moreType:function(){
-    wx.redirectTo({
-      url: '../special/special?keyword'+that.data.keyword,
+
+    wx.navigateTo({
+    url: '../searchSpecial/searchSpecial?item='+that.data.articleType,
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
     })
+
+
+    
+    // wx.redirectTo({
+    //   url: '../special/special?keyword'+that.data.keyword,
+    //   success: function(res) {},
+    //   fail: function(res) {}, m
+    //   complete: function(res) {},
+    // })
   },
   startType:function(data){
     wx.showLoading({
