@@ -119,7 +119,7 @@ App({
     }
   },
   setGreenText: function (str, keyword) {
-    //return str.replace(keyword, "<text style='color:#16af12'>" + keyword+"</text>")
+    //return str.replace(keyword, "<text style='color:#16af12'>" + keyword+"</text>") test
     return str;
   },
   globalData: {
