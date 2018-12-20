@@ -5,7 +5,7 @@
     <image src='../../image/back.png' class='toolbar_logo' bindtap='back'></image>
     <text class='toolbar_title'>{{typeName}}</text>
   </view>
-  <image src='{{imagUrl+imageBack}}' class='photo'></image>
+  <image src='{{imageBack}}' class='photo'></image>
    <view class='list'>
     <view class='cart'  wx:for="{{arcticleList}}" bindtap='selectDetail' data-id='{{item.article_id}}'>
       <view class='cart_content'>

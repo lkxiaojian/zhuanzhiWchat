@@ -83,6 +83,23 @@ Page({
    */
   onShareAppMessage: function () {
 
+    return {
+      title: '专知',
+      path: 'pages/searchSpecial/searchSpecial',
+      success: function (shareTickets) {
+        console.info(shareTickets + '成功');
+        // 转发成功  
+      },
+      fail: function (res) {
+        console.log(res + '失败');
+        // 转发失败  
+      },
+      complete: function () {
+        // 不管成功失败都会执行  
+        console.log(res);
+      }
+    }
+
   },
   back: function () {
     console.log('返回上级目录');

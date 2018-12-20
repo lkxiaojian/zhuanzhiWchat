@@ -1,4 +1,5 @@
 // pages/article/article.js
+var imagUrl = getApp().globalData.imageUrl
 Page({
 
   /**
@@ -10,8 +11,7 @@ Page({
     typeId:"",
     page: 0,
     arcticleList: [],
-    imagUrl: getApp().globalData.imageUrl,
-    imageBack:"/resources/image/articleTypeImages/welcome_logo.png"
+   
   },
 
   /**
@@ -22,7 +22,6 @@ Page({
     this.setData({
       typeName: options.typeName,
       typeId: options.typeId,
-      imageBack:options.imageUrl,
     });
     this.requestData();
   },
@@ -62,13 +61,13 @@ Page({
             that.setData({
               arcticleList: article,
               isHideNoMore: false,
-              imageBack: backUrl
+              imageBack: imagUrl+ backUrl
             })
           } else {
             that.setData({
               arcticleList: that.data.arcticleList.concat(article),
               isHideNoMore: false,
-              imageBack: backUrl
+              imageBack: imagUrl+ backUrl
             })
           }
         } else {
@@ -96,6 +95,25 @@ Page({
   back: function () {
     console.log('返回上级目录');
     wx.navigateBack();
+
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '专知',
+      path: 'pages/article/article',
+      success: function (shareTickets) {
+        console.info(shareTickets + '成功');
+        // 转发成功  
+      },
+      fail: function (res) {
+        console.log(res + '失败');
+        // 转发失败  
+      },
+      complete: function () {
+        // 不管成功失败都会执行  
+        console.log(res);
+      }
+    }
 
   },
 })

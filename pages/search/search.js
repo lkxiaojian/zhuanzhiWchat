@@ -44,6 +44,22 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    return {
+      title: '专知',
+      path: 'pages/search/search',
+      success: function (shareTickets) {
+        console.info(shareTickets + '成功');
+        // 转发成功  
+      },
+      fail: function (res) {
+        console.log(res + '失败');
+        // 转发失败  
+      },
+      complete: function () {
+        // 不管成功失败都会执行  
+        console.log(res);
+      }
+    }
 
   },
   requestData:function(){

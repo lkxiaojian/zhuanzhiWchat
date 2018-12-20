@@ -1,8 +1,10 @@
 // pages/special/special.js
+var isFalg = false;
 Page({
   /**
    * 页面的初始数据
    */
+
   data: {
     statusHeight: getApp().globalData.statusBarHeight,
     articleTypes:[],
@@ -74,15 +76,42 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    return {
+      title: '专知',
+      path: 'pages/special/special',
+      success: function (shareTickets) {
+        console.info(shareTickets + '成功');
+        // 转发成功  
+      },
+      fail: function (res) {
+        console.log(res + '失败');
+        // 转发失败  
+      },
+      complete: function () {
+        // 不管成功失败都会执行  
+        console.log(res);
+      }
+    }
+
 
   },
   back:function(){
     console.log('返回上级目录');
-    wx.navigateBack();
+
+    if (isFalg){
+      wx.navigateTo({
+      url: '../index/index'
+      })
+
+    }else{
+      wx.navigateBack();
+    }
+
   },
   dingyue:function(e){
     var that = this;
     var app = getApp();
+    isFalg = true;
     var index = e.currentTarget.dataset.index;
     wx.request({
       url: app.globalData.baseUrl + '/user/setAttention/rest', //仅为示例，并非真实的接口地址
@@ -102,6 +131,7 @@ Page({
   quxiao:function(e){
     var app = getApp();
     var that = this;
+    isFalg=true;
     var index = e.currentTarget.dataset.index;
     wx.request({
       url: app.globalData.baseUrl + '/user/setAttention/rest', //仅为示例，并非真实的接口地址
