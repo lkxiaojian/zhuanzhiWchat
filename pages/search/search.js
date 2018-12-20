@@ -123,5 +123,20 @@ Page({
       fail: function(res) {},
       complete: function(res) {},
     })
+  },
+  startType:function(data){
+    wx.showLoading({
+      title: '跳转中',
+    })
+    console.log(data)
+    var page = this;
+    var id = data.currentTarget.dataset['id'];
+    var name = data.currentTarget.dataset['name'];
+    wx.navigateTo({
+      url: '../article/article?typeName=' + name + "&typeId=" + id ,
+      complete: function () {
+        wx.hideLoading()
+      }
+    })
   }
 })

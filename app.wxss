@@ -139,7 +139,7 @@
 .silde_item{
   display: flex;
   flex-direction: row;
-  margin-right: 78rpx;
+  margin-right: 68rpx;
   align-items: center;
 }
 .green_text{

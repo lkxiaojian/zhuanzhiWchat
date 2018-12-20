@@ -1,6 +1,6 @@
 <!-- pages/search/search.wxml -->
 <import src="../../wxParse/wxParse.wxml" />
-<view class='container'>
+<view class='container' >
   <view class='status_toolbar' style='height:{{statusHeight+48}}rpx;'></view>
   <view class='toolbar'>
     <image src='../../image/back.png' class='toolbar_logo' bindtap='back'></image>
@@ -9,7 +9,7 @@
   <view class='top'>
     <view class='top_search'>
       <image src='../../image/search.png' class='top_search_icon'></image>
-      <input type='text' confirm-type='search'  bindconfirm='searchArticle'></input>
+      <input type='text' confirm-type='search'  bindconfirm='searchArticle' auto-focus></input>
     </view>
     <text class='top_cancel' bindtap='back'>取消</text>
   </view>
@@ -21,9 +21,9 @@
       <image src='../../image/right.png' class='all_qikan_image'></image>
     </view>
     <view class='li_line' style='width:94%'></view>
-    <view class='slide' scroll-x wx-if='{{articleType.length>0}}'>
-      <view class='silde_item'>
-        <image class='yellow_circle' style='width:102rpx; height:102rpx;' bindtap='selectAll' data-name='{{articleType[0].article_type_name}}' data-id='{{articleType[0].article_type_id}}' data-image='{{articleType[0].iamge_back}}' src='{{imageUrl+articleType[0].iamge_icon}}'></image>
+    <view class='slide'  wx-if='{{articleType.length>0}}'>
+      <view class='silde_item' data-id='{{articleType[0].article_type_id}}'  data-name='{{articleType[0].article_type_name}}'   bindtap='startType'  >
+        <image class='yellow_circle' style='width:102rpx; height:102rpx;' data-image='{{articleType[0].iamge_back}}' src='{{imageUrl+articleType[0].iamge_icon}}'></image>
         <view class='green_text' style="{{articleType[0].article_type_name == keyword ? 'color:#16af12' : '' }}">{{articleType[0].article_type_name}}</view>
       </view>
     </view>

@@ -5,7 +5,7 @@
     <text class='toolbar_title'>专知</text>
   </view>
   <view class='top_search'>
-    <input type='text' confirm-type='search' placeholder='搜索文章、期刊、作者......' placeholder-class='top_search_placeholder' bindfocus='toSearch'> </input>
+    <input type='text' confirm-type='search' placeholder='搜索文章、期刊、作者......' placeholder-class='top_search_placeholder' bindfocus='toSearch' > </input>
     <view class='top_search_line'></view>
     <image src='../../image/search.png' class='top_search_icon'></image>
   </view>
