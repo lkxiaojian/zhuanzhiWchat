@@ -23,7 +23,6 @@ Page({
     this.setData({
       typeName: options.typeName,
       typeId: options.typeId,
-      imageBack:options.imageBack,
 
     });
     this.requestData();
