@@ -14,15 +14,12 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    var tar = this.cleanSpelChar(options.lk)
+    var tar = this.cleanSpelChar(options.item)
     let item = JSON.parse(tar);
     that.data.articleTypes=item;
-    if (item.length>0){
-      that.data.imageUrl = item[0].iamge_back
-    }
      this.setData({
           articleTypes: item,
-         imageUrl: that.data.imageUrl
+
       })
 
     // wx.request({

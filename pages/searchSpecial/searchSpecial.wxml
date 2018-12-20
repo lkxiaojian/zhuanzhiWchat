@@ -9,7 +9,7 @@
     <view class='li' wx:for="{{articleTypes}}">
       <view class='item'>
         <image class='circle' bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}' src='{{imageUrl+item.iamge_icon}}'></image>
-        <view class='li_content'>
+        <view class='li_content' bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}'>
           <view class='li_title'>{{item.article_type_name}}</view>
           <view class='li_subTitle'>{{"#"+item.article_type_keyword}}</view>
         </view>

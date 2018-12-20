@@ -6,7 +6,7 @@
     "pages/index/index",
     "pages/special/special",
     "pages/detail/detail",
-    "pages/searchSpecial"
+    "pages/searchSpecial/searchSpecial"
   ],
   "window": {
     "backgroundTextStyle": "light",

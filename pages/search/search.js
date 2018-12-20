@@ -120,10 +120,10 @@ Page({
     var page = this;
     let str = JSON.stringify(page.data.articleType);
 
-    // var item = page.cleanSpelChar(str)
+    var item = page.cleanSpelChar(str)
     wx.navigateTo({
 
-      url: '../searchSpecial/searchSpecial?item=' + str,
+      url: '../searchSpecial/searchSpecial?item=' + item,
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
