@@ -117,9 +117,13 @@ Page({
     wx.navigateBack({ changed: true });
   },
   moreType:function(){
+    var page = this;
+    let str = JSON.stringify(page.data.articleType);
 
+    // var item = page.cleanSpelChar(str)
     wx.navigateTo({
-    url: '../searchSpecial/searchSpecial?item='+that.data.articleType,
+
+      url: '../searchSpecial/searchSpecial?item=' + str,
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
@@ -133,6 +137,20 @@ Page({
     //   fail: function(res) {}, m
     //   complete: function(res) {},
     // })
+  },
+  cleanSpelChar: function (localData) {
+    var noiseChar = "~!@#$%^&*()_+-=`[]{};':\"\\|,./<>?\n\r";
+    var goodChar = "～！＠＃＄％＾＆＊（）＿＋－＝｀［］｛｝；＇：＂＼｜，．／＜＞？　　";
+    for (var i = 0; i < noiseChar.length; i++) {
+      var oneChar = noiseChar.charAt(i);
+      var towChar = goodChar.charAt(i)
+      // console.log('oneChar  ' + oneChar + '   towChar ' + towChar)
+      while (localData.indexOf(oneChar) >= 0) {
+        localData = localData.replace(oneChar, towChar)
+      }
+    }
+    return localData;
+
   },
   startType:function(data){
     wx.showLoading({
