@@ -25,7 +25,6 @@ Page({
 
   },
   /*页面相关事件处理函数--监听用户下拉动作*/
-
   onPullDownRefresh: function () { //下拉刷新
     this.data.page = 0;
     wx.showNavigationBarLoading() //在标题栏中显示加载
@@ -195,7 +194,6 @@ Page({
         console.log(res);
       }
     }
-
   },
 
 })

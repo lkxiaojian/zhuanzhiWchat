@@ -2,7 +2,7 @@
 .container{
   background-image: url('https://xiaochengxu.zhuanzhilink.com:4443/img/resources/image/articleTypeImages/welcome_logo.png');
   background-size:100% 90%;
-  background-position-y: -88rpx;
+  background-position-y: -100rpx;
   overflow:hidden;
   position:fixed;
   background-repeat: no-repeat;
@@ -11,21 +11,19 @@
   background-color: #FF8B2A;
 }
 .moddle {
-  background-position-x: 0;
-  background-position-y: 0;
   width: 100%;
   color: white;
-  height: 100%;
   flex: 1;
 }
 
 .top_line {
-  margin-top: 120rpx;
+  padding-top: 122rpx;
   display: flex;
   align-items: flex-end;
   height: 49rpx;
   width: 100%;
   color: white;
+  background: #FF8B2A;
 }
 
 .top_title {
@@ -33,10 +31,19 @@
   margin-left: 16rpx;
   font-size: 34rpx;
 }
-
+button{
+   outline:0 none !important;
+}
 .top_menu {
   font-size: 24rpx;
   margin-right: 40rpx;
+  background-color: #FF8B2A;
+  color: white;
+  height: 60rpx;
+  line-height: 60rpx;
+  border: solid snow 2rpx;
+  outline: 1 none !important;
+  box-shadow: 0px 0px 0px 0px #FF8B2A;
 }
 
 .title {
@@ -44,17 +51,19 @@
   color: white;
   font-weight: bold;
   opacity: 0.9;
+  height: 24rpx;
+  width: auto;
 }
 
 .title1 {
   padding-left: 270rpx;
-  margin-top: 88rpx;
+  margin-top: 70rpx;
   opacity: 0.74;
 }
 
 .title_on1 {
   padding-left: 266rpx;
-  margin-top: 88rpx;
+  margin-top: 70rpx;
   opacity: 1;
 }
 
@@ -72,6 +81,7 @@
 
 .title3 {
   padding-left: 90rpx;
+  opacity: 0.7;
 }
 
 .title_on3 {
@@ -81,6 +91,7 @@
 
 .title4 {
   text-align: center;
+  opacity: 0.54;
 }
 
 .title_on4 {
@@ -123,11 +134,13 @@
 .title8 {
   padding-right: 132rpx;
   text-align: right;
+  opacity: 0.7;
 }
 
 .title_on8 {
   padding-right: 132rpx;
   text-align: right;
+  opacity: 1;
 }
 
 .title9 {
@@ -149,17 +162,19 @@
 
 .title_on10 {
   padding-right: 33rpx;
-  opacity: 0.54;
+  opacity: 1;
   margin-top: 22rpx;
   text-align: right;
 }
 
 .title11 {
   padding-left: 90rpx;
+  opacity: .54;
 }
 
 .title_on11 {
   padding-left: 90rpx;
+  opacity: 1;
 }
 
 .title12 {
@@ -187,26 +202,30 @@
 .title14 {
   padding-right: 36rpx;
   text-align: right;
+  opacity: 0.54;
 }
 
 .title_on14 {
   padding-right: 36rpx;
   text-align: right;
+  opacity: 1;
 }
 
 .title15 {
   padding-left: 86rpx;
+  opacity: 0.7;
 }
 
 .title_on15 {
   padding-left: 86rpx;
+  opacity: 1;
 }
 
 .bottom_text {
   position: absolute;
   color: #ff6c00;
   font-size: 40rpx;
-  bottom: 280rpx;
+  bottom: 300rpx;
 }
 
 .startApp {
@@ -221,5 +240,5 @@
   color: #ff6000;
   padding-left: 70rpx;
   padding-right: 70rpx;
-  bottom: 150rpx;
+  bottom: 160rpx;
 }

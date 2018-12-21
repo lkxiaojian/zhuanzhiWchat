@@ -6,7 +6,7 @@ const formatTime = date => {
   const minute = date.getMinutes()
   const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  return [year].map(formatNumber).join('年') + [month].map(formatNumber).join('月') + [day].map(formatNumber);
 }
 
 const formatNumber = n => {
@@ -14,14 +14,14 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 //时间戳转换时间
-function toDate(number) {
-  var n = number * 1000;
-  var date = new Date(n);
-  var Y = date.getFullYear() + '/';
-  var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '/';
+const toDate =number=> {
+  var date = new Date(number);
+  var Y = date.getFullYear() + '年';
+  var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '月';
   var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-  return (Y + M + D)
+  return (Y + M + D)+"日"
 }
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  toDate :toDate
 }

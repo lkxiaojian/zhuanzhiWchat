@@ -14,20 +14,19 @@
     <view class='all_qikan' bindtap='selectAllSpecial'>全部期刊
       <image src='../../image/right.png'></image>
     </view>
-  
   </view>
+  <view class='line'></view>
 
-  <scroll-view scroll-x >
-   <view class='qikan_line'>
-    <view wx:for="{{hasDingYue}}"  >
-    <view class='qikan_line_item'>
-      <image class='circle' src='{{imageUrl+item.iamge_icon}}' bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}' src='{{imageUrl+item.iamge_icon}}'>
+   <view class='slide'>
+    <view wx:for="{{hasDingYue}}" class='slide_item'>
+    <view class='qikan_line_item'  bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}' src='{{imageUrl+item.iamge_icon}}'>
+      <image class='circle' src='{{imageUrl+item.iamge_icon}}'>
       </image>
       <view class='circle_title'>{{item.article_type_name}}</view>
        </view>
     </view>
    </view>
-</scroll-view>
+
 
   <view class='list'>
     <view class='cart' wx:for="{{arcticleList}}"  wx:for-item="item">

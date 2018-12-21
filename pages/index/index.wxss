@@ -58,8 +58,11 @@
   font-size: 24rpx;
 }
 .all_qikan image{
-  height: 30rpx;
-  width: 20rpx;
+  height:23rpx;
+width:20rpx;
+margin-left:15rpx;
+margin-right:10rpx;
+
 }
 .qikan_line{
   margin-top: 48rpx;
@@ -87,6 +90,11 @@
   font-size: 24rpx;
   color: #7f7e7e;
   margin-top: 20rpx;
+  line-clamp: 4;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 118rpx;
 }
 
 .not_zhankai{

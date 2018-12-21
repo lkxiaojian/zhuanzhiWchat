@@ -1,13 +1,13 @@
 <!--pages/welcome/welcome.wxml-->
-<view class='status_toolbar' style='height:{{statusHeight+48}}rpx;'></view>
-<view class='container'>
-  <view class='top_line'>
-    <text class='top_title'>请选择你喜欢的精选集</text>
-    <text class='top_menu'bindgetuserinfo="bindGetUserInfo" id='jupt' open-type='getUserInfo'>跳过</text>
-  </view>
+<view class='status_toolbar' style='height:{{statusHeight}}rpx;'></view>
+<view class='container' style='background-position-y:{{-(statusHeight+70)}}rpx'>
+<view class='top_line' style='padding-top:{{statusHeight}}rpx'>
+  <text class='top_title'>请选择你喜欢的精选集</text>
+  <button class='top_menu' bindgetuserinfo="bindGetUserInfo" id='jupt' open-type='getUserInfo' style='outline:0 line !important;'>跳过</button>
+</view>
   <view class="moddle">
     <view wx:for="{{repContent}}" class="{{selectIndex[index].sureid? hasSelect+item.index : noSelect+item.index}}" data-selectIndex="{{item.index}}" bindtap="selectRep">{{item.message}}</view>
   </view>
-  <text class='bottom_text'>高品质专业内容，一键触达</text>
-  <button class='startApp' id='bntStart'bindgetuserinfo="bindGetUserInfo"  open-type='getUserInfo'>立即开启</button>
+  <text class='bottom_text' style='bottom:{{statusHeight+300}}rpx'>高品质专业内容，一键触达</text>
+  <button class='startApp' id='bntStart' bindgetuserinfo="bindGetUserInfo" open-type='getUserInfo' style='bottom:{{statusHeight+160}}rpx'>立即开启</button>
 </view>

@@ -5,7 +5,7 @@
 }
 .arcticleTitle{
   color: #1a222e;
-  font-size: 50rpx;
+  font-size: 46rpx;
 }
 .title{
   display: flex;
@@ -14,7 +14,7 @@
   font-size: 28rpx;
 }
 .title view{
-  margin-right: 112rpx;
+  margin-right: 60rpx;
 }
 .sub_title{
    display: flex;
@@ -22,7 +22,7 @@
   font-size: 28rpx;
 }
 .sub_title view{
-  margin-right: 66rpx;
+  margin-right: 40rpx;
 }
 .detailHtml{
   margin-left: 38rpx;

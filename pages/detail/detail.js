@@ -29,10 +29,11 @@ Page({
           console.log(res);
           if (res.data.result.content_type==1){
             WxParse.wxParse('detailHtml', 'html', res.data.result.content_crawl, that, 0);
-           // res.data.result.create_time = util.formatTime(res.data.result.create_time);
+           // 
           }else{
             WxParse.wxParse('detailHtml', 'html', res.data.result.details_div, that, 0);
           }
+          res.data.result.create_time = util.toDate(res.data.result.create_time);
           that.setData({
             result :res.data.result
           })
