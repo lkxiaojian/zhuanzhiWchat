@@ -24,7 +24,13 @@
     <view class='slide'  wx-if='{{articleType.length>0}}'>
       <view class='silde_item' data-id='{{articleType[0].article_type_id}}'  data-name='{{articleType[0].article_type_name}}' data-image='{{articleType[0].iamge_back}}'  bindtap='startType'  >
         <image class='yellow_circle' style='width:102rpx; height:102rpx;' src='{{imageUrl+articleType[0].iamge_icon}}'></image>
-        <view class='green_text' style="{{articleType[0].article_type_name == keyword ? 'color:#16af12' : '' }}">{{articleType[0].article_type_name}}</view>
+        <!-- <view class='green_text' style="{{articleType[0].article_type_name == keyword ? 'color:#16af12' : '' }}">{{articleType[0].article_type_name}}</view> -->
+
+         <block  class='title' wx:for="{{articleType[0].article_type_names}}" wx:for-item="itemTitles">
+          <text  class='title'  wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text> 
+          <text   class='title' wx:else>{{itemTitles.str}}</text>
+          </block> 
+
       </view>
     </view>
     <view class='list'>
@@ -33,9 +39,19 @@
         <view class='group_title'>已订阅期刊的文章</view>
         <view class='cart' wx:for="{{searchList.loveList}}">
           <view class='cart_content'>
-            <text class='title' style="{{item.article_title == keyword ? 'color:#16af12' : '' }}">{{item.article_title}}</text>
-            <text class='sub_title'>{{"#"+item.article_keyword}}</text>
-            <view class='content' style="{{item.content_excerpt == keyword ? 'color:#16af12' : '' }}">{{item.content_excerpt}}</view>
+          <block  class='title' wx:for="{{item.article_titles}}" wx:for-item="itemTitles">
+          <text  class='title'  wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text> 
+          <text   class='title' wx:else>{{itemTitles.str}}</text>
+          </block>
+          <block  wx:for="{{item.article_keywords}}" wx:for-item="itemTitles">
+               <!-- <text  style="color:red;" class='sub_title'>{{"#"+item.article_keyword}}</text> -->
+          <text class='sub_title' wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text> 
+          <text  class='sub_title' wx:else>#{{itemTitles.str}}</text>
+          </block>
+          <view wx:for="{{item.content_excerpts}}" wx:for-item="itemTitles">
+          <text class='content' wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text> 
+          <text  class='content' wx:else>{{itemTitles.str}}</text>
+          </view>
           </view>
         </view>
       </view>
@@ -44,9 +60,26 @@
         <view class='group_title'>相关文章</view>
         <view class='cart' wx:for="{{searchList.noLoveList}}">
           <view class='cart_content'>
-            <text class='title' style="{{item.article_title == keyword ? 'color:#16af12' : '' }}">{{item.article_title}}</text>
+            <!-- <text class='title' style="{{item.article_title == keyword ? 'color:#16af12' : '' }}">{{item.article_title}}</text>
             <text class='sub_title'>{{"#"+item.article_keyword}}</text>
-            <view class='content' style="{{item.content_excerpt == keyword ? 'color:#16af12' : '' }}">{{item.content_excerpt}}</view>
+            <view class='content' style="{{item.content_excerpt == keyword ? 'color:#16af12' : '' }}">{{item.content_excerpt}}</view> -->
+
+        <block  class='title' wx:for="{{item.article_titles}}" wx:for-item="itemTitles">
+          <text  class='title'  wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text> 
+          <text   class='title' wx:else>{{itemTitles.str}}</text>
+        </block>
+
+          <block  wx:for="{{item.article_keywords}}" wx:for-item="itemTitles">
+               <!-- <text  style="color:red;" class='sub_title'>{{"#"+item.article_keyword}}</text> -->
+          <text class='sub_title' wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text> 
+          <text  class='sub_title' wx:else>#{{itemTitles.str}}</text>
+          </block>
+
+             <view wx:for="{{item.content_excerpts}}" wx:for-item="itemTitles">
+          <text class='content' wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text> 
+          <text  class='content' wx:else>{{itemTitles.str}}</text>
+          </view>
+
           </view>
         </view>
       </view>

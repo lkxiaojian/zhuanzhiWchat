@@ -1,5 +1,6 @@
 // pages/search/search.js
 var WxParse = require('../../wxParse/wxParse.js');
+var key="";
 Page({
   /**
    * 页面的初始数据
@@ -86,21 +87,28 @@ Page({
         }
         if(that.data.page==0){
           if(res.data.articleType){
-            that.data.articleType = res.data.articleType;
+            if (res.data.articleType && res.data.articleType.length>0){
+              res.data.articleType[0].article_type_names=  that.hilight_word('',res.data.articleType[0].article_type_name);
+              that.data.articleType = res.data.articleType;
+            }
           }
           if(res.data.loveArticle){
-              that.data.searchList.loveList = res.data.loveArticle;
+              // that.data.searchList.loveList = res.data.loveArticle;
+            that.data.searchList.loveList = that.splitText(res.data.loveArticle)
           }
           if (res.data.notLoveArticle && res.data.notLoveArticle.length > 0){
-            that.data.searchList.noLoveList = res.data.notLoveArticle;
+            // that.data.searchList.noLoveList = res.data.notLoveArticle;
+            that.data.searchList.noLoveList = that.splitText(res.data.notLoveArticle)
           }
           
         }else{
           if (res.data.loveArticle) {
-            that.data.searchList.loveList = that.data.searchList.loveList.concat(res.data.loveArticle);
+            // that.data.searchList.loveList = that.data.searchList.loveList.concat(res.data.loveArticle);
+            that.data.searchList.loveList=  that.splitText(res.data.loveArticle);
           }
           if (res.data.notLoveArticle && res.data.notLoveArticle.length>0) {
-            that.data.searchList.noLoveList = that.data.searchList.noLoveList.concat(res.data.noLoveList);
+            // that.data.searchList.noLoveList = that.data.searchList.noLoveList.concat(res.data.noLoveList);
+            that.data.searchList.noLoveList = that.splitText(res.data.noLoveList);
           }
         }
         if (that.data.searchList) {
@@ -118,6 +126,7 @@ Page({
   },
   searchArticle:function(event){
     this.data.keyword = event.detail.value;
+  
     this.setData({
       keyword: event.detail.value
     });
@@ -181,5 +190,34 @@ Page({
         wx.hideLoading()
       }
     })
+  },
+  splitText:function(data){
+    var that=this;
+
+    for(var i=0;i<data.length;i++){
+      data[i].article_titles= that.hilight_word(that.key, data[i].article_title);
+      data[i].article_keywords = that.hilight_word(that.key, data[i].article_keyword);
+      data[i].content_excerpts = that.hilight_word(that.key, data[i].content_excerpt);
+    }
+   return data;
+  },
+  hilight_word: function (key, word) {
+    key = this.data.keyword;
+    let idx = word.indexOf(key), t = [];
+
+    if (idx > -1) {
+      if (idx == 0) {
+        t = this.hilight_word(key, word.substr(key.length));
+        t.unshift({ key: true, str: key });
+        return t;
+      }
+
+      if (idx > 0) {
+        t = this.hilight_word(key, word.substr(idx));
+        t.unshift({ key: false, str: word.substring(0, idx) });
+        return t;
+      }
+    }
+    return [{ key: false, str: word }];
   }
 })
