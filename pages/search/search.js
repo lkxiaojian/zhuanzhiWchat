@@ -207,5 +207,17 @@ Page({
       }
     }
     return [{ key: false, str: word }];
-  }
+  },
+  selectDetail: function (data) {
+    wx.showLoading({
+      title: '跳转中',
+    })
+    var id = data.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../detail/detail?articleId=' + id,
+      complete: function () {
+        wx.hideLoading()
+      }
+    })
+  },
 })

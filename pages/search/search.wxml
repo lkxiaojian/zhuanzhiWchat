@@ -46,7 +46,7 @@
         <view class='gray_gap'></view>
         <view class='group_title'>已订阅期刊的文章</view>
         <view class='cart' wx:for="{{searchList.loveList}}">
-          <view class='cart_content'>
+          <view class='cart_content'  data-id='{{item.article_id}}' bindtap='selectDetail'>
             <view class='tittle'>
                 <text wx:for="{{item.article_titles}}" wx:for-item="itemTitles">
                 <text wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>

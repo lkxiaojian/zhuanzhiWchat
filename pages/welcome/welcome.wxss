@@ -2,7 +2,6 @@
 .container{
   background-image: url('https://xiaochengxu.zhuanzhilink.com:4443/img/resources/image/articleTypeImages/welcome_logo.png');
   background-size:100% 90%;
-  background-position-y: -100rpx;
   overflow:hidden;
   position:fixed;
   background-repeat: no-repeat;
@@ -14,10 +13,12 @@
   width: 100%;
   color: white;
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .top_line {
-  padding-top: 122rpx;
+  padding-top: 120rpx;
   display: flex;
   align-items: flex-end;
   height: 49rpx;
@@ -41,7 +42,7 @@ button{
   color: white;
   height: 60rpx;
   line-height: 60rpx;
-  border: none;
+  border: transparent;
 }
 
 .title {
@@ -154,14 +155,14 @@ button{
 .title10 {
   padding-right: 33rpx;
   opacity: 0.54;
-  margin-top: 22rpx;
+  margin-top: 44rpx;
   text-align: right;
 }
 
 .title_on10 {
   padding-right: 33rpx;
   opacity: 1;
-  margin-top: 22rpx;
+  margin-top: 44rpx;
   text-align: right;
 }
 
@@ -179,12 +180,14 @@ button{
   padding-right: 24rpx;
   opacity: 0.54;
   text-align: right;
+  margin-top: 22rpx;
 }
 
 .title_on12 {
   padding-right: 24rpx;
   opacity: 1;
   text-align: right;
+  margin-top: 22rpx;
 }
 
 .title13 {
