@@ -108,10 +108,11 @@ margin-right:10rpx;
   width: 40rpx;
   height: 20rpx;
   margin-right: 60rpx;
+  margin-top: 8rpx;
 }
 .bottom{
   margin-top: 6rpx;
   font-size: 24rpx;
-  color: #9c9c9c;
+  color: #020101;
   margin-bottom: 34rpx;
 }

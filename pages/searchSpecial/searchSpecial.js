@@ -6,7 +6,8 @@ Page({
   data: {
     statusHeight: getApp().globalData.statusBarHeight,
     articleTypes: [],
-    imageUrl: getApp().globalData.imageUrl
+    imageUrl: getApp().globalData.imageUrl,
+    navH: getApp().globalData.navHeight
   },
 
   /**

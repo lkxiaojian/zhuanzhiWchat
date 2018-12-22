@@ -9,10 +9,12 @@
     "pages/searchSpecial/searchSpecial"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "center",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
-  }
+
+  },
+  "navHeight":0
 }
+

@@ -5,8 +5,10 @@ Page({
   /**
    * 页面的初始数据
    */
+
   data: {
     statusHeight: getApp().globalData.statusBarHeight,
+    navH: getApp().globalData.navHeight,
     page:0,
     haseMore:true,
     searchResult:-1,

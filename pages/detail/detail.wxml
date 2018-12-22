@@ -1,10 +1,17 @@
 <!--pages/detail/detail.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
-<view class='status_toolbar' style='height:{{statusHeight+48}}rpx;'></view>
+<!-- <view class='status_toolbar' style='height:{{statusHeight+48}}rpx;'></view>
 <view class='toolbar'>
   <image src='../../image/back.png' class='toolbar_logo' bindtap='back'></image>
-</view>
+</view> -->
 <view class='container'>
+   <view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title'>
+   
+      <image src='../../image/back.png' class='back' bindtap='back'></image> 
+    </view>
+  </view>
+
   <view class='arcticleTitle'>{{result.article_title}}</view>
   <view class='title'>
     <view class='author'>{{"作者："+result.author}}</view>

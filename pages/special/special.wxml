@@ -1,11 +1,19 @@
 <!--pages/special/special.wxml-->
 <view class='container'>
-  <view class='status_toolbar'  style='height:{{statusHeight+48}}rpx;'></view>
+  <!-- <view class='status_toolbar'  style='height:{{statusHeight+48}}rpx;'></view>
   <view class='toolbar'>
     <image src='../../image/back.png' class='toolbar_logo' bindtap='back'></image>
     <text class='toolbar_title'>期刊</text>
+  </view> -->
+ 
+ <view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title'>
+      期刊
+      <image src='../../image/back.png' class='back' bindtap='back'></image> 
+    </view>
   </view>
-  <view class='ul'>
+
+  <view class='ul'  >
     <view class='li' wx:for="{{articleTypes}}">
       <view class='item'>
         <image class='circle' bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}' src='{{imageUrl+item.iamge_icon}}'></image>

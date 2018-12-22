@@ -1,8 +1,14 @@
 <!--index.wxml-->
-<view class="container">
+<!-- <view class="container">
   <view class='status_toolbar'></view>
   <view class='toolbar'>
     <text class='toolbar_title'>专知</text>
+  </view> -->
+    <view class="container">
+  <view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title'>
+      首页
+    </view>
   </view>
   <view class='top_search'>
     <input type='text' confirm-type='search' placeholder='搜索文章、期刊、作者......' placeholder-class='top_search_placeholder' bindfocus='toSearch' > </input>

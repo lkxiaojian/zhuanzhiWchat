@@ -11,6 +11,9 @@ Page({
   },
   onLoad: function () {
     var app = getApp();
+    this.setData({
+      navH: app.globalData.navHeight
+    })
     if (app.globalData.userInfo) {
       if (app.globalData.wxId) {
         console.log(app.globalData.wxId);

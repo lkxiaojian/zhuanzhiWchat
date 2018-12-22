@@ -9,7 +9,8 @@ Page({
   data: {
     statusHeight: getApp().globalData.statusBarHeight,
     result: null,
-    imageUrl: getApp().globalData.imageUrl
+    imageUrl: getApp().globalData.imageUrl,
+    navH: getApp().globalData.navHeight
   },
 
   /**

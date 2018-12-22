@@ -1,11 +1,19 @@
 <!-- pages/search/search.wxml -->
 <import src="../../wxParse/wxParse.wxml" />
 <view class='container'>
-  <view class='status_toolbar' style='height:{{statusHeight+48}}rpx;'></view>
+  <!-- <view class='status_toolbar' style='height:{{statusHeight+48}}rpx;'></view>
   <view class='toolbar'>
     <image src='../../image/back.png' class='toolbar_logo' bindtap='back'></image>
     <text class='toolbar_title'>专知精选</text>
+  </view> -->
+
+<view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title'>
+      首页
+      <image src='../../image/back.png' class='back' bindtap='back'></image> 
+    </view>
   </view>
+
   <view class='top'>
     <view class='top_search'>
       <image src='../../image/search.png' class='top_search_icon'></image>

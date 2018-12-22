@@ -90,16 +90,19 @@ App({
     //wx.setStorageSync("register", "false");
     wx.getSystemInfo({
       success(res) {
-        console.log(res.statusBarHeight) // 获取状态栏的高度
-        if (res.statusBarHeight <= 38) {
-          that.globalData.statusBarHeight = 96;
-        } else {
-          that.globalData.statusBarHeight = 144;
-        }
+        console.log("状态栏的高度"+res.statusBarHeight) // 获取状态栏的高度
+        // if (res.statusBarHeight <= 38) {
+        //   that.globalData.statusBarHeight = 96;
+        // } else {
+        //   that.globalData.statusBarHeight = 144;
+        // }
+        that.globalData.navHeight = res.statusBarHeight + 46;
+      }, fail(err) {
+        console.log(err);
       }
     });
-    this.getUserInfo();
-    console.log(this.globalData.statusBarHeight);
+    that.getUserInfo();
+    console.log(that.globalData.statusBarHeight);
   },
   /**
    * 时间戳转化为年 月 日 时 分 秒

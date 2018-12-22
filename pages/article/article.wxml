@@ -1,10 +1,18 @@
 <!--pages/article/article.wxml-->
 <view class='container'>
-  <view class='status_toolbar'  style='height:{{statusHeight+48}}rpx;'></view>
+  <!-- <view class='status_toolbar'  style='height:{{statusHeight+48}}rpx;'></view>
   <view class='toolbar'>
     <image src='../../image/back.png' class='toolbar_logo' bindtap='back'></image>
     <text class='toolbar_title'>{{typeName}}</text>
+  </view> -->
+  <view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title'>
+     {{typeName}}
+      <image src='../../image/back.png' class='back' bindtap='back'></image> 
+    </view>
   </view>
+
+
   <image src='{{imageBack}}' class='photo'></image>
    <view class='list'>
     <view class='cart'  wx:for="{{arcticleList}}" bindtap='selectDetail' data-id='{{item.article_id}}'>

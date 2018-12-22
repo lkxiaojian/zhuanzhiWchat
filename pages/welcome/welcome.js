@@ -6,6 +6,7 @@ Page({
    */
   data: {
     statusHeight: getApp().globalData.statusBarHeight,
+    navH: getApp().globalData.navHeight,
     noSelect: 'title title',
     hasSelect: 'title title_on',
     repContent: [{

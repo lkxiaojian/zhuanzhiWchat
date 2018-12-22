@@ -12,6 +12,7 @@ Page({
     page: 0,
     arcticleList: [],
     imagUrl: getApp().globalData.imageUrl,
+    navH: getApp().globalData.navHeight,
     imageBack:""
   },
 
