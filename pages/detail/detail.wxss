@@ -19,7 +19,7 @@
 .sub_title{
    display: flex;
   color: #b4b4b4;
-  font-size: 28rpx;
+  font-size: 24rpx;
 }
 .sub_title view{
   margin-right: 40rpx;
@@ -39,7 +39,7 @@
   color: #757575;
   font-size: 24rpx;
 }
-.arcticle{
+.article{
   width: 100%;
   color: #1a222e;
   font-size: 50rpx;
@@ -58,14 +58,17 @@
   padding-left: 30rpx;
   padding-right: 18rpx;
   padding-bottom: 12rpx;
+  flex-direction: row;
 }
-.li-left{
+.li_left{
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 .li_title{
   color: #1a222e;
   font-size: 30rpx;
+  flex: 1;
 }
 .li_sub_title{
   color: #1a222e;
@@ -74,8 +77,40 @@
 .li_right{
   width: 174rpx;
   height: 157rpx;
+  margin-left: 20rpx;
+  border-radius: 8rpx;
 }
 .line{
   background-color: #d1d1d1;
   height: 2rpx;
+}
+.content{
+  width: 98%;
+  color: #555555;
+  font-size: 30rpx;
+}
+.wxParse-img{
+  width: 98% !important;
+}
+.bnt{
+  position: fixed;
+  z-index: 999;
+  bottom: 50rpx;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  right: 50rpx;
+}
+.bnt image{
+  width: 78rpx;
+  height: 78rpx;
+  margin-right: 30rpx;	
+}
+.bnt button{
+  width: 78rpx;
+  height: 78rpx;
+  margin-right: 30rpx;
+  margin-left: 0rpx;
+  background-size: 78rpx 78rpx;
+  border: none;
 }

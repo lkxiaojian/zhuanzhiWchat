@@ -104,17 +104,18 @@ Page({
         }else{
           if (res.data.loveArticle) {
             // that.data.searchList.loveList = that.data.searchList.loveList.concat(res.data.loveArticle);
-            that.data.searchList.loveList=  that.splitText(res.data.loveArticle);
+            that.data.searchList.loveList = that.data.searchList.loveList.concat(that.splitText(res.data.loveArticle));
           }
           if (res.data.notLoveArticle && res.data.notLoveArticle.length>0) {
             // that.data.searchList.noLoveList = that.data.searchList.noLoveList.concat(res.data.noLoveList);
-            that.data.searchList.noLoveList = that.splitText(res.data.noLoveList);
+            that.data.searchList.noLoveList = that.data.searchList.noLoveList.concat(that.splitText(res.data.noLoveList));
           }
         }
         if (that.data.searchList) {
           that.data.searchResult = 1;
         }
         that.setData(that.data);
+        console.log(that.data);
       },
       fail: function(res) {},
       complete: function(res) {
@@ -143,24 +144,10 @@ Page({
   moreType:function(){
     var page = this;
     let str = JSON.stringify(page.data.articleType);
-
     var item = page.cleanSpelChar(str)
     wx.navigateTo({
-
-      url: '../searchSpecial/searchSpecial?item=' + item,
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
+      url: '../searchSpecial/searchSpecial?item=' + item+"&keyword="+page.data.keyword,
     })
-
-
-    
-    // wx.redirectTo({
-    //   url: '../special/special?keyword'+that.data.keyword,
-    //   success: function(res) {},
-    //   fail: function(res) {}, m
-    //   complete: function(res) {},
-    // })
   },
   cleanSpelChar: function (localData) {
     var noiseChar = "~!@#$%^&*()_+-=`[]{};':\"\\|,./<>?\n\r";
@@ -193,7 +180,6 @@ Page({
   },
   splitText:function(data){
     var that=this;
-
     for(var i=0;i<data.length;i++){
       data[i].article_titles= that.hilight_word(that.key, data[i].article_title);
       data[i].article_keywords = that.hilight_word(that.key, data[i].article_keyword);

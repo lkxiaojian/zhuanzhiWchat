@@ -41,9 +41,7 @@ button{
   color: white;
   height: 60rpx;
   line-height: 60rpx;
-  border: solid snow 2rpx;
-  outline: 1 none !important;
-  box-shadow: 0px 0px 0px 0px #FF8B2A;
+  border: none;
 }
 
 .title {

@@ -23,14 +23,18 @@
   <view class='article'>相关文章</view>
   <view class='list'>
     <view class='li_container' wx:for='{{result.related}}'>
-      <view class='li'>
+      <view class='li' data-id='{{item.article_id}}' bindtap='selectDetail'>
         <view class='li_left'>
-          <view class='li_title'>{{item.arcticle_title}}</view>
-          <view class='li_sub_title'>{{item.article_keyword}}</view>
+          <view class='li_title'>{{item.article_title}}</view>
+          <view class='li_sub_title'>{{"#"+item.article_keyword}}</view>
         </view>
-        <image class='li_right' wx-if='item.image_path' src='{{imageUrl+item.image_path}}'></image>
+        <image class='li_right' src='{{imageUrl+result.iamge_back}}'></image>
       </view>
       <view class='line'></view>
     </view>
   </view>
+</view>
+<view class='bnt'>
+  <image src='{{result.collect_state==1?"../../image/love.png":"../../image/had_love.png"}}' bindtap='love'></image>
+  <button style='background-image: url("{{imageUrl+"/resources/image/articleTypeImages/20181222084825.png"}}");' open-type='share' plain='true'></button>
 </view>

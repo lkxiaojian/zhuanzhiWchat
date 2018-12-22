@@ -156,8 +156,6 @@
   margin-right: 68rpx;
   align-items: center;
   margin-top: 14rpx;
-  width: 108rpx;
-  max-width: 108rpx;
 }
 
 .green_text {

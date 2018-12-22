@@ -13,69 +13,38 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var keyword = options.keyword;
+    console.log(keyword);
     var that = this;
     var tar = this.cleanSpelChar(options.item)
     let item = JSON.parse(tar);
     that.data.articleTypes=item;
+    if(item.length>0){
+      for(var i=0;i<item.length;i++){
+        item[i].article_type_names = that.hilight_word(keyword, item[i].article_type_name);
+      }
+    }
+    console.log(item);
      this.setData({
           articleTypes: item,
-
       })
-
-    // wx.request({
-    //   url: getApp().globalData.baseUrl + '/article/getalltype/rest',
-    //   data: {
-    //     wechatid: getApp().globalData.wxId
-    //   },
-    //   method: "GET",
-    //   success: res => {
-    //     this.setData({
-    //       articleTypes: res.data.result
-    //     })
-    //   }
-    // })
   },
+  hilight_word: function (key, word) {
+    let idx = word.indexOf(key), t = [];
+    if (idx > -1) {
+      if (idx == 0) {
+        t = this.hilight_word(key, word.substr(key.length));
+        t.unshift({ key: true, str: key });
+        return t;
+      }
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+      if (idx > 0) {
+        t = this.hilight_word(key, word.substr(idx));
+        t.unshift({ key: false, str: word.substring(0, idx) });
+        return t;
+      }
+    }
+    return [{ key: false, str: word }];
   },
 
   /**
