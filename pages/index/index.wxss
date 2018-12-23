@@ -12,6 +12,7 @@
   display: flex;
   width: 80%;
   align-items: center;
+  margin-left: 20rpx;
 }
 
 .top_search input {
@@ -58,7 +59,7 @@
   font-size: 24rpx;
 }
 .all_qikan image{
-  height:23rpx;
+height:26rpx;
 width:20rpx;
 margin-left:15rpx;
 margin-right:10rpx;
@@ -105,8 +106,8 @@ margin-right:10rpx;
   flex: 1;
 }
 .zhankai{
-  width: 40rpx;
-  height: 20rpx;
+  width: 34rpx;
+  height: 16rpx;
   margin-right: 60rpx;
   margin-top: 8rpx;
 }

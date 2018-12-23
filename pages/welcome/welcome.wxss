@@ -1,14 +1,17 @@
 /* pages/welcome/welcome.wxss */
-.container{
+
+.container {
   background-image: url('https://xiaochengxu.zhuanzhilink.com:4443/img/resources/image/articleTypeImages/welcome_logo.png');
-  background-size:100% 90%;
-  overflow:hidden;
-  position:fixed;
+  background-size: 100% 90%;
+  overflow: hidden;
+  position: fixed;
   background-repeat: no-repeat;
 }
-.status_toolbar{
-  background-color: #FF8B2A;
+
+.status_toolbar {
+  background-color: #ff8b2a;
 }
+
 .moddle {
   width: 100%;
   color: white;
@@ -24,7 +27,7 @@
   height: 49rpx;
   width: 100%;
   color: white;
-  background: #FF8B2A;
+  background: #ff8b2a;
 }
 
 .top_title {
@@ -32,19 +35,22 @@
   margin-left: 16rpx;
   font-size: 34rpx;
 }
-button{
-   outline:0 none !important;
+
+button {
+  outline: 0 none !important;
 }
+
 .top_menu {
   font-size: 24rpx;
   margin-right: 40rpx;
-  background-color: #FF8B2A;
+  background-color: #ff8b2a;
   color: white;
   height: 60rpx;
   line-height: 60rpx;
   border: transparent;
 }
-.free-btn-bordernone::after{
+
+.free-btn-bordernone::after {
   border: none;
 }
 
@@ -54,174 +60,201 @@ button{
   font-weight: bold;
   opacity: 0.9;
   height: 24rpx;
-  width: auto;
+  width: 266rpx;
+  position: absolute;
 }
 
 .title1 {
-  padding-left: 270rpx;
-  margin-top: 70rpx;
+  left: 266rpx;
+  top: 294rpx;
   opacity: 0.74;
 }
 
 .title_on1 {
-  padding-left: 266rpx;
-  margin-top: 70rpx;
+  left: 266rpx;
+  top: 294rpx;
   opacity: 1;
 }
 
 .title_on2 {
-  margin-right: 64rpx;
+  top: 316rpx;
+  right: 64rpx;
   opacity: 1;
   text-align: right;
 }
 
 .title2 {
-  margin-right: 64rpx;
+  top: 316rpx;
+  right: 64rpx;
   opacity: 0.54;
   text-align: right;
 }
 
 .title3 {
-  padding-left: 90rpx;
   opacity: 0.7;
+  left: 90rpx;
+  top: 338rpx;
 }
 
 .title_on3 {
-  padding-left: 90rpx;
+  left: 90rpx;
+  top: 338rpx;
   opacity: 1;
 }
 
 .title4 {
   text-align: center;
   opacity: 0.54;
+  left: 20rpx;
+  top: 382rpx;
 }
 
 .title_on4 {
   text-align: center;
   opacity: 1;
+  left: 20rpx;
+  top: 382rpx;
 }
 
 .title5 {
   text-align: right;
-  padding-right: 52rpx;
+  right: 52rpx;
+  top: 404rpx;
   opacity: 0.74;
 }
 
 .title_on5 {
   text-align: right;
-  padding-right: 52rpx;
+  right: 52rpx;
+  top: 404rpx;
   opacity: 1;
 }
 
 .title6 {
-  padding-left: 22rpx;
+  left: 22rpx;
+  top: 426rpx;
   opacity: 0.54;
 }
 
 .title_on6 {
-  padding-left: 22rpx;
+  left: 22rpx;
+  top: 426rpx;
   opacity: 1;
 }
 
 .title7 {
-  padding-left: 216rpx;
+  left: 216rpx;
+  top: 448rpx;
   opacity: 0.74;
 }
 
 .title_on7 {
-  padding-left: 216rpx;
+  left: 216rpx;
+  top: 448rpx;
   opacity: 1;
 }
 
 .title8 {
-  padding-right: 132rpx;
+  right: 132rpx;
+  top: 470rpx;
   text-align: right;
   opacity: 0.7;
 }
 
 .title_on8 {
-  padding-right: 132rpx;
+  right: 132rpx;
+  top: 470rpx;
   text-align: right;
   opacity: 1;
 }
 
 .title9 {
-  padding-left: 38rpx;
+  left: 38rpx;
+  top: 492rpx;
   opacity: 0.54;
 }
 
 .title_on9 {
-  padding-left: 38rpx;
+  left: 38rpx;
+  top: 492rpx;
   opacity: 1;
 }
 
 .title10 {
-  padding-right: 33rpx;
+  right: 33rpx;
+  top: 536rpx;
   opacity: 0.54;
-  margin-top: 44rpx;
   text-align: right;
 }
 
 .title_on10 {
-  padding-right: 33rpx;
+  top: 536rpx;
+  right:33rpx;
   opacity: 1;
-  margin-top: 44rpx;
   text-align: right;
 }
 
 .title11 {
-  padding-left: 90rpx;
-  opacity: .54;
+  left: 90rpx;
+  top: 558rpx;
+  opacity: 0.54;
 }
 
 .title_on11 {
-  padding-left: 90rpx;
+  left: 90rpx;
+  top: 558rpx;
   opacity: 1;
 }
 
 .title12 {
-  padding-right: 24rpx;
+  right: 24rpx;
+  top: 624rpx;
   opacity: 0.54;
   text-align: right;
-  margin-top: 22rpx;
 }
 
 .title_on12 {
-  padding-right: 24rpx;
+  right: 24rpx;
+  top: 624rpx;
   opacity: 1;
   text-align: right;
-  margin-top: 22rpx;
 }
 
 .title13 {
-  padding-left: 22rpx;
+  left: 22rpx;
+  top: 626rpx;
   opacity: 0.54;
 }
 
 .title_on13 {
-  padding-left: 22rpx;
+  left: 22rpx;
+  top: 626rpx;
   opacity: 1;
 }
 
 .title14 {
-  padding-right: 36rpx;
+  right: 36rpx;
+  top: 664rpx;
   text-align: right;
   opacity: 0.54;
 }
 
 .title_on14 {
-  padding-right: 36rpx;
+  right: 36rpx;
+  top: 664rpx;
   text-align: right;
   opacity: 1;
 }
 
 .title15 {
-  padding-left: 86rpx;
+  left: 86rpx;
+  top: 686rpx;
   opacity: 0.7;
 }
 
 .title_on15 {
-  padding-left: 86rpx;
+  left: 86rpx;
+  top: 686rpx;
   opacity: 1;
 }
 
