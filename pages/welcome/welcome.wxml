@@ -4,7 +4,7 @@
 <view class='container' style='background-position-y:{{-(statusHeight+70)}}rpx'>
 <view class='top_line' style='padding-top:{{navH}}px'>
   <text class='top_title'>请选择你喜欢的精选集</text>
-  <button class='top_menu' bindgetuserinfo="bindGetUserInfo" id='jupt' open-type='getUserInfo'  style='outline:0 line !important;'>跳过</button>
+  <button class='top_menu,free-btn-bordernone'  bindgetuserinfo="bindGetUserInfo" id='jupt' open-type='getUserInfo'  style='outline:0 line !important;'>跳过</button>
 </view>
   <view class="moddle">
     <text wx:for="{{repContent}}" class="{{selectIndex[index].sureid? hasSelect+item.index : noSelect+item.index}}" data-selectIndex="{{item.index}}" bindtap="selectRep">{{item.message}}</text>
