@@ -3,17 +3,13 @@
 <view>
  <view class='nav bg-white' style='height:{{navH}}px'>
     <view class='nav-title'>
-      期刊
+      精选
       <image src='../../image/back.png' class='back' bindtap='back'></image> 
     </view>
   </view>
 
 <scroll-view class='bg-gray overflow container' style='height:calc(100vh - {{navH}}px)' scroll-y >
-  <!-- <view class='status_toolbar'  style='height:{{statusHeight+48}}rpx;'></view>
-  <view class='toolbar'>
-    <image src='../../image/back.png' class='toolbar_logo' bindtap='back'></image>
-    <text class='toolbar_title'>期刊</text>
-  </view> -->
+
   <view class='ul'  >
     <view class='li' wx:for="{{articleTypes}}">
       <view class='item'>

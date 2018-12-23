@@ -11,15 +11,15 @@
     </view>
  
   </view>
-<scroll-view class='bg-gray overflow container' style='height:calc(100vh - {{navH}}px)' scroll-y>
+<scroll-view class='bg-gray overflow container' style='height:calc(100vh - {{navH}}px)' scroll-y >
   <view class='top_search'>
-    <input type='text' confirm-type='search' placeholder='搜索文章、期刊、作者......' placeholder-class='top_search_placeholder' bindfocus='toSearch' > </input>
+    <input type='text' confirm-type='search' placeholder='搜索精选、文摘、公众号、作者.....' placeholder-class='top_search_placeholder' bindfocus='toSearch' > </input>
     <view class='top_search_line'></view>
     <image src='../../image/search.png' class='top_search_icon'></image>
   </view>
   <view class='qikan'>
-    <text class='had_qikan'>已订阅的期刊</text>
-    <view class='all_qikan' bindtap='selectAllSpecial'>全部期刊
+    <text class='had_qikan'>已订阅的精选</text>
+    <view class='all_qikan' bindtap='selectAllSpecial'>全部精选
       <image src='../../image/right.png'></image>
     </view>
   </view>

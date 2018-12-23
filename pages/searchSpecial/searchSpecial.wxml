@@ -3,7 +3,7 @@
 <view>
     <view class='nav bg-white' style='height:{{navH}}px'>
     <view class='nav-title'>
-     期刊
+    精选
       <image src='../../image/back.png' class='back' bindtap='back'></image> 
     </view>
   </view>
