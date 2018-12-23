@@ -16,7 +16,7 @@
 
 
 
-  <view class='top' wx-if='{{searchResult==1}}'>
+  <view class='top'>
     <view class='top_search'>
       <image src='../../image/search.png' class='top_search_icon'></image>
       <input type='text' confirm-type='search' bindconfirm='searchArticle' auto-focus></input>
@@ -24,13 +24,13 @@
     <text class='top_cancel' bindtap='back'>取消</text>
   </view>
   <view class='search_result'>
-    <view class='qikan'>
+    <view class='qikan'  wx-if='{{searchResult==1}}'>
       <view class='had_qikan'>精选</view>
       <view class='all_qikan' bindtap='selectAllSpecial' bindtap='moreType'>更多
       </view>
       <image src='../../image/right.png' class='all_qikan_image'></image>
     </view>
-    <view class='li_line' style='width:94%'></view>
+    <view  wx-if='{{searchResult==1}}' class='li_line' style='width:94%'></view>
     <view class='slide' wx-if='{{articleType.length>0}}'>
       <view class='silde_item' data-id='{{articleType[0].article_type_id}}' data-name='{{articleType[0].article_type_name}}' data-image='{{articleType[0].iamge_back}}' bindtap='startType'>
         <image class='yellow_circle' style='width:102rpx; height:102rpx;' src='{{imageUrl+articleType[0].iamge_icon}}'></image>
@@ -40,7 +40,6 @@
           <text class='title' wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
           <text class='title' wx:else>{{itemTitles.str}}</text>
         </block>
-
       </view>
     </view>
     <view class='list'>
@@ -100,12 +99,12 @@
                 <text wx:else>{{itemTitles.str}}</text>
               </text>
             </view>
-
           </view>
         </view>
       </view>
-      <view class='bottom' wx-if="{{hasMore==true}}">上拉加载更多</view>
-      <view class='bottom' wx-elif="{{hasMore==false}}">没有更多搜索结果</view>
+      <view class='bottom' wx-if="{{hasMore==2}}">没有更多搜索结果</view>
+      <view class='bottom' wx-if="{{hasMore==3}}">上拉加载更多</view>
+
     </view>
   </view>
   <view class='no_search_result' wx-if='{{searchResult==0}}'>没有相关内容</view>

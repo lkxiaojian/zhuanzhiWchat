@@ -10,7 +10,7 @@ Page({
     statusHeight: getApp().globalData.statusBarHeight,
     navH: getApp().globalData.navHeight,
     page:0,
-    haseMore:true,
+    haseMore:1,
     searchResult:-1,
     keyword:"",
     searchList:{},
@@ -41,6 +41,9 @@ Page({
     this.data.page++;
     console.log(this.data.page);
     wx.showNavigationBarLoading() //在标题栏中显示加载
+      this.setData({
+        haseMore: 3
+      });
     this.requestData(); //加载数据
   },
   /**
@@ -77,10 +80,10 @@ Page({
       },
       method: 'GET',
       success: function(res) {
-        var more = true;
+        var more = 1;//1 初始话  2 无数据  3 加载更多
         if(!res.data.loveArticle){
           if(!res.data.notLoveArticle){
-            more = false;
+            more = 2;
             that.setData({
               haseMore:more
             });
