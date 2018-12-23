@@ -4,13 +4,23 @@
 <view class='toolbar'>
   <image src='../../image/back.png' class='toolbar_logo' bindtap='back'></image>
 </view> -->
-<view class='container'>
-   <view class='nav bg-white' style='height:{{navH}}px'>
+<view>
+  <view class='nav bg-white' style='height:{{navH}}px'>
     <view class='nav-title'>
    
       <image src='../../image/back.png' class='back' bindtap='back'></image> 
     </view>
   </view>
+  <scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navH}}px)' scroll-y class='container'>
+<view>
+
+<view class='container'>
+   <!-- <view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title'>
+   
+      <image src='../../image/back.png' class='back' bindtap='back'></image> 
+    </view>
+  </view> -->
 
   <view class='arcticleTitle'>{{result.article_title}}</view>
   <view class='title'>
@@ -44,4 +54,7 @@
 <view class='bnt'>
   <image src='{{result.collect_state==1?"../../image/love.png":"../../image/had_love.png"}}' bindtap='love'></image>
   <button style='background-image: url("{{imageUrl+"/resources/image/articleTypeImages/20181222084825.png"}}");' open-type='share' plain='true'></button>
+</view>
+</view>
+</scroll-view>
 </view>

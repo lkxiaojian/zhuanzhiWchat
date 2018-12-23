@@ -4,12 +4,14 @@
   <view class='toolbar'>
     <text class='toolbar_title'>专知</text>
   </view> -->
-    <view class="container">
-  <view class='nav bg-white' style='height:{{navH}}px'>
+  <view>
+    <view class='nav bg-white' style='height:{{navH}}px'>
     <view class='nav-title'>
       首页
     </view>
+ 
   </view>
+<scroll-view class='bg-gray overflow container' style='height:calc(100vh - {{navH}}px)' scroll-y>
   <view class='top_search'>
     <input type='text' confirm-type='search' placeholder='搜索文章、期刊、作者......' placeholder-class='top_search_placeholder' bindfocus='toSearch' > </input>
     <view class='top_search_line'></view>
@@ -61,4 +63,6 @@
     </view>
   </view>
   <view class='bottom' wx-if="{{isHideNoMore}}">各位看官，专知会继续努力，为大家找到更多更好的内容！</view>
-</view>
+</scroll-view>
+
+ </view>
