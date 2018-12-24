@@ -24,7 +24,7 @@
     <text class='top_cancel' bindtap='back'>取消</text>
   </view>
   <view class='search_result'>
-    <view class='qikan'  wx-if='{{searchResult==1}}'>
+    <view class='qikan'  wx-if='{{articleType.length>0}}'>
       <view class='had_qikan'>精选</view>
       <view class='all_qikan' bindtap='selectAllSpecial' bindtap='moreType'>更多
       </view>
