@@ -13,7 +13,7 @@
   </view>
 <scroll-view class='bg-gray overflow container' style='height:calc(100vh - {{navH}}px)' scroll-y >
   <view class='top_search'>
-    <input type='text' confirm-type='search' placeholder='搜索精选、文摘、公众号、作者.....' placeholder-class='top_search_placeholder' bindfocus='toSearch' disabled='true'> </input>
+    <input type='text' confirm-type='search' placeholder='搜索精选、文摘、公众号、作者.....' placeholder-class='top_search_placeholder' bindtap='toSearch' disabled='true'> </input>
     <view class='top_search_line'></view>
     <image src='../../image/search.png' class='top_search_icon'></image>
   </view>
