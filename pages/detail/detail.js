@@ -10,7 +10,8 @@ Page({
     statusHeight: getApp().globalData.statusBarHeight,
     result: null,
     imageUrl: getApp().globalData.imageUrl,
-    navH: getApp().globalData.navHeight
+    navH: getApp().globalData.navHeight,
+    author:false,
   },
 
   /**
@@ -27,12 +28,21 @@ Page({
       },
       method: 'GET',
       success: function(res) {
-        console.log(res);
+        console.log(res.data.result);
+        console.log(res.data.result.author);
+        var author = false;
+        if(res.data.result.content_manual){
         WxParse.wxParse('detailHtml', 'html', res.data.result.content_manual, that, 0);
+        }
         //WxParse.wxParse('detailHtml', 'html', res.data.result.details_div, that, 0);
+        if(res.data.result.author && res.data.result.author.length>0){
+          author = true;
+        }
+        console.log(author);
         res.data.result.create_time = util.toDate(res.data.result.create_time);
         that.setData({
-          result: res.data.result
+          result: res.data.result,
+          author:author
         })
       },
     })

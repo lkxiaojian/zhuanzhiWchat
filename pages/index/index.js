@@ -99,7 +99,10 @@ Page({
      // title: '跳转中',
     });
     wx.navigateTo({
-      url: '../search/search'
+      url: '../search/search',
+      complete:function(){
+        wx.hideLoading();
+      }
     })
   },
   zhankai: function (e) {

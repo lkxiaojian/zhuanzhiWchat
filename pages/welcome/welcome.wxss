@@ -6,6 +6,7 @@
   overflow: hidden;
   position: fixed;
   background-repeat: no-repeat;
+  background-position-y: -150%;
 }
 
 .status_toolbar {
@@ -66,25 +67,25 @@ button {
 
 .title1 {
   left: 266rpx;
-  top: 294rpx;
+  top: 10%;
   opacity: 0.74;
 }
 
 .title_on1 {
   left: 266rpx;
-  top: 294rpx;
+  top: 10%;
   opacity: 1;
 }
 
 .title_on2 {
-  top: 316rpx;
+  top: 12%;
   right: 64rpx;
   opacity: 1;
   text-align: right;
 }
 
 .title2 {
-  top: 316rpx;
+  top: 12%;
   right: 64rpx;
   opacity: 0.54;
   text-align: right;
@@ -93,102 +94,100 @@ button {
 .title3 {
   opacity: 0.7;
   left: 90rpx;
-  top: 338rpx;
+  top: 14%;
 }
 
 .title_on3 {
-  left: 90rpx;
-  top: 338rpx;
+  left: 294rpx;
+  top: 14%;
   opacity: 1;
 }
 
 .title4 {
-  text-align: center;
   opacity: 0.54;
-  left: 20rpx;
-  top: 382rpx;
+  left: 300rpx;
+  top: 16%;
 }
 
 .title_on4 {
-  text-align: center;
   opacity: 1;
-  left: 20rpx;
-  top: 382rpx;
+  left: 300rpx;
+  top: 16%;
 }
 
 .title5 {
   text-align: right;
   right: 52rpx;
-  top: 404rpx;
+  top: 18%;
   opacity: 0.74;
 }
 
 .title_on5 {
   text-align: right;
   right: 52rpx;
-  top: 404rpx;
+  top: 18%;
   opacity: 1;
 }
 
 .title6 {
   left: 22rpx;
-  top: 426rpx;
+  top: 20%;
   opacity: 0.54;
 }
 
 .title_on6 {
   left: 22rpx;
-  top: 426rpx;
+  top:20%;
   opacity: 1;
 }
 
 .title7 {
   left: 216rpx;
-  top: 448rpx;
+  top: 22%;
   opacity: 0.74;
 }
 
 .title_on7 {
   left: 216rpx;
-  top: 448rpx;
+  top: 22%;
   opacity: 1;
 }
 
 .title8 {
   right: 132rpx;
-  top: 470rpx;
+  top: 24%;
   text-align: right;
   opacity: 0.7;
 }
 
 .title_on8 {
   right: 132rpx;
-  top: 470rpx;
+  top: 24%;
   text-align: right;
   opacity: 1;
 }
 
 .title9 {
   left: 38rpx;
-  top: 492rpx;
+  top: 26%;
   opacity: 0.54;
 }
 
 .title_on9 {
   left: 38rpx;
-  top: 492rpx;
+  top: 26%;
   opacity: 1;
 }
 
 .title10 {
   right: 33rpx;
-  top: 536rpx;
+  top: 29%;
   opacity: 0.54;
   text-align: right;
 }
 
 .title_on10 {
-  top: 536rpx;
+  top: 29%;
   right:33rpx;
   opacity: 1;
   text-align: right;
@@ -196,65 +195,65 @@ button {
 
 .title11 {
   left: 90rpx;
-  top: 558rpx;
+  top:31%;
   opacity: 0.54;
 }
 
 .title_on11 {
   left: 90rpx;
-  top: 558rpx;
+  top: 31%;
   opacity: 1;
 }
 
 .title12 {
   right: 24rpx;
-  top: 624rpx;
+  top:33%;
   opacity: 0.54;
   text-align: right;
 }
 
 .title_on12 {
   right: 24rpx;
-  top: 624rpx;
+  top: 33%;
   opacity: 1;
   text-align: right;
 }
 
 .title13 {
   left: 22rpx;
-  top: 626rpx;
+  top: 35%;
   opacity: 0.54;
 }
 
 .title_on13 {
   left: 22rpx;
-  top: 626rpx;
+  top: 37%;
   opacity: 1;
 }
 
 .title14 {
   right: 36rpx;
-  top: 664rpx;
+  top:37%;
   text-align: right;
   opacity: 0.54;
 }
 
 .title_on14 {
   right: 36rpx;
-  top: 664rpx;
+  top: 39%;
   text-align: right;
   opacity: 1;
 }
 
 .title15 {
   left: 86rpx;
-  top: 686rpx;
+  top: 39%;
   opacity: 0.7;
 }
 
 .title_on15 {
   left: 86rpx;
-  top: 686rpx;
+  top:42%;
   opacity: 1;
 }
 
@@ -262,20 +261,17 @@ button {
   position: absolute;
   color: #ff6c00;
   font-size: 40rpx;
-  bottom: 300rpx;
+  bottom: 30%;
 }
 
 .startApp {
   position: absolute;
   background-color: white;
   border-radius: 50rpx;
-  height: 75rpx;
-  line-height: 75rpx;
-  vertical-align: middle;
   border: solid #ff6700 2rpx;
   font-size: 32rpx;
   color: #ff6000;
   padding-left: 70rpx;
   padding-right: 70rpx;
-  bottom: 160rpx;
+  bottom: 20%;
 }

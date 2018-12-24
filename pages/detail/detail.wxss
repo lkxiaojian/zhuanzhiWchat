@@ -1,56 +1,80 @@
 /* pages/detail/detail.wxss */
-.container{
-  padding-left: 36rpx;
-  padding-right: 36rpx;
+
+.container {
+  padding-left: 70rpx;
+  padding-right: 70rpx;
 }
-.arcticleTitle{
+
+.arcticleTitle {
   color: #1a222e;
   font-size: 46rpx;
+  margin-top: 60rpx;
 }
-.title{
+
+.title {
   display: flex;
   margin-top: 64rpx;
   color: #757575;
   font-size: 28rpx;
+  flex-wrap: wrap;
+  margin-bottom: 64rpx;
 }
-.title view{
-  margin-right: 60rpx;
-}
-.sub_title{
-   display: flex;
+
+.time {
   color: #b4b4b4;
   font-size: 24rpx;
 }
-.sub_title view{
+
+.title view {
+  margin-right: 60rpx;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sub_title {
+  display: flex;
+  color: #b4b4b4;
+  font-size: 24rpx;
+}
+
+.sub_title view {
   margin-right: 40rpx;
 }
-.detailHtml{
+
+.detailHtml {
   margin-left: 38rpx;
   margin-right: 38rpx;
 }
-.li_line{
+
+.li_line {
   width: 200%;
   margin-bottom: 66rpx;
   margin-top: 66rpx;
   height: 1px;
   background-color: #d1d1d1;
 }
-.bottom{
+
+.bottom {
   color: #757575;
   font-size: 24rpx;
 }
-.article{
+
+.article {
   width: 100%;
   color: #1a222e;
   font-size: 50rpx;
   margin-top: 76rpx;
   margin-bottom: 48rpx;
 }
-.li_container{
+
+.li_container {
   display: flex;
   flex-direction: column;
 }
-.li{
+
+.li {
   padding-top: 14rpx;
   display: flex;
   background-color: #fafafa;
@@ -60,39 +84,47 @@
   padding-bottom: 12rpx;
   flex-direction: row;
 }
-.li_left{
+
+.li_left {
   display: flex;
   flex-direction: column;
   flex: 1;
 }
-.li_title{
+
+.li_title {
   color: #1a222e;
   font-size: 30rpx;
   flex: 1;
 }
-.li_sub_title{
+
+.li_sub_title {
   color: #1a222e;
   font-size: 24rpx;
 }
-.li_right{
+
+.li_right {
   width: 174rpx;
   height: 157rpx;
   margin-left: 20rpx;
   border-radius: 8rpx;
 }
-.line{
+
+.line {
   background-color: #d1d1d1;
   height: 2rpx;
 }
-.content{
+
+.content {
   width: 98%;
-  color: #555555;
+  color: #555;
   font-size: 30rpx;
 }
-.wxParse-img{
+
+.wxParse-img {
   width: 98% !important;
 }
-.bnt{
+
+.bnt {
   position: fixed;
   z-index: 999;
   bottom: 50rpx;
@@ -101,12 +133,14 @@
   width: 100%;
   right: 50rpx;
 }
-.bnt image{
+
+.bnt image {
   width: 78rpx;
   height: 78rpx;
-  margin-right: 30rpx;	
+  margin-right: 30rpx;
 }
-.bnt button{
+
+.bnt button {
   width: 78rpx;
   height: 78rpx;
   margin-right: 30rpx;
