@@ -96,13 +96,10 @@ Page({
   },
   toSearch: function () {
     wx.showLoading({
-      title: '跳转中',
+     // title: '跳转中',
     });
     wx.navigateTo({
-      url: '../search/search',
-      complete: function () {
-        wx.hideLoading()
-      }
+      url: '../search/search'
     })
   },
   zhankai: function (e) {
