@@ -1,8 +1,8 @@
 /* pages/detail/detail.wxss */
 
 .container {
-  padding-left: 70rpx;
-  padding-right: 70rpx;
+  padding-left: 35rpx;
+  padding-right: 35rpx;
 }
 
 .arcticleTitle {

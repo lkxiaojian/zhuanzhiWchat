@@ -9,7 +9,7 @@
     </view>
   </view>
 
-<scroll-view class='bg-gray overflow container' style='height:calc(100vh - {{navH}}px)' scroll-y >
+<scroll-view class='bg-white overflow container' style='height:calc(100vh - {{navH}}px)' scroll-y >
   <!-- <view class='status_toolbar'  style='height:{{statusHeight+48}}rpx;'></view>
   <view class='toolbar'>
     <image src='../../image/back.png' class='toolbar_logo' bindtap='back'></image>
