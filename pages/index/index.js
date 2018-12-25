@@ -95,14 +95,14 @@ Page({
     });
   },
   toSearch: function () {
-    wx.showLoading({
-     // title: '跳转中',
-    });
+    // wx.showLoading({
+    //  // title: '跳转中',
+    // });
     wx.navigateTo({
       url: '../search/search',
-      complete:function(){
-        wx.hideLoading();
-      }
+      // complete:function(){
+      //   wx.hideLoading();
+      // }
     })
   },
   zhankai: function (e) {

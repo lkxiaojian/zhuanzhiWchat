@@ -1,13 +1,13 @@
 /* pages/search/search.wxss */
 
 .top_search input:focus {
-  color: #16af12;
+  caret-color: #16af12;
 }
 
 .top_search input {
   text-shadow: 0px 0px 0px #1a222e;
   -webkit-text-fill-color: #1a222e;
-  color: #16af12;
+  caret-color: #16af12;
 }
 
 .li_line {
