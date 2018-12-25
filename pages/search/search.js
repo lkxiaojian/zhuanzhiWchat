@@ -1,6 +1,7 @@
 // pages/search/search.js
 var WxParse = require('../../wxParse/wxParse.js');
 var key="";
+var sharetypeId=0;
 Page({
   /**
    * 页面的初始数据
@@ -22,6 +23,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    sharetypeId = options.sharetypeId;
     
   },
 
@@ -52,7 +54,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: '专知',
-      path: 'pages/search/search',
+      path: 'pages/search/search?sharetypeId=1',
       success: function (shareTickets) {
         console.info(shareTickets + '成功');
         // 转发成功  
@@ -144,7 +146,16 @@ Page({
     //   url: '../index/index'
     // })
 
-    wx.navigateBack({ changed: true });
+    if (sharetypeId == 1) {
+      wx.redirectTo({
+        url: '../welcome/welcome',
+      });
+
+    }else{
+      wx.navigateBack({ changed: true });
+    }
+
+
   },
   moreType:function(){
     var page = this;

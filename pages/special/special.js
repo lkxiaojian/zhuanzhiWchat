@@ -1,5 +1,6 @@
 // pages/special/special.js
 var isFalg = false;
+var sharetypeId=0;
 Page({
   /**
    * 页面的初始数据
@@ -17,6 +18,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    sharetypeId = options.sharetypeId;
     wx.request({
       url: getApp().globalData.baseUrl + '/article/getalltype/rest',
       data: {
@@ -79,7 +81,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: '专知',
-      path: 'pages/special/special',
+      path: 'pages/special/special?sharetypeId=1',
       success: function (shareTickets) {
         console.info(shareTickets + '成功');
         // 转发成功  
@@ -98,8 +100,12 @@ Page({
   },
   back:function(){
     console.log('返回上级目录');
+    if (sharetypeId == 1) {
+      wx.redirectTo({
+        url: '../welcome/welcome',
+      });
 
-    if (isFalg){
+    }else if (isFalg){
       wx.navigateTo({
       url: '../index/index'
       })

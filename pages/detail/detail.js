@@ -1,6 +1,7 @@
 // pages/detail/detail.js
 const util = require('../../utils/util.js')
 var WxParse = require('../../wxParse/wxParse.js');
+var typeId=0;
 Page({
 
   /**
@@ -20,6 +21,7 @@ Page({
   onLoad: function(options) {
     var that = this;
     var articleId = options.articleId;
+    typeId=options.typeId;
     wx.request({
       url: getApp().globalData.baseUrl + '/article/message/rest',
       data: {
@@ -68,7 +70,7 @@ Page({
     var that = this;
     return {
       title: that.data.result.article_title,
-      path: 'pages/detail/detail?articleId=' + that.data.result.article_id,
+      path: 'pages/detail/detail?articleId=' + that.data.result.article_id+'&typeId=1',
       success: function (shareTickets) {
         console.info(shareTickets + '成功');
         // 转发成功  
@@ -85,9 +87,18 @@ Page({
     }
   },
   back:function(){
-    wx.navigateBack({
-      changed: true,
-    })
+    if (typeId==1){
+      wx.redirectTo({
+        url: '../welcome/welcome',
+      });
+
+    }else{
+      wx.navigateBack({
+        changed: true,
+      })
+    }
+  
+ 
   },
   updateStatus:function(type,flag){
     var that = this;

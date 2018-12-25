@@ -1,4 +1,5 @@
 // pages/special/special.js
+var sharetypeId=0;
 Page({
   /**
    * 页面的初始数据
@@ -14,6 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    sharetypeId = options.sharetypeId;
     var keyword = options.keyword;
     console.log(keyword);
     var that = this;
@@ -55,7 +57,7 @@ Page({
 
     return {
       title: '专知',
-      path: 'pages/searchSpecial/searchSpecial',
+      path: 'pages/searchSpecial/searchSpecial?sharetypeId=1',
       success: function (shareTickets) {
         console.info(shareTickets + '成功');
         // 转发成功  
@@ -73,7 +75,16 @@ Page({
   },
   back: function () {
     console.log('返回上级目录');
-    wx.navigateBack();
+    if (sharetypeId == 1) {
+      wx.redirectTo({
+        url: '../welcome/welcome',
+      });
+
+    }else{
+      wx.navigateBack();
+    }
+
+   
   },
   dingyue: function (e) {
     var that = this;
