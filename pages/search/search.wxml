@@ -19,7 +19,7 @@
   <view class='top'>
     <view class='top_search'>
       <image src='../../image/search.png' class='top_search_icon'></image>
-      <input type='text' confirm-type='search' bindconfirm='searchArticle' auto-focus></input>
+      <input type='text' confirm-type='search' bindconfirm='searchArticle' auto-focus='true'></input>
     </view>
     <text class='top_cancel' bindtap='back'>取消</text>
   </view>

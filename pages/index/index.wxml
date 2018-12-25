@@ -11,7 +11,7 @@
     </view>
  
   </view>
-<scroll-view class='bg-gray overflow container' style='height:calc(100vh - {{navH}}px)' scroll-y >
+<scroll-view class='bg-white overflow container' style='height:calc(100vh - {{navH}}px)' scroll-y >
 
   <view class='top_search' bindtap='toSearch'>
     <input type='text' confirm-type='search' placeholder='搜索精选、文摘、公众号、作者.....' placeholder-class='top_search_placeholder' bindfocus='toSearch' disabled='true'> </input>
@@ -50,14 +50,15 @@
         <text class='title'>{{item.firstItem.article_title}}</text>
         <text class='sub_title'>{{"#"+item.firstItem.article_keyword}}</text>
         <view class='content'>{{item.firstItem.content_excerpt}}</view>
-         <view class='cart_line'></view>
+        <view class='cart_line' wx-if='{{item.childItems.length>0}}'></view>
       </view>
-      <view class='cart_content'  wx:for="{{item.childItems}}" data-id='{{item.article_id}}'  bindtap='selectDetail'>
-        <text class='title'>{{item.article_title}}</text>
-        <text class='sub_title'>{{"#"+item.article_keyword}}</text>
-        <view class='content'>{{item.content_excerpt}}</view>
-        <view class='cart_line'></view>
+      <view class='cart_content'  wx:for="{{item.childItems}}" wx:for-item="arr" wx:for-index="idx" data-id='{{arr.article_id}}'  bindtap='selectDetail'>
+        <text class='title'>{{arr.article_title}}</text>
+        <text class='sub_title'>{{"#"+arr.article_keyword}}</text>
+        <view class='content' style='margin-bottom:{{idx==item.childItems.length-1?"32":"0"}}rpx;'>{{arr.content_excerpt}}</view>
+        <view class='cart_line' wx-if='{{idx<item.childItems.length-1 }}'></view>
       </view>
+      <view class='cart_line' wx-if='{{item.firstItem.num_prods>0}}'></view>
       <view class='cart_footer' bindtap='zhankai' data-index='{{index}}' wx-if='{{item.firstItem.num_prods>0}}'>
         <text class='not_zhankai'>{{"余下"+(item.firstItem.num_prods)+"篇"}}</text>
         <image src="../../image/down.png" class='zhankai'></image>

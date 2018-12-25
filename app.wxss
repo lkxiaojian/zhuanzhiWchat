@@ -37,6 +37,7 @@
   flex: 1;
   margin-left: 60rpx;
   align-items: center;
+  margin-top: 64rpx;
 }
 
 .top_search {
@@ -65,8 +66,8 @@
 
 .top_search_icon {
   vertical-align: middle;
-  width: 40rpx;
-  height: 38rpx;
+  width: 36rpx;
+  height: 36rpx;
 }
 
 .top_cancel {
@@ -271,6 +272,7 @@
   overflow-y: scroll;
   margin-bottom: 28rpx;
   width: 100%;
+  margin-top:64rpx; 
 }
 
 .li {
@@ -287,9 +289,10 @@
 }
 
 .right_icon {
-  width: 45rpx;
-  height: 44rpx;
+  width: 40rpx;
+  height: 40rpx;
   margin-right: 20rpx;
+  padding: 5rpx;
 }
 
 .li_content {

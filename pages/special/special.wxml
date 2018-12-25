@@ -8,9 +8,9 @@
     </view>
   </view>
 
-<scroll-view class='bg-gray overflow container' style='height:calc(100vh - {{navH}}px)' scroll-y >
+<scroll-view class='bg-white overflow container' style='height:calc(100vh - {{navH}}px)' scroll-y >
 
-  <view class='ul'  >
+  <view class='ul'>
     <view class='li' wx:for="{{articleTypes}}">
       <view class='item'>
         <image class='circle' bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}' src='{{imageUrl+item.iamge_icon}}'></image>

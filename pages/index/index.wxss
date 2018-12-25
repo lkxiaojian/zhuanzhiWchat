@@ -30,10 +30,9 @@
 }
 
 .top_search_icon {
-  margin-left: 40rpx;
-  vertical-align: middle;
-  width: 50rpx;
-  height: 45rpx;
+  margin-left: 20rpx;
+  width: 36rpx;
+  height: 36rpx;
 }
 
 .top_search_placeholder {
@@ -58,8 +57,8 @@
   font-size: 24rpx;
 }
 .all_qikan image{
-height:26rpx;
-width:20rpx;
+height:23rpx;
+width:18rpx;
 margin-left:15rpx;
 margin-right:10rpx;
 
