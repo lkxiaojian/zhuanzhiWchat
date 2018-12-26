@@ -118,10 +118,36 @@ Page({
             that.data.searchList.noLoveList = that.data.searchList.noLoveList.concat(that.splitText(res.data.noLoveList));
           }
         }
-        if (that.data.searchList) {
-          that.data.searchResult = 1;
+        if (that.data.searchList.loveList) {
+          if(that.data.searchList.loveList.length>0){
+            console.log('0');
+            that.data.searchResult = 1;
+          }else{
+            that.data.searchResult = 0;
+            if (that.data.searchList.noLoveList){
+              console.log('0');
+              if (that.data.searchList.noLoveList.length > 0) {
+                console.log('0');
+                that.data.searchResult = 1;
+              }else{
+                console.log('0');
+                that.data.searchResult = 0;
+              }
+            }
+          }
         }else{
-          that.data.searchResult =0;
+          that.data.searchResult = 0;
+          console.log('0');
+          if (that.data.searchList.noLoveList) {
+            console.log('0');
+            if (that.data.searchList.noLoveList.length > 0) {
+              console.log('0');
+              that.data.searchResult = 1;
+            } else {
+              console.log('0');
+              that.data.searchResult = 0;
+            }
+          }
         }
         that.setData(that.data);
         console.log(that.data);

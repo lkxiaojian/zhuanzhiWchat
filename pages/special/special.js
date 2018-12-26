@@ -28,7 +28,7 @@ Page({
       success: res => {
         if (res.data.result.length > 0) {
           for (var i = 0; i < res.data.result.length; i++) {
-            res.data.result[i].article_keyword = getApp().handleKeyWord(res.data.result[i].article_keyword);
+            res.data.result[i].article_type_keyword = getApp().handleKeyWord(res.data.result[i].article_type_keyword);
           }
         }
         this.setData({

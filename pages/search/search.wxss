@@ -46,3 +46,10 @@
   flex-direction: column;
   width: 100%;
 }
+.no_search_result{
+  width: 100%;
+  text-align: center;
+  margin-top:88rpx;
+  font-size: 22rpx;
+  color: #8e8e93; 
+}

@@ -16,7 +16,7 @@
         <image class='circle' bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}' src='{{imageUrl+item.iamge_icon}}'></image>
         <view class='li_content' bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}'>
           <view class='li_title'>{{item.article_type_name}}</view>
-          <view class='li_subTitle'>{{"#"+item.article_type_keyword}}</view>
+          <view class='li_subTitle'>{{item.article_type_keyword}}</view>
         </view>
         <image class='right_icon' src='../../image/success.png' wx:if="{{item.type_id==1}}" data-index='{{index}}' bindtap='quxiao'></image>
         <image class='right_icon' src='../../image/dingyue.png' wx:elif="{{item.type_id==2}}" data-index='{{index}}' bindtap='dingyue'></image>
