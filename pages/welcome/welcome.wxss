@@ -98,7 +98,7 @@ button {
 }
 
 .title_on3 {
-  left: 294rpx;
+  left: 90rpx;
   top: 14%;
   opacity: 1;
 }
@@ -227,7 +227,7 @@ button {
 
 .title_on13 {
   left: 22rpx;
-  top: 37%;
+  top: 35%;
   opacity: 1;
 }
 
@@ -240,7 +240,7 @@ button {
 
 .title_on14 {
   right: 36rpx;
-  top: 39%;
+  top: 37%;
   text-align: right;
   opacity: 1;
 }
@@ -253,7 +253,7 @@ button {
 
 .title_on15 {
   left: 86rpx;
-  top:42%;
+  top:39%;
   opacity: 1;
 }
 

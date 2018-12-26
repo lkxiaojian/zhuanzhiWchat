@@ -120,6 +120,8 @@ Page({
         }
         if (that.data.searchList) {
           that.data.searchResult = 1;
+        }else{
+          that.data.searchResult =0;
         }
         that.setData(that.data);
         console.log(that.data);
