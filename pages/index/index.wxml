@@ -49,13 +49,13 @@
       <view class='cart_content' data-id='{{item.firstItem.article_id}}' bindtap='selectDetail'>
         <text class='title'>{{item.firstItem.article_title}}</text>
         <text class='sub_title'>{{"#"+item.firstItem.article_keyword}}</text>
-        <view class='content'>{{item.firstItem.content_excerpt}}</view>
+        <view class='content'  style='margin-bottom:{{item.firstItem.num_prods==0?"40":"0"}}rpx;'>{{item.firstItem.content_excerpt}}</view>
         <view class='cart_line' wx-if='{{item.childItems.length>0}}'></view>
       </view>
       <view class='cart_content'  wx:for="{{item.childItems}}" wx:for-item="arr" wx:for-index="idx" data-id='{{arr.article_id}}'  bindtap='selectDetail'>
         <text class='title'>{{arr.article_title}}</text>
         <text class='sub_title'>{{"#"+arr.article_keyword}}</text>
-        <view class='content' style='margin-bottom:{{idx==item.childItems.length-1?"64":"0"}}rpx;'>{{arr.content_excerpt}}</view>
+        <view class='content' style='margin-bottom:{{idx==item.childItems.length-1?"40":"0"}}rpx;'>{{arr.content_excerpt}}</view>
         <view class='cart_line' wx-if='{{idx<item.childItems.length-1 }}'></view>
       </view>
       <view class='cart_line' wx-if='{{item.firstItem.num_prods>0}}'></view>
