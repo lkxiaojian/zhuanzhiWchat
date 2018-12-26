@@ -26,6 +26,11 @@ Page({
       },
       method: "GET",
       success: res => {
+        if (res.data.result.length > 0) {
+          for (var i = 0; i < res.data.result.length; i++) {
+            res.data.result[i].article_keyword = getApp().handleKeyWord(res.data.result[i].article_keyword);
+          }
+        }
         this.setData({
           articleTypes: res.data.result
         })

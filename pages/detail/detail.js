@@ -42,6 +42,7 @@ Page({
         }
         console.log(author);
         res.data.result.create_time = util.toDate(res.data.result.create_time);
+        res.data.result.article_keyword = getApp().handleKeyWord(res.data.result.article_keyword);
         that.setData({
           result: res.data.result,
           author:author

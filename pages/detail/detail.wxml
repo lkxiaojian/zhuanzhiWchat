@@ -50,10 +50,10 @@
           </view>
         </view>
       </view>
-      <!--<view class='bnt'>
-  <image src='{{result.collect_state==1?"../../image/love.png":"../../image/had_love.png"}}' bindtap='love'></image>
+     <view class='bnt'>
+   <!--<image src='{{result.collect_state==1?"../../image/love.png":"../../image/had_love.png"}}' bindtap='love'></image>-->
   <button style='background-image: url("{{imageUrl+"/resources/image/articleTypeImages/20181222084825.png"}}");' open-type='share' plain='true'></button>
-</view>-->
+</view>
     </view>
   </scroll-view>
 </view>

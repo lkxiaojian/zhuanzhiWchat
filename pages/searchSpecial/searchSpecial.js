@@ -25,6 +25,7 @@ Page({
     if(item.length>0){
       for(var i=0;i<item.length;i++){
         item[i].article_type_names = that.hilight_word(keyword, item[i].article_type_name);
+        item[i].article_keyword = getApp().handleKeyWord(item[i].article_keyword);
       }
     }
     console.log(item);

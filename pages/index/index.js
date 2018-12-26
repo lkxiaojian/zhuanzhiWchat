@@ -62,6 +62,7 @@ Page({
               var art = article[i];
               var createTime = getApp().convertTime(art.create_time);
               art.create_time = createTime;
+              art.article_keyword = getApp().handleKeyWord(art.article_keyword);
               totalAll.push({
                 firstItem: art,
                 page: 0,

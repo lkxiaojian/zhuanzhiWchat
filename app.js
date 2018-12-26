@@ -90,14 +90,15 @@ App({
     //wx.setStorageSync("register", "false");
     wx.getSystemInfo({
       success(res) {
-        console.log("状态栏的高度"+res.statusBarHeight) // 获取状态栏的高度
+        console.log("状态栏的高度" + res.statusBarHeight) // 获取状态栏的高度
         // if (res.statusBarHeight <= 38) {
         //   that.globalData.statusBarHeight = 96;
         // } else {
         //   that.globalData.statusBarHeight = 144;
         // }
         that.globalData.navHeight = res.statusBarHeight + 46;
-      }, fail(err) {
+      },
+      fail(err) {
         console.log(err);
       }
     });
@@ -127,9 +128,22 @@ App({
       }
     }
   },
-  setGreenText: function(str, keyword) {
-    //return str.replace(keyword, "<text style='color:#16af12'>" + keyword+"</text>") test
-    return str;
+  handleKeyWord(str) {
+    var char = "";
+    if (str) {
+      var arr = str.split(",");
+      if (arr.length > 3) {
+        for (var i = 0; i < 3; i++) {
+          char = char + "#" + arr[i];
+        }
+      } else {
+        for (var i = 0; i < arr.length; i++) {
+          char = char + "#" + arr[i];
+        }
+      }
+    }
+    console.log(char);
+    return char;
   },
   globalData: {
     statusBarHeight: 0,
