@@ -9,7 +9,7 @@ Page({
     arcticleType: [],
     imageUrl: "https://xiaochengxu.zhuanzhilink.com:4443/img"
   },
-  onLoad: function () {
+  onLoad: function() {
     var app = getApp();
     this.setData({
       navH: app.globalData.navHeight
@@ -28,22 +28,24 @@ Page({
 
   },
   /*页面相关事件处理函数--监听用户下拉动作*/
-  onPullDownRefresh: function () { //下拉刷新
+  onPullDownRefresh: function() { //下拉刷新
+    console.log("下拉刷新");
     this.data.page = 0;
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.requestData(); //刷新数据
   },
-  onReachBottom: function () { //上拉加载更多
+  onReachBottom: function() { //上拉加载更多
     this.data.page++;
+    console.log("上拉加载更多");
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.requestData(); //加载数据
   },
-  selectAllSpecial: function () {
+  selectAllSpecial: function() {
     wx.navigateTo({
       url: '../special/special'
     })
   },
-  requestData: function () {
+  requestData: function() {
     var that = this;
     wx.request({
       url: getApp().globalData.baseUrl + '/user/getIndexMessage/rest',
@@ -54,7 +56,7 @@ Page({
       method: "GET",
       success: res => {
         console.log(res);
-        if (res.data.code == 0) {//请求数据不为空
+        if (res.data.code == 0) { //请求数据不为空
           var totalAll = [];
           var article = res.data.result.article;
           if (article && article.length > 0) { //是不是为空
@@ -70,32 +72,32 @@ Page({
               });
             }
             if (that.data.page == 0) { //是不是第一页
-              this.setData({
-                hasDingYue: res.data.result.attention,
-                arcticleList: totalAll,
-                isHideNoMore: false,
-              })
+              this.data.hasDingYue = res.data.result.attention;
+              this.data.arcticleList = totalAll;
             } else {
-              this.setData({
-                arcticleList: that.data.arcticleList.concat(totalAll),
-                isHideNoMore: false,
-              })
+              this.data.arcticleList = that.data.arcticleList.concat(totalAll),
+                this.data.isHideNoMore = false;
             }
           } else {
-            this.setData({
-              isHideNoMore: true,
-            })
+            if (that.data.page == 0) { //是不是第一页
+              this.data.hasDingYue = res.data.result.attention;
+            }
+            this.data.isHideNoMore = true;
           }
+        } else {
+          this.data.isHideNoMore = true;
         }
+        this.setData(this.data);
+        console.log(that.data.isHideNoMore);
       },
-      complete: function () {
+      complete: function() {
         // complete
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新
       }
     });
   },
-  toSearch: function () {
+  toSearch: function() {
     // wx.showLoading({
     //  // title: '跳转中',
     // });
@@ -106,7 +108,7 @@ Page({
       // }
     })
   },
-  zhankai: function (e) {
+  zhankai: function(e) {
     var that = this;
     var index = e.currentTarget.dataset.index;
     wx.request({
@@ -117,7 +119,7 @@ Page({
         page: this.data.arcticleList[index].page
       },
       method: 'GET',
-      success: function (res) {
+      success: function(res) {
         console.log(res);
         var list = that.data.arcticleList;
         if (list[index].page == 0) {
@@ -136,7 +138,7 @@ Page({
       },
     })
   },
-  selectAll: function (e) {
+  selectAll: function(e) {
     wx.showLoading({
       title: '跳转中',
     })
@@ -145,13 +147,12 @@ Page({
     var image = e.currentTarget.dataset.image;
     wx.navigateTo({
       url: '../article/article?typeName=' + name + "&typeId=" + id + "&imageUrl=" + image,
-      complete: function () {
+      complete: function() {
         wx.hideLoading()
       }
     })
   },
-  startType:function(data){
-
+  startType: function(data) {
     wx.showLoading({
       title: '跳转中',
     })
@@ -163,37 +164,37 @@ Page({
     var image = item.iamge_back;
     wx.navigateTo({
       url: '../article/article?typeName=' + name + "&typeId=" + id + "&imageUrl=" + image,
-      complete: function () {
+      complete: function() {
         wx.hideLoading()
       }
     })
 
   },
-  selectDetail:function(data){
+  selectDetail: function(data) {
     wx.showLoading({
       title: '跳转中',
     })
     var id = data.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../detail/detail?articleId=' + id,
-      complete: function () {
+      complete: function() {
         wx.hideLoading()
       }
     })
   },
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
     return {
       title: '专知',
       path: 'pages/index/index',
-      success: function (shareTickets) {
+      success: function(shareTickets) {
         console.info(shareTickets + '成功');
         // 转发成功  
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log(res + '失败');
         // 转发失败  
       },
-      complete: function () {
+      complete: function() {
         // 不管成功失败都会执行  
         console.log(res);
       }

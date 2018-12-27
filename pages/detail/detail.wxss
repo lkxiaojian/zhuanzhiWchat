@@ -19,6 +19,7 @@
   flex-wrap: wrap;
   margin-bottom: 64rpx;
   width: 100%;
+  align-items: center;
 }
 
 .time {
@@ -26,12 +27,12 @@
   font-size: 24rpx;
 }
 
-.title view {
-  margin-right: 60rpx;
-  flex: 1;
+.source, .author {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-right: 30rpx;
+  flex: 1;
 }
 
 .sub_title {
@@ -60,6 +61,8 @@
 .bottom {
   color: #757575;
   font-size: 24rpx;
+  width: 100%;
+  text-align: center;
 }
 
 .article {

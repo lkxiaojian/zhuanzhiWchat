@@ -262,6 +262,8 @@ button {
   color: #ff6c00;
   font-size: 40rpx;
   bottom: 30%;
+  width: 100%;
+  text-align: center;
 }
 
 .startApp {
@@ -274,4 +276,6 @@ button {
   padding-left: 70rpx;
   padding-right: 70rpx;
   bottom: 20%;
+  left: 30%;
+  right: 30%;
 }

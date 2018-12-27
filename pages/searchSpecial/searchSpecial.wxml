@@ -1,14 +1,12 @@
 <!--pages/special/special.wxml-->
-
-<view>
-    <view class='nav bg-white' style='height:{{navH}}px'>
-    <view class='nav-title'>
+<view class='nav bg-white' style='height:{{navH}}px'>
+  <view class='nav-title'>
     精选
-      <image src='../../image/back.png' class='back' bindtap='back'></image> 
-    </view>
+    <image src='../../image/back.png' class='back' bindtap='back'></image>
   </view>
+</view>
 
-<scroll-view class='bg-white overflow container' style='height:calc(100vh - {{navH}}px)' scroll-y >
+<view class='bg-white container' style='margin-top:{{navH}}px;'>
   <view class='ul'>
     <view class='li' wx:for="{{articleTypes}}">
       <view class='item'>
@@ -17,7 +15,7 @@
           <view class='li_title'>
             <text class='li_title' wx:for="{{item.article_type_names}}">
               <text  wx:if="{{item.key == true}}" style="color:#16af12;">{{item.str}}</text>
-              <text wx:else>{{item.str}}</text>
+            <text wx:else>{{item.str}}</text>
             </text>
           </view>
           <view class='li_subTitle'>{{item.article_type_keyword}}</view>
@@ -27,5 +25,4 @@
       <view class='li_line'></view>
     </view>
   </view>
-  </scroll-view> 
 </view>

@@ -7,16 +7,8 @@
       <image src='../../image/back.png' class='back' bindtap='back'></image> 
     </view>
   </view>
-<scroll-view class='bg-gray overflow' style='height:calc(100vh - {{navH}}px)' scroll-y class='container'>
-  <!-- <view class='status_toolbar' style='height:{{statusHeight+48}}rpx;'></view>
-  <view class='toolbar'>
-    <image src='../../image/back.png' class='toolbar_logo' bindtap='back'></image>
-    <text class='toolbar_title'>专知精选</text>
-  </view> -->
-
-
-
-  <view class='top'>
+<view class='bg-white container' style='margin-top:{{navH}}px' >
+   <view class='top'>
     <view class='top_search'>
       <image src='../../image/search.png' class='top_search_icon'></image>
       <input type='text' confirm-type='search' bindconfirm='searchArticle' auto-focus='true'
@@ -58,7 +50,6 @@
 
             <view class='sub_title'>
               <text wx:for="{{item.article_keywords}}" wx:for-item="itemTitles">
-                <text wx:if='{{index==0}}'>#</text>
                 <!-- <text  style="color:red;" class='sub_title'>{{"#"+item.article_keyword}}</text> -->
                 <text wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
                 <text wx:else>{{itemTitles.str}}</text>
@@ -89,7 +80,6 @@
             </view>
             <view class='sub_title'>
               <text wx:for="{{item.article_keywords}}" wx:for-item="itemTitles" >
-                <text wx:if='{{index==0}}'>#</text>
                 <text wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
                 <text wx:else>{{itemTitles.str}}</text>
               </text>
@@ -109,5 +99,5 @@
     </view>
   </view>
   <view class='no_search_result' wx-if='{{searchResult==0}}'>没有相关内容</view>
-</scroll-view>
+</view>
 </view>

@@ -41,7 +41,6 @@ Page({
    */
   onReachBottom: function () {
     this.data.page++;
-    console.log(this.data.page);
     wx.showNavigationBarLoading() //在标题栏中显示加载
       this.setData({
         haseMore: 3
@@ -101,9 +100,19 @@ Page({
           }
           if(res.data.loveArticle){
               // that.data.searchList.loveList = res.data.loveArticle;
-            that.data.searchList.loveList = that.splitText(res.data.loveArticle)
+            if(res.data.loveArticle.length>0){
+              for(var i = 0 ;i<res.data.loveArticle.length;i++){
+                res.data.loveArticle[i].article_keyword = getApp().handleKeyWord(res.data.loveArticle[i].article_keyword);
+              }
+            }
+            that.data.searchList.loveList = that.splitText(res.data.loveArticle);
           }
           if (res.data.notLoveArticle && res.data.notLoveArticle.length > 0){
+            if (res.data.notLoveArticle.length > 0) {
+              for (var i = 0; i < res.data.notLoveArticle.length; i++) {
+                res.data.notLoveArticle[i].article_keyword = getApp().handleKeyWord(res.data.notLoveArticle[i].article_keyword);
+              }
+            }
             // that.data.searchList.noLoveList = res.data.notLoveArticle;
             that.data.searchList.noLoveList = that.splitText(res.data.notLoveArticle)
           }
@@ -164,7 +173,12 @@ Page({
     this.data.keyword = event.detail.value;
   
     this.setData({
-      keyword: event.detail.value
+      keyword: event.detail.value,
+      page: 0,
+      haseMore: 1,
+      searchResult: -1,
+      searchList: {},
+      articleType: [],
     });
     this.data.page = 0;
     this.requestData();

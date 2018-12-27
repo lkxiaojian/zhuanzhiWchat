@@ -114,4 +114,6 @@ margin-right:10rpx;
   font-size: 24rpx;
   color: #020101;
   margin-bottom: 34rpx;
+  width: 100%;
+  text-align: center;
 }

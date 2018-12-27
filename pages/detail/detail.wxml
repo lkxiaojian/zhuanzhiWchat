@@ -7,53 +7,48 @@
 <view>
   <view class='nav bg-white' style='height:{{navH}}px'>
     <view class='nav-title'>
-
       <image src='../../image/back.png' class='back' bindtap='back'></image>
     </view>
   </view>
-  <scroll-view class='bg-white overflow' style='height:calc(100vh - {{navH}}px)' scroll-y>
-    <view>
-      <view class='container'>
-        <!-- <view class='nav bg-white' style='height:{{navH}}px'>
+  <view class='bg-white container' style='margin-top:{{navH}}px;'>
+    <!-- <view class='nav bg-white' style='height:{{navH}}px'>
     <view class='nav-title'>
    
       <image src='../../image/back.png' class='back' bindtap='back'></image> 
     </view>
   </view> -->
 
-        <view class='arcticleTitle'>{{result.article_title}}</view>
-        <view class='title'>
-          <view class='author' wx-if='{{author}}'>{{"作者："+result.author}}</view>
-          <view class='source'>{{"来源："+result.source}}</view>
-          <view class='time'>{{result.create_time}}</view>
-        </view>
-        <!--<view class='sub_title'>
+    <view class='arcticleTitle'>{{result.article_title}}</view>
+    <view class='title'>
+      <view class='author' wx-if='{{author}}'>{{"作者："+result.author}}</view>
+      <view class='source'>{{"来源："+result.source}}</view>
+      <view class='time'>{{result.create_time}}</view>
+    </view>
+    <!--<view class='sub_title'>
     <view class='share'>{{"分享数："+result.share_count}}</view>
     <view class='love'>{{"收藏数："+result.collect_count}}</view>
   </view>-->
-        <view class='content'>
-          <template is="wxParse" data="{{wxParseData:detailHtml.nodes}}" />
-        </view>
-        <view class='li_line'></view>
-        <view class='bottom'>本页面由专知用内容爬取技术爬取，在未对原始内容编辑的情况下，对排版做了优化，以提高阅读体验。</view>
-        <view class='article'>相关文章</view>
-        <view class='list'>
-          <view class='li_container' wx:for='{{result.related}}'>
-            <view class='li' data-id='{{item.article_id}}' bindtap='selectDetail'>
-              <view class='li_left'>
-                <view class='li_title'>{{item.article_title}}</view>
-                <view class='li_sub_title'>{{"#"+item.article_keyword}}</view>
-              </view>
-              <image class='li_right' src='{{imageUrl+result.iamge_back}}'></image>
-            </view>
-            <view class='line'></view>
-          </view>
-        </view>
-      </view>
-     <view class='bnt'>
-   <!--<image src='{{result.collect_state==1?"../../image/love.png":"../../image/had_love.png"}}' bindtap='love'></image>-->
-  <button style='background-image: url("{{imageUrl+"/resources/image/articleTypeImages/20181222084825.png"}}");' open-type='share' plain='true'></button>
-</view>
+    <view class='content'>
+      <template is="wxParse" data="{{wxParseData:detailHtml.nodes}}" />
     </view>
-  </scroll-view>
+    <view class='li_line'></view>
+    <view class='bottom'>本页面由专知用内容爬取技术爬取，在未对原始内容编辑的情况下，对排版做了优化，以提高阅读体验。</view>
+    <view class='article'>相关文章</view>
+    <view class='list'>
+      <view class='li_container' wx:for='{{result.related}}'>
+        <view class='li' data-id='{{item.article_id}}' bindtap='selectDetail'>
+          <view class='li_left'>
+            <view class='li_title'>{{item.article_title}}</view>
+            <view class='li_sub_title'>{{"#"+item.article_keyword}}</view>
+          </view>
+          <image class='li_right' src='{{imageUrl+result.iamge_back}}'></image>
+        </view>
+        <view class='line'></view>
+      </view>
+    </view>
+  </view>
+  <view class='bnt'>
+    <!--<image src='{{result.collect_state==1?"../../image/love.png":"../../image/had_love.png"}}' bindtap='love'></image>-->
+    <button style='background-image: url("{{imageUrl+"/resources/image/articleTypeImages/20181222084825.png"}}");' open-type='share' plain='true'></button>
+  </view>
 </view>

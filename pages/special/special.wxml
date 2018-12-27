@@ -1,6 +1,4 @@
 <!--pages/special/special.wxml-->
-
-<view>
  <view class='nav bg-white' style='height:{{navH}}px'>
     <view class='nav-title'>
       精选
@@ -8,7 +6,7 @@
     </view>
   </view>
 
-<scroll-view class='bg-white overflow container' style='height:calc(100vh - {{navH}}px)' scroll-y >
+<view class='bg-white container' style='margin-top:{{navH}}px;'>
 
   <view class='ul'>
     <view class='li' wx:for="{{articleTypes}}">
@@ -24,5 +22,4 @@
       <view class='li_line'></view>
     </view>
   </view>
-</scroll-view>
 </view>

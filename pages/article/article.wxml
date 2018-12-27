@@ -1,26 +1,15 @@
 <!--pages/article/article.wxml-->
 
-<view>
-
- <view class='nav bg-white' style='height:{{navH}}px;position:fixed; top:0;width: 750rpx;'>
-    <view class='nav-title'>
-     {{typeName}}
-      <image src='../../image/back.png' class='back' bindtap='back'></image> 
-    </view>
+<view class='nav bg-white' style='height:{{navH}}px;'>
+  <view class='nav-title'>{{typeName}}
+    <image src='../../image/back.png' class='back' bindtap='back'></image>
   </view>
+</view>
 
-<view  style='  margin-top:{{navH}}px;'>
-  <!-- <view class='status_toolbar'  style='height:{{statusHeight+48}}rpx;'></view>
-  <view class='toolbar'>
-    <image src='../../image/back.png' class='toolbar_logo' bindtap='back'></image>
-    <text class='toolbar_title'>{{typeName}}</text>
-  </view> -->
- 
-
-
+<view style='margin-top:{{navH}}px;'>
   <image src='{{imageBack}}' class='photo'></image>
-   <view class='list'>
-    <view class='cart'  wx:for="{{arcticleList}}" bindtap='selectDetail' data-id='{{item.article_id}}'>
+  <view class='list'>
+    <view class='cart' wx:for="{{arcticleList}}" bindtap='selectDetail' data-id='{{item.article_id}}'>
       <view class='cart_content'>
         <text class='title'>{{item.article_title}}</text>
         <text class='sub_title'>{{"#"+item.article_keyword}}</text>
@@ -28,5 +17,4 @@
       </view>
     </view>
   </view>
-</view>
 </view>
