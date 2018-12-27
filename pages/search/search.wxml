@@ -77,7 +77,7 @@
         <view class='gray_gap'></view>
         <view class='group_title'>相关文章</view>
         <view class='cart' wx:for="{{searchList.noLoveList}}">
-          <view class='cart_content'>
+          <view class='cart_content'  data-id='{{item.article_id}}' bindtap='selectDetail'>
             <!-- <text class='title' style="{{item.article_title == keyword ? 'color:#16af12' : '' }}">{{item.article_title}}</text>
             <text class='sub_title'>{{"#"+item.article_keyword}}</text>
             <view class='content' style="{{item.content_excerpt == keyword ? 'color:#16af12' : '' }}">{{item.content_excerpt}}</view> -->
