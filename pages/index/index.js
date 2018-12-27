@@ -60,7 +60,7 @@ Page({
           if (article && article.length > 0) { //是不是为空
             for (var i = 0; i < article.length; i++) {
               var art = article[i];
-              var createTime = getApp().convertTime(art.create_time);
+              var createTime = getApp().convertTime(art.update_time);
               art.create_time = createTime;
               art.article_keyword = getApp().handleKeyWord(art.article_keyword);
               totalAll.push({
