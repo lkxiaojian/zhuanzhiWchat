@@ -30,8 +30,8 @@ Page({
       },
       method: 'GET',
       success: function(res) {
-        console.log(res.data.result);
-        console.log(res.data.result.author);
+        // console.log(res.data.result);
+        // console.log(res.data.result.author);
         var author = false;
         if(res.data.result.content_manual){
         WxParse.wxParse('detailHtml', 'html', res.data.result.content_manual, that, 0);
@@ -40,7 +40,7 @@ Page({
         if(res.data.result.author && res.data.result.author.length>0){
           author = true;
         }
-        console.log(author);
+        // console.log(author);
         res.data.result.create_time = util.toDate(res.data.result.create_time);
         res.data.result.article_keyword = getApp().handleKeyWord(res.data.result.article_keyword);
         that.setData({
@@ -112,7 +112,7 @@ Page({
         article_type_id: that.data.result.article_type_id
       },
       success: function(res) {
-        console.log(type+flag);
+        // console.log(type+flag);
         if(type==2){
           if("collect"==flag){
             that.toast("取消收藏成功！");
