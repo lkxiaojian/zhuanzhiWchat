@@ -2,14 +2,14 @@
 
 <view>
 
- <view class='nav bg-white' style='height:{{navH}}px'>
+ <view class='nav bg-white' style='height:{{navH}}px;position:fixed; top:0;width: 750rpx;'>
     <view class='nav-title'>
      {{typeName}}
       <image src='../../image/back.png' class='back' bindtap='back'></image> 
     </view>
   </view>
 
-<scroll-view class='bg-white overflow container' style='height:calc(100vh - {{navH}}px)' scroll-y >
+<view  style='  margin-top:{{navH}}px;'>
   <!-- <view class='status_toolbar'  style='height:{{statusHeight+48}}rpx;'></view>
   <view class='toolbar'>
     <image src='../../image/back.png' class='toolbar_logo' bindtap='back'></image>
@@ -28,5 +28,5 @@
       </view>
     </view>
   </view>
-</scroll-view>
+</view>
 </view>
