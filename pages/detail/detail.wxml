@@ -10,7 +10,7 @@
       <image src='../../image/back.png' class='back' bindtap='back'></image>
     </view>
   </view>
-  <view class='bg-white container' style='margin-top:{{navH}}px; overflow-x:hidden;'>
+  <view class='bg-white container' style='margin-top:{{navH}}px; overflow-x:hidden;' wx-if='{{result!=null}}'>
     <!-- <view class='nav bg-white' style='height:{{navH}}px'>
     <view class='nav-title'>
    

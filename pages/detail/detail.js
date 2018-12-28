@@ -9,7 +9,6 @@ Page({
    */
   data: {
     statusHeight: getApp().globalData.statusBarHeight,
-    result: null,
     imageUrl: getApp().globalData.imageUrl,
     navH: getApp().globalData.navHeight,
     author:false,
@@ -22,6 +21,10 @@ Page({
     var that = this;
     var articleId = options.articleId;
     typeId=options.typeId;
+    wx.showLoading({
+      title: "加载......",
+      mask: false,
+    });
     wx.request({
       url: getApp().globalData.baseUrl + '/article/message/rest',
       data: {
@@ -47,6 +50,7 @@ Page({
           result: res.data.result,
           author:author
         })
+        wx.hideLoading();
       },
     })
   },
