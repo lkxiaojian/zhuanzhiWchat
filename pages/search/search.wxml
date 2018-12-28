@@ -36,7 +36,7 @@
     </view>
     <view class='list' wx-if='searchResult==1'>
       <view class='love_list' wx-if='{{searchList.loveList.length}}'>
-        <view class='gray_gap'></view>
+        <view class='gray_gap'  wx-if='{{articleType.length>0}}'></view>
         <view class='group_title'>已订阅精选的文章</view>
         <view class='cart' wx:for="{{searchList.loveList}}">
           <view class='cart_content'  data-id='{{item.article_id}}' bindtap='selectDetail'>
@@ -64,7 +64,7 @@
         </view>
       </view>
       <view class='no_love_list' wx-if='{{searchList.noLoveList.length}}'>
-        <view class='gray_gap'></view>
+        <view class='gray_gap'  wx-if='{{articleType.length>0}}'></view>
         <view class='group_title'>相关文章</view>
         <view class='cart' wx:for="{{searchList.noLoveList}}">
           <view class='cart_content'  data-id='{{item.article_id}}' bindtap='selectDetail'>
