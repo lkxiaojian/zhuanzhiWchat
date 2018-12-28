@@ -19,10 +19,21 @@
   </view> -->
 
     <view class='arcticleTitle'>{{result.article_title}}</view>
-    <view class='title'>
+
+    <view wx:if='{{author}}' >
+        <view class='title'>
       <view class='author' wx-if='{{author}}'>{{"作者："+result.author}}</view>
       <view class='source'>{{"来源："+result.source}}</view>
       <view class='time'>{{result.create_time}}</view>
+         </view>
+    </view>
+     <view wx:else >
+        <view class='title'>
+      <view class='source'>{{"来源："+result.source}}</view>
+      <view class='time'>{{result.create_time}}</view>
+      
+    </view>
+
     </view>
     <!--<view class='sub_title'>
     <view class='share'>{{"分享数："+result.share_count}}</view>

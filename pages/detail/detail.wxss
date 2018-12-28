@@ -35,6 +35,16 @@
   flex: 1;
 }
 
+
+.source1, .author1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 30rpx;
+  flex: 1;
+}
+
+
 .sub_title {
   display: flex;
   color: #b4b4b4;
