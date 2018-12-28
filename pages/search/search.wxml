@@ -15,14 +15,14 @@
     </view>
     <text class='top_cancel' bindtap='back'>取消</text>
   </view>
-  <view class='search_result'>
+  <view class='search_result' >
     <view class='qikan'  wx-if='{{articleType.length>0}}'>
       <view class='had_qikan'>精选</view>
       <view class='all_qikan' bindtap='selectAllSpecial' bindtap='moreType'>更多
       </view>
       <image src='../../image/right.png' class='all_qikan_image'></image>
     </view>
-    <view  wx-if='{{searchResult==1}}' class='li_line' style='width:94%'></view>
+    <view  wx-if='{{articleType.length>0}}' class='li_line' style='width:94%'></view>
     <view class='slide' wx-if='{{articleType.length>0}}'>
       <view class='silde_item' data-id='{{articleType[0].article_type_id}}' data-name='{{articleType[0].article_type_name}}' data-image='{{articleType[0].iamge_back}}' bindtap='startType'>
         <image class='yellow_circle' style='width:102rpx; height:102rpx;' src='{{imageUrl+articleType[0].iamge_icon}}'></image>
