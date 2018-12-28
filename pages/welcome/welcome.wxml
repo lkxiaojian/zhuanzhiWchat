@@ -1,10 +1,10 @@
 <!--pages/welcome/welcome.wxml-->
 <!-- <view class='status_toolbar' style='height:{{statusHeight}}px;'></view> -->
 <view>
-  <view class='top_line' style='padding-top:{{navH}}px'>
-    <text class='top_title'>请选择你喜欢的精选集</text>
-    <button class='top_menu,free-btn-bordernone' bindgetuserinfo="bindGetUserInfo" id='jupt' open-type='getUserInfo' style='outline:0 line !; padding-top:10rpx'>跳过</button>
-  </view>
+    <view class='top_line' style='padding-top:{{navH}}px;'>
+      <text class='top_title'>请选择你喜欢的精选集</text>
+      <button class='top_menu,free-btn-bordernone' bindgetuserinfo="bindGetUserInfo" id='jupt' open-type='getUserInfo' style='outline:0 line !; padding-top:10rpx'>跳过</button>
+    </view>
   <view class='container'>
     <view class="moddle">
       <text wx:for="{{repContent}}" class="{{selectIndex[index].sureid? hasSelect+item.index : noSelect+item.index}}" data-selectIndex="{{item.index}}" bindtap="selectRep">{{item.message}}</text>

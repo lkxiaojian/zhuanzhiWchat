@@ -1,5 +1,4 @@
 <!-- pages/search/search.wxml -->
-<import src="../../wxParse/wxParse.wxml" />
 <view>
 <view class='nav bg-white' style='height:{{navH}}px'>
     <view class='nav-title'>

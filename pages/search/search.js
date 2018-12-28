@@ -1,5 +1,4 @@
 // pages/search/search.js
-var WxParse = require('../../wxParse/wxParse.js');
 var key="";
 var sharetypeId=0;
 Page({
