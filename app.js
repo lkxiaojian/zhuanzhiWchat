@@ -1,6 +1,9 @@
 //app.js
 var util = require('utils/util.js');
 App({
+  onLaunch:function(){
+    this.login();
+  },
   login: function() {
     var that = this;
     // 登录
@@ -29,7 +32,10 @@ App({
                   if (value != "true") {
                     that.register();
                   } else {
-                    console.log("已注册")
+                    console.log("已注册");
+                    wx.navigateTo({
+                      url: '../index/index',
+                    })
                   }
                 }
               });

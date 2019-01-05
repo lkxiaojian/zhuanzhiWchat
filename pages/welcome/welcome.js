@@ -132,6 +132,7 @@ Page({
       },
     ]
   },
+
   //点击选择精选集
   selectRep: function(e) {
     var index = e.currentTarget.dataset.selectindex; //当前点击元素的自定义数据，这个很关键

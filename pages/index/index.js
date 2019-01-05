@@ -9,6 +9,7 @@ Page({
     arcticleType: [],
     imageUrl: "https://xiaochengxu.zhuanzhilink.com:4443/img"
   },
+
   onLoad: function() {
     var app = getApp();
     this.setData({

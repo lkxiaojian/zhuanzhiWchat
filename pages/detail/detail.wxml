@@ -31,16 +31,15 @@
       <view class='title'>
         <view class='source'>{{"来源："+result.source}}</view>
         <view class='time'>{{result.create_time}}</view>
-
       </view>
-
     </view>
     <!--<view class='sub_title'>
     <view class='share'>{{"分享数："+result.share_count}}</view>
     <view class='love'>{{"收藏数："+result.collect_count}}</view>
   </view>-->
     <view class='content'>
-      <template is="wxParse" data="{{wxParseData:detailHtml.nodes}}" />
+      <template is="wxParse" data="{{wxParseData:detailHtml.nodes}}">
+      </template>
     </view>
     <view class='li_line'></view>
     <view class='bottom'>本页面由专知用内容爬取技术爬取，在未对原始内容编辑的情况下，对排版做了优化，以提高阅读体验。</view>

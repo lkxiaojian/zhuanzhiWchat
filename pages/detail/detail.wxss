@@ -25,6 +25,7 @@
 .time {
   color: #b4b4b4;
   font-size: 24rpx;
+  text-align: right;
 }
 
 .source, .author {
@@ -34,7 +35,12 @@
   margin-right: 30rpx;
   flex: 1;
 }
-
+.source{
+  text-align: center;
+}
+.author{
+  text-align: left;
+}
 
 .source1, .author1 {
   overflow: hidden;
