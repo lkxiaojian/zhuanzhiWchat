@@ -60,7 +60,10 @@ Page({
         console.log(res);
         var article = res.data.result;
         if (article.length > 0) { //是不是为空
-     
+          for(var i =0;i<article.length;i++){
+            var art = article[i];
+            art.article_keyword = getApp().handleKeyWord(art.article_keyword);
+          }
           var backUrl = article[0].iamge_back;
           if (that.data.page == 0) { //是不是第一页
             that.setData({

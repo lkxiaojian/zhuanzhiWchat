@@ -9,20 +9,38 @@
   color: #1a222e;
   font-size: 46rpx;
   margin-top: 60rpx;
+  width: 100%;
 }
 
 .title {
   display: flex;
   margin-top: 64rpx;
-  color: #757575;
-  font-size: 28rpx;
+  color: #313131;
+  font-size: 24rpx;
   flex-wrap: wrap;
   margin-bottom: 64rpx;
   width: 100%;
   align-items: center;
+  justify-content: center;
+  text-align: center;
 }
-
-.time {
+.title view{
+  width: 100%;
+  text-align: left;
+}
+.point{
+  width: 10rpx;
+  height: 10rpx;
+  max-height: 10rpx;
+  max-width: 10rpx;
+  min-height: 10rpx;
+  min-width: 10rpx;
+  border-radius: 100%;
+  background: #313131;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+}
+/*.time {
   color: #b4b4b4;
   font-size: 24rpx;
   text-align: right;
@@ -48,7 +66,7 @@
   white-space: nowrap;
   margin-right: 30rpx;
   flex: 1;
-}
+}*/
 
 
 .sub_title {

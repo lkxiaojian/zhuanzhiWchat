@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/first/first",
     "pages/welcome/welcome",
     "pages/article/article",
     "pages/search/search",
@@ -13,8 +14,6 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
-
   },
-  "navHeight":0
+  "navHeight": 0
 }
-

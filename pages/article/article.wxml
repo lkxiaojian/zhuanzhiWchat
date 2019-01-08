@@ -12,7 +12,7 @@
     <view class='cart' wx:for="{{arcticleList}}" bindtap='selectDetail' data-id='{{item.article_id}}'>
       <view class='cart_content'>
         <text class='title'>{{item.article_title}}</text>
-        <text class='sub_title'>{{"#"+item.article_keyword}}</text>
+        <text class='sub_title'>{{item.article_keyword}}</text>
         <view class='content'>{{item.content_excerpt}}</view>
       </view>
     </view>

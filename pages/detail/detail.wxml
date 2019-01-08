@@ -20,17 +20,20 @@
 
     <view class='arcticleTitle'>{{result.article_title}}</view>
 
-    <view wx:if='{{author}}'>
+    <view wx:if='{{author}}' style='width:100%;'>
       <view class='title'>
-        <view class='author' wx-if='{{author}}'>{{"作者："+result.author}}</view>
-        <view class='source'>{{"来源："+result.source}}</view>
-        <view class='time'>{{result.create_time}}</view>
+        <view style='width:100%;text-align:left;'>{{"作者："+result.author+" • 来源"+result.source+" • "+result.create_time}}</view>
+        <!--<view class='point'></view>
+        <view>{{"来源："+result.source}}</view>
+        <view class='point'></view>
+        <view>{{result.create_time}}</view>-->
       </view>
     </view>
-    <view wx:else>
+    <view wx:else style='width:100%;'>
       <view class='title'>
-        <view class='source'>{{"来源："+result.source}}</view>
-        <view class='time'>{{result.create_time}}</view>
+        <view style='width:100%;text-align:left;'>{{"来源："+result.source+" • "+result.create_time}}</view>
+       <!-- <view></view>
+        <view>{{result.create_time}}</view>-->
       </view>
     </view>
     <!--<view class='sub_title'>

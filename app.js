@@ -33,7 +33,7 @@ App({
                     that.register();
                   } else {
                     console.log("已注册");
-                    wx.navigateTo({
+                    wx.redirectTo({
                       url: '../index/index',
                     })
                   }
