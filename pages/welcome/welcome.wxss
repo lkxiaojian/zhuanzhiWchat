@@ -1,7 +1,7 @@
 /* pages/welcome/welcome.wxss */
 
 .container {
-  background-image: url('https://xiaochengxu.zhuanzhilink.com:4443/img/resources/image/articleTypeImages/welcome_logo.png');
+  background-image: url('https://xiaochengxu.zhuanzhilink.com/weixin_img/resources/image/articleTypeImages/welcome_logo.png');
   background-size: 100% 90%;
   overflow: hidden;
   position: fixed;

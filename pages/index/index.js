@@ -7,7 +7,7 @@ Page({
     hasDingYue: [],
     arcticleList: [],
     arcticleType: [],
-    imageUrl: "https://xiaochengxu.zhuanzhilink.com:4443/img"
+    imageUrl: "https://xiaochengxu.zhuanzhilink.com/weixin_img"
   },
 
   onLoad: function() {

@@ -155,7 +155,7 @@ App({
     statusBarHeight: 0,
     userInfo: null,
     wxId: "",
-    baseUrl: "https://xiaochengxu.zhuanzhilink.com:4443/api",
-    imageUrl: "https://xiaochengxu.zhuanzhilink.com:4443/img"
+    baseUrl: "https://xiaochengxu.zhuanzhilink.com/api",
+    imageUrl: "https://xiaochengxu.zhuanzhilink.com/weixin_img"
   }
 })
