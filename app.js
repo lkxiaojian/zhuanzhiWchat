@@ -1,9 +1,6 @@
 //app.js
 var util = require('utils/util.js');
 App({
-  onLaunch:function(){
-    this.login();
-  },
   login: function() {
     var that = this;
     // 登录
