@@ -1,5 +1,7 @@
 // pages/special/special.js
 var sharetypeId=0;
+var messageItem='';
+var keyword='';
 Page({
   /**
    * 页面的初始数据
@@ -16,10 +18,11 @@ Page({
    */
   onLoad: function (options) {
     sharetypeId = options.sharetypeId;
-    var keyword = options.keyword;
-    console.log(keyword);
+    keyword = options.keyword;
     var that = this;
-    var tar = this.cleanSpelChar(options.item)
+    messageItem=options.item;
+    var tar = this.cleanSpelChar(messageItem);
+    // console.log(tar);
     let item = JSON.parse(tar);
     that.data.articleTypes=item;
     if(item.length>0){
@@ -58,7 +61,7 @@ Page({
 
     return {
       title: '专知',
-      path: 'pages/searchSpecial/searchSpecial?sharetypeId=1',
+      path: 'pages/searchSpecial/searchSpecial?sharetypeId=1&item=' + messageItem + '&keyword=' +keyword,
       success: function (shareTickets) {
         console.info(shareTickets + '成功');
         // 转发成功  

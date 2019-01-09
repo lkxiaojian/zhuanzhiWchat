@@ -1,6 +1,7 @@
 // pages/article/article.js
 var imagUrl = getApp().globalData.imageUrl
 var sharetypeId=0;
+var typeName='';
 Page({
 
   /**
@@ -96,26 +97,31 @@ Page({
   },
   selectDetail:function(e){
 
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../detail/detail?articleId=' + id
+    })
+  },
+  back: function () {
+
+
+
     if (sharetypeId == 1) {
       wx.redirectTo({
         url: '../welcome/welcome',
       });
 
-    }else{
-      var id = e.currentTarget.dataset.id;
-      wx.navigateTo({
-        url: '../detail/detail?articleId=' + id
-      })
+    } else {
+      console.log('返回上级目录');
+      wx.navigateBack();
     } 
-  },
-  back: function () {
-    console.log('返回上级目录');
-    wx.navigateBack();
+
   },
   onShareAppMessage: function () {
+    var that = this;
     return {
       title: '专知',
-      path: 'pages/article/article?sharetypeId=1',
+      path: 'pages/article/article?sharetypeId=1&typeId=' + that.data.typeId + '&typeName=' + that.data.typeName,
       success: function (shareTickets) {
         console.info(shareTickets + '成功');
         // 转发成功  
