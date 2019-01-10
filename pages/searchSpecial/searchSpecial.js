@@ -61,19 +61,8 @@ Page({
 
     return {
       title: '专知',
-      path: 'pages/searchSpecial/searchSpecial?sharetypeId=1&item=' + messageItem + '&keyword=' +keyword,
-      success: function (shareTickets) {
-        console.info(shareTickets + '成功');
-        // 转发成功  
-      },
-      fail: function (res) {
-        console.log(res + '失败');
-        // 转发失败  
-      },
-      complete: function () {
-        // 不管成功失败都会执行  
-        console.log(res);
-      }
+      // path: '/pages/searchSpecial/searchSpecial?sharetypeId=1&item=' + messageItem + '&keyword=' +keyword
+      path: `/pages/searchSpecial/searchSpecial?sharetypeId=1&item=${messageItem}&keyword=${keyword}`
     }
 
   },
