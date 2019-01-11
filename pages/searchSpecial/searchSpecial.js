@@ -56,13 +56,13 @@ Page({
 
   /**
    * 用户点击右上角分享
+   *  // path: '/pages/searchSpecial/searchSpecial?sharetypeId=1&item=' + messageItem + '&keyword=' +keyword
    */
   onShareAppMessage: function () {
 
     return {
       title: '专知',
-      // path: '/pages/searchSpecial/searchSpecial?sharetypeId=1&item=' + messageItem + '&keyword=' +keyword
-      path: `/pages/searchSpecial/searchSpecial?sharetypeId=1&item=${messageItem}&keyword=${keyword}`
+      path: `/pages/searchSpecial/searchSpecial?sharetypeId=1&item=${messageItem}&keyword=${keyword}`,
     }
 
   },

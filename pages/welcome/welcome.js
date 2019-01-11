@@ -1,137 +1,152 @@
 // pages/welcome/welcome.js
 var app = getApp();
+var isFlage='false';
 Page({
   /**
    * 页面的初始数据
    */
-  data: {
-    statusHeight: getApp().globalData.statusBarHeight,
-    navH: getApp().globalData.navHeight,
-    noSelect: 'title title',
-    hasSelect: 'title title_on',
-    repContent: [{
-        message: '传感器产品',
-        index: '1'
-      },
-      {
-        message: '3D打印设计建模&软件',
-        index: '2'
-      },
-      {
-        message: '机器人产业发展',
-        index: '3'
-      },
-      {
-        message: '传感器应用',
-        index: '4'
-      },
-      {
-        message: '3D打印材料&设备',
-        index: '5'
-      },
-      {
-        message: '传感器技术',
-        index: '6'
-      },
-      {
-        message: '3D打印应用',
-        index: '7'
-      },
-      {
-        message: '机器人应用',
-        index: '8'
-      },
-      {
-        message: '3D打印行业发展',
-        index: '9'
-      },
-      {
-        message: '3D打印技术',
-        index: '10'
-      },
-      {
-        message: '工业机器人',
-        index: '11'
-      },
-      {
-        message: '传感器行业发展',
-        index: '12'
-      },
-      {
-        message: '机器人技术',
-        index: '13'
-      },
-      {
-        message: '智能制造',
-        index: '14'
-      },
-      {
-        message: '机器人制造',
-        index: '15'
-      }
-    ],
-    selectIndex: [{
-        sureid: false,
-        id: '4',
-      },
-      {
-        sureid: false,
-        id: '18'
-      },
-      {
-        sureid: false,
-        id: '12'
-      },
-      {
-        sureid: false,
-        id: '5'
-      },
-      {
-        sureid: false,
-        id: '8'
-      },
-      {
-        sureid: false,
-        id: '6'
-      },
-      {
-        sureid: false,
-        id: '9'
-      },
-      {
-        sureid: false,
-        id: '48'
-      },
-      {
-        sureid: false,
-        id: '10'
-      },
-      {
-        sureid: false,
-        id: '11'
-      },
-      {
-        sureid: false,
-        id: '13'
-      },
-      {
-        sureid: false,
-        id: '7'
-      },
-      {
-        sureid: false,
-        id: '14'
-      },
-      {
-        sureid: false,
-        id: '17'
-      },
-      {
-        sureid: false,
-        id: '15'
-      },
-    ]
+
+  onLoad(options) {
+    getApp().login();
+    isFlage = wx.getStorageSync("register");
+  
+    if (isFlage != 'true') {
+      isFlage ='false';
+    }  
+    console.log("123" + isFlage);
+
+
+   this.setData(  {
+      statusHeight: getApp().globalData.statusBarHeight,
+        navH: getApp().globalData.navHeight,
+          noSelect: 'title title',
+            hasSelect: 'title title_on',
+              isFlat: isFlage,
+                repContent: [{
+                  message: '传感器产品',
+                  index: '1'
+                },
+                {
+                  message: '3D打印设计建模&软件',
+                  index: '2'
+                },
+                {
+                  message: '机器人产业发展',
+                  index: '3'
+                },
+                {
+                  message: '传感器应用',
+                  index: '4'
+                },
+                {
+                  message: '3D打印材料&设备',
+                  index: '5'
+                },
+                {
+                  message: '传感器技术',
+                  index: '6'
+                },
+                {
+                  message: '3D打印应用',
+                  index: '7'
+                },
+                {
+                  message: '机器人应用',
+                  index: '8'
+                },
+                {
+                  message: '3D打印行业发展',
+                  index: '9'
+                },
+                {
+                  message: '3D打印技术',
+                  index: '10'
+                },
+                {
+                  message: '工业机器人',
+                  index: '11'
+                },
+                {
+                  message: '传感器行业发展',
+                  index: '12'
+                },
+                {
+                  message: '机器人技术',
+                  index: '13'
+                },
+                {
+                  message: '智能制造',
+                  index: '14'
+                },
+                {
+                  message: '机器人制造',
+                  index: '15'
+                }
+                ],
+                  selectIndex: [{
+                    sureid: false,
+                    id: '4',
+                  },
+                  {
+                    sureid: false,
+                    id: '18'
+                  },
+                  {
+                    sureid: false,
+                    id: '12'
+                  },
+                  {
+                    sureid: false,
+                    id: '5'
+                  },
+                  {
+                    sureid: false,
+                    id: '8'
+                  },
+                  {
+                    sureid: false,
+                    id: '6'
+                  },
+                  {
+                    sureid: false,
+                    id: '9'
+                  },
+                  {
+                    sureid: false,
+                    id: '48'
+                  },
+                  {
+                    sureid: false,
+                    id: '10'
+                  },
+                  {
+                    sureid: false,
+                    id: '11'
+                  },
+                  {
+                    sureid: false,
+                    id: '13'
+                  },
+                  {
+                    sureid: false,
+                    id: '7'
+                  },
+                  {
+                    sureid: false,
+                    id: '14'
+                  },
+                  {
+                    sureid: false,
+                    id: '17'
+                  },
+                  {
+                    sureid: false,
+                    id: '15'
+                  },
+                  ]
+    })
   },
+  
 
   //点击选择精选集
   selectRep: function(e) {

@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/first/first",
     "pages/welcome/welcome",
     "pages/article/article",
     "pages/search/search",
