@@ -116,7 +116,7 @@ App({
   convertTime: function(time) {
     var curentDate = new Date().getTime();
     var createDatee = new Date(time).getTime();
-    var hour = Math.ceil((curentDate - createDatee) / (1000 * 60 * 60 * 24));
+    var hour = Math.ceil((curentDate - createDatee) / (1000 * 60 * 60 ));
     // console.log(hour);
     if (hour < 1) {
       return "刚刚更新";
