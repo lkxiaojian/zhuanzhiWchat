@@ -127,17 +127,24 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  justify-content: flex-end;
 }
 
 .li_title {
   color: #1a222e;
   font-size: 30rpx;
-  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  flex: initial;
 }
 
 .li_sub_title {
   color: #1a222e;
   font-size: 24rpx;
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
 }
 
 .li_right {

@@ -11,6 +11,7 @@
   padding: 0rpx;
   box-sizing: border-box;
   width: 100%;
+  overflow-x:hidden;
 }
 
 /*隐藏滚动条*/

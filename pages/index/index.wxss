@@ -53,7 +53,7 @@
 }
 
 .all_qikan {
-  padding-right: 40rpx;
+  padding-right: 35rpx;
   font-size: 24rpx;
 }
 .all_qikan image{
@@ -73,9 +73,12 @@ margin-right:10rpx;
   margin-bottom: 20rpx;
   height: 250rpx;
 }
+.slide{
+  padding-left: 130rpx;
+}
 .qikan_line_item{
-  margin-right: 78rpx;
-  align-items: center;
+  margin-right: 49rpx;
+  align-items: flex-start;
   display: inline-block;
 }
 .circle{
@@ -89,10 +92,6 @@ margin-right:10rpx;
   font-size: 24rpx;
   color: #7f7e7e;
   margin-top: 20rpx;
-  line-clamp: 4;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
   width: 118rpx;
 }
 

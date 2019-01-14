@@ -74,10 +74,14 @@ Page({
             }
             if (that.data.page == 0) { //是不是第一页
               this.data.hasDingYue = res.data.result.attention;
+              for(var i=0;i<this.data.hasDingYue.length;i++){
+                this.data.hasDingYue[i].article_type_name = this.data.hasDingYue[i].article_type_name.substring(0, 4)+"...";
+              }
+              console.log(this.data.hasDingYue);
               this.data.arcticleList = totalAll;
             } else {
               this.data.arcticleList = that.data.arcticleList.concat(totalAll),
-                this.data.isHideNoMore = false;
+              this.data.isHideNoMore = false;
             }
           } else {
             if (that.data.page == 0) { //是不是第一页

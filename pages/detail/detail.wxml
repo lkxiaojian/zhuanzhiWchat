@@ -22,7 +22,7 @@
 
     <view wx:if='{{author}}' style='width:100%;'>
       <view class='title'>
-        <view style='width:100%;text-align:left;'>{{"作者："+result.author+" • 来源"+result.source+" • "+result.create_time}}</view>
+        <view style='width:100%;text-align:left;'>{{"作者："+result.author+" • 来源："+result.source+" • "+result.create_time}}</view>
         <!--<view class='point'></view>
         <view>{{"来源："+result.source}}</view>
         <view class='point'></view>
