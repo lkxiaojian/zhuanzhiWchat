@@ -116,14 +116,14 @@ App({
   convertTime: function(time) {
     var curentDate = new Date().getTime();
     var createDatee = new Date(time).getTime();
-    var hour = Math.ceil((curentDate - createDatee) / (1000 * 60 * 60 ));
+    var hour = Math.round((curentDate - createDatee) / (1000 * 60 * 60 ));
     // console.log(hour);
     if (hour < 1) {
       return "刚刚更新";
     } else if (hour < 24) {
       return hour + "小时前更新"
     } else {
-      var day = Math.ceil(hour / 24);
+      var day = Math.floor(hour / 24);
       if (day <= 3) {
         return day + "天前更新"
       } else {
@@ -152,7 +152,9 @@ App({
     statusBarHeight: 0,
     userInfo: null,
     wxId: "",
-    baseUrl: "https://xiaochengxu.zhuanzhilink.com/api",
+    baseUrl: "http://localhost:7903",
     imageUrl: "https://xiaochengxu.zhuanzhilink.com/weixin_img"
   }
+
+    //  baseUrl: "https://xiaochengxu.zhuanzhilink.com/api",
 })

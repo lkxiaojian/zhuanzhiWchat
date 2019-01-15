@@ -121,7 +121,10 @@ Page({
       data: {
         wechatid: getApp().globalData.wxId,
         article_type_id: this.data.arcticleList[index].firstItem.article_type_id,
-        page: this.data.arcticleList[index].page
+        page: this.data.arcticleList[index].page,
+        type: this.data.arcticleList[index].firstItem.type,
+        time: this.data.arcticleList[index].firstItem.create_time,
+        article_id: this.data.arcticleList[index].firstItem.article_id
       },
       method: 'GET',
       success: function(res) {
