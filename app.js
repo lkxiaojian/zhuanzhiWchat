@@ -118,9 +118,10 @@ App({
     var createDatee = new Date(time).getTime();
     var hour = Math.round((curentDate - createDatee) / (1000 * 60 * 60 ));
     // console.log(hour);
+    var hh = new Date().getHours(); 
     if (hour < 1) {
       return "刚刚更新";
-    } else if (hour < 24) {
+    } else if (hour < hh) {
       return hour + "小时前更新"
     } else {
       var day = Math.floor(hour / 24);
@@ -152,9 +153,9 @@ App({
     statusBarHeight: 0,
     userInfo: null,
     wxId: "",
-    baseUrl: "http://localhost:7903",
+    baseUrl: "https://xiaochengxu.zhuanzhilink.com/api",
     imageUrl: "https://xiaochengxu.zhuanzhilink.com/weixin_img"
   }
 
-    //  baseUrl: "https://xiaochengxu.zhuanzhilink.com/api",
+   
 })
