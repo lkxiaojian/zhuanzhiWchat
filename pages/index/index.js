@@ -95,6 +95,7 @@ Page({
         } else {
           this.data.isHideNoMore = true;
         }
+        this.data.isHideNoMore = true;
         this.setData(this.data);
         console.log(that.data.isHideNoMore);
       },

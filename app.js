@@ -126,7 +126,7 @@ App({
       return hour + "小时前更新"
     } else {
       var day = Math.floor(hour / 24);
-      if (day <= 3) {
+      if (day <= 2) {
         return day + "天前更新"
       } else {
         return "很久之前更新";
