@@ -1,3 +1,4 @@
+
 //app.js
 var util = require('utils/util.js');
 App({
@@ -121,7 +122,7 @@ App({
     var hh = new Date().getHours(); 
     if (hour < 1) {
       return "刚刚更新";
-    } else if (hour < hh) {
+    } else if (hour < 24) {
       return hour + "小时前更新"
     } else {
       var day = Math.floor(hour / 24);
@@ -159,3 +160,4 @@ App({
 
    
 })
+
