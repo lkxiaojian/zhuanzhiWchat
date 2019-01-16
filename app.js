@@ -158,6 +158,5 @@ App({
     imageUrl: "https://xiaochengxu.zhuanzhilink.com/weixin_img"
   }
 
-   
 })
 

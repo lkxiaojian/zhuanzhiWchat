@@ -12,6 +12,9 @@ Page({
 
   onLoad: function() {
     var app = getApp();
+    wx.showLoading({
+      title: '加载中',
+    })
     this.setData({
       navH: app.globalData.navHeight
     })
@@ -39,7 +42,7 @@ Page({
     this.data.page++;
     console.log("上拉加载更多");
     wx.showNavigationBarLoading() //在标题栏中显示加载
-    this.requestData(); //加载数据
+    // this.requestData(); //加载数据
   },
   selectAllSpecial: function() {
     wx.navigateTo({
@@ -99,6 +102,7 @@ Page({
         // complete
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新
+        wx.hideLoading();
       }
     });
   },
