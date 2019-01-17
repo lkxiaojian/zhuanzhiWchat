@@ -42,7 +42,7 @@ Page({
     this.data.page++;
     console.log("上拉加载更多");
     wx.showNavigationBarLoading() //在标题栏中显示加载
-    // this.requestData(); //加载数据
+    this.requestData(); //加载数据
   },
   selectAllSpecial: function() {
     wx.navigateTo({
@@ -95,16 +95,24 @@ Page({
         } else {
           this.data.isHideNoMore = true;
         }
-        this.data.isHideNoMore = true;
+        // this.data.isHideNoMore = true;
         this.setData(this.data);
         console.log(that.data.isHideNoMore);
+        wx.hideLoading();
       },
       complete: function() {
         // complete
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新
         wx.hideLoading();
+      },
+      fail:function(){
+        //请求失败
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh() //停止下拉刷新
+        wx.hideLoading();
       }
+    
     });
   },
   toSearch: function() {
