@@ -180,10 +180,15 @@ Page({
           console.log(res.data)
         }
       })
+      wx.redirectTo({
+        url: '../index/index',
+      });
+    }else{
+      wx.showToast({
+        title: '请选择你要订阅精选',
+      })
     }
-    wx.redirectTo({
-      url: '../index/index',
-    });
+  
   },
   bindGetUserInfo: function(e) {
     if (e.detail.userInfo) {
