@@ -129,7 +129,7 @@ App({
       if (day <= 2) {
         return day + "天前更新"
       } else {
-        return "很久之前更新";
+        return "历史";
       }
     }
   },
