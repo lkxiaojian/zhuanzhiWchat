@@ -25,9 +25,10 @@ Page({
       }
     } else {
       app.getUserInfo();
-      if (app.globalData.wxId) {
-        this.requestData();
-      }
+      // if (app.globalData.wxId) {
+      //   this.requestData();
+      // }
+      this.requestData();
     }
 
   },
