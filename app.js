@@ -126,11 +126,12 @@ App({
       return hour + "小时前更新"
     } else {
       var day = Math.floor(hour / 24);
-      if (day <= 2) {
-        return day + "天前更新"
-      } else {
-        return "很久之前更新";
-      }
+      // if (day <= 2) {
+      //   return day + "天前更新"
+      // } else {
+      //   return "很久之前更新";
+      // }
+      return day + "天前更新"
     }
   },
   handleKeyWord(str) {
@@ -157,7 +158,7 @@ App({
     baseUrl: "https://xiaochengxu.zhuanzhilink.com/api",
     imageUrl: "https://xiaochengxu.zhuanzhilink.com/weixin_img"
   }
-      // baseUrl: "http://localhost:7903",  ,
+      // baseUrl: "http://localhost:7903",      baseUrl: "https://xiaochengxu.zhuanzhilink.com/api",
  
 })
 
