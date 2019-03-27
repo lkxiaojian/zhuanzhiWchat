@@ -1,0 +1,8 @@
+<!--pages/detail/lookPdf/lookPdf.wxml-->
+<view class="lookPdf">
+  <view class="title">{{pdfTitle}}</view>
+  <view style="margin-top:34rpx;font-size:26rpx;">{{pdfTime}}</view>
+  <view style="margin-top:50rpx">
+    {{pdfContent}}
+  </view>
+</view>

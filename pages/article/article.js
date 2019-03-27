@@ -1,40 +1,28 @@
-// pages/article/article.js
 var imagUrl = getApp().globalData.imageUrl
-var sharetypeId=0;
-var typeName='';
+var sharetypeId = 0;
+var typeName = '';
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     isHideNoMore: false,
-    typeName:"",
-    typeId:"",
+    typeName: "",
+    typeId: "",
     page: 0,
     arcticleList: [],
     imagUrl: getApp().globalData.imageUrl,
     navH: getApp().globalData.navHeight,
-    imageBack:""
+    imageBack: "",
+    articleNum: "",
+    paperCount: "",
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    console.log(options);
+  onLoad: function(options) {
     sharetypeId = options.sharetypeId;
     this.setData({
-      typeName: options.typeName,
+      typeName: options.typeName.replace(/,/g, ''),
       typeId: options.typeId,
-
     });
     this.requestData();
   },
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     this.data.page = 0;
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.requestData(); //刷新数据
@@ -43,12 +31,12 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     this.data.page++;
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.requestData(); //加载数据
   },
-   requestData: function () {
+  requestData: function() {
     var that = this;
     wx.request({
       url: getApp().globalData.baseUrl + '/article/trait/rest',
@@ -57,11 +45,14 @@ Page({
         page: that.data.page
       },
       method: "GET",
-      success:function(res){
-        console.log(res);
+      success: function(res) {
+        that.setData({
+          paperCount: res.data.articleNum,
+          articleNum: res.data.paperCount,
+        });
         var article = res.data.result;
         if (article.length > 0) { //是不是为空
-          for(var i =0;i<article.length;i++){
+          for (var i = 0; i < article.length; i++) {
             var art = article[i];
             art.article_keyword = getApp().handleKeyWord(art.article_keyword);
           }
@@ -70,13 +61,13 @@ Page({
             that.setData({
               arcticleList: article,
               isHideNoMore: false,
-              imageBack: imagUrl+ backUrl
+              imageBack: imagUrl + backUrl
             })
           } else {
             that.setData({
               arcticleList: that.data.arcticleList.concat(article),
               isHideNoMore: false,
-              imageBack: imagUrl+ backUrl
+              imageBack: imagUrl + backUrl
             })
           }
         } else {
@@ -85,56 +76,51 @@ Page({
           })
         }
       },
-      fail:function(){
-        console.log("失败");
-      },
-      complete: function () {
-        // complete
+      fail: function() {},
+      complete: function() {
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新
       }
     });
   },
-  selectDetail:function(e){
-
+  selectDetail: function(e) {
     var id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../detail/detail?articleId=' + id
-    })
+    var contentType = e.currentTarget.dataset.type;
+    var stateType = e.currentTarget.dataset.postid;
+    if (contentType == 0 || contentType == 1) {
+      wx.navigateTo({
+        url: '../detail/detail?articleId=' + id + '&contentType=' + contentType + '&stateType=' + stateType,
+        complete: function() {
+          wx.hideLoading()
+        }
+      })
+    } else if (contentType == 2) {
+      wx.navigateTo({
+        url: '../paper/paper?articleId=' + id + '&contentType=' + contentType + '&stateType=' + stateType,
+        complete: function() {
+          wx.hideLoading()
+        }
+      })
+    }
   },
-  back: function () {
-
-
-
+  back: function() {
     if (sharetypeId == 1) {
       wx.redirectTo({
         url: '../welcome/welcome',
       });
 
     } else {
-      console.log('返回上级目录');
       wx.navigateBack();
-    } 
-
+    }
   },
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
     var that = this;
     return {
       title: '专知',
       path: 'pages/article/article?sharetypeId=1&typeId=' + that.data.typeId + '&typeName=' + that.data.typeName,
-      success: function (shareTickets) {
-        console.info(shareTickets + '成功');
-        // 转发成功  
-      },
-      fail: function (res) {
-        console.log(res + '失败');
-        // 转发失败  
-      },
-      complete: function () {
-        // 不管成功失败都会执行  
-        console.log(res);
-      }
+      success: function(shareTickets) {},
+      fail: function(res) {},
+      complete: function() {}
     }
-
   },
 })

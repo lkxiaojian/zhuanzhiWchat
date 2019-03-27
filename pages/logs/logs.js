@@ -7,9 +7,7 @@ Page({
   },
   onLoad: function () {
     var htmlContent = '';
-
     // var htmlContent = '<div>我是HTML代码</div>';
-  
     WxParse.wxParse('detailHtml', 'html', htmlContent, this, 0);
     this.setData({
       logs: (wx.getStorageSync('logs') || []).map(log => {

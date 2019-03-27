@@ -22,7 +22,6 @@ Page({
     var that = this;
     messageItem=options.item;
     var tar = this.cleanSpelChar(messageItem);
-    // console.log(tar);
     let item = JSON.parse(tar);
     that.data.articleTypes=item;
     if(item.length>0){
@@ -31,7 +30,6 @@ Page({
         item[i].article_type_keyword = getApp().handleKeyWord(item[i].article_type_keyword);
       }
     }
-    console.log(item);
      this.setData({
           articleTypes: item,
       })
@@ -67,7 +65,6 @@ Page({
 
   },
   back: function () {
-    console.log('返回上级目录');
     if (sharetypeId == 1) {
       wx.redirectTo({
         url: '../welcome/welcome',

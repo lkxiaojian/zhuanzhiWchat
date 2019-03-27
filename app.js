@@ -1,4 +1,3 @@
-
 //app.js
 var util = require('utils/util.js');
 App({
@@ -24,13 +23,11 @@ App({
                 success(res) {
                   var userInfo = getApp().globalData.userInfo; //获取用户信息
                   getApp().globalData.wxId = res.data.openid; //存储微信ID
-                  console.log(res);
                   var value = wx.getStorageSync("register");
-                  console.log(value);
                   if (value != "true") {
                     that.register();
                   } else {
-                    console.log("已注册");
+                    // 已注册
                     wx.redirectTo({
                       url: '../index/index',
                     })
@@ -39,18 +36,16 @@ App({
               });
             },
             fail: function() {
-              console.log('获取用户信息失败')
+              // 获取用户信息失败
             }
           })
 
         } else {
-          console.log('获取用户登录态失败！' + r.errMsg)
         }
       }
     });
   },
   register: function() {
-    console.log("======注册======");
     var app = getApp();
     var userInfo = app.globalData.userInfo;
     wx.request({ //用户进行注册
@@ -64,7 +59,6 @@ App({
       },
       method: 'POST',
       success(res) {
-        console.log(res);
         wx.setStorageSync("register", "true");
       }
     });
@@ -77,14 +71,14 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              console.log("授权成功");
+              // 授权成功
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo;
               //this.login();//登录
             }
           });
         } else {
-          console.log("授权失败");
+          // 授权失败
         }
       }
     });
@@ -94,7 +88,6 @@ App({
     //wx.setStorageSync("register", "false");
     wx.getSystemInfo({
       success(res) {
-        console.log("状态栏的高度" + res.statusBarHeight) // 获取状态栏的高度
         // if (res.statusBarHeight <= 38) {
         //   that.globalData.statusBarHeight = 96;
         // } else {
@@ -103,11 +96,9 @@ App({
         that.globalData.navHeight = res.statusBarHeight + 46;
       },
       fail(err) {
-        console.log(err);
       }
     });
     that.getUserInfo();
-    console.log(that.globalData.statusBarHeight);
   },
   /**
    * 时间戳转化为年 月 日 时 分 秒
@@ -118,19 +109,19 @@ App({
     var curentDate = new Date().getTime();
     var createDatee = new Date(time).getTime();
     var hour = Math.round(Math.abs((curentDate - createDatee)) / (1000 * 60 * 60));
-    // console.log(hour);
     // var hh = new Date().getHours(); 
     if (hour < 1) {
-      return "刚刚更新";
+      return "刚刚";
     } else if (hour < 24) {
-      return hour + "小时前更新"
+      return hour + "小时前"
     } else {
       var day = Math.floor(hour / 24);
-      if (day <= 2) {
-        return day + "天前更新"
-      } else {
-        return "历史";
-      }
+      // if (day <= 2) {
+      //   return day + "天前更新"
+      // } else {
+      //   return "很久之前更新";
+      // }
+      return day + "天前"
     }
   },
   handleKeyWord(str) {
@@ -147,7 +138,6 @@ App({
         }
       }
     }
-    console.log(char);
     return char;
   },
   globalData: {
@@ -157,7 +147,28 @@ App({
     baseUrl: "https://xiaochengxu.zhuanzhilink.com/api",
     imageUrl: "https://xiaochengxu.zhuanzhilink.com/weixin_img"
   }
-      // baseUrl: "http://localhost:7903",  ,
- 
-})
+  // baseUrl: "http://localhost:7903",      baseUrl: "https://xiaochengxu.zhuanzhilink.com/api",
 
+})
+const updateManager = wx.getUpdateManager()
+updateManager.onCheckForUpdate(function(res) {})
+updateManager.onUpdateReady(function() {
+  wx.showModal({
+    title: '更新提示',
+    content: '新版本已准备好，是否重启应用？',
+    success: function(res) {
+      if (res.confirm) {
+        // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+        updateManager.applyUpdate()
+      }
+    }
+  })
+})
+updateManager.onUpdateFailed(function() {
+  // 新的版本下载失败
+  wx.showModal({
+    title: '更新提示',
+    content: '新版本下载失败',
+    showCancel: false
+  })
+})

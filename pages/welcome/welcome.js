@@ -2,10 +2,12 @@
 var app = getApp();
 var isFlage = 'false';
 Page({
+  data: {
+    isShowDialog: false,
+  },
   /**
    * 页面的初始数据
    */
-
   onLoad(options) {
     getApp().login();
     isFlage = wx.getStorageSync("register");
@@ -13,137 +15,148 @@ Page({
       isFlage = 'false';
     }
     this.setData({
+
       statusHeight: getApp().globalData.statusBarHeight,
       navH: getApp().globalData.navHeight,
       noSelect: 'title title',
       hasSelect: 'title title_on',
       isFlat: isFlage,
-      repContent: [{
-          message: '传感器产品',
+      // 机器人
+      robot: [{
+          message: '制造',
           index: '1'
         },
         {
-          message: '3D打印设计建模&软件',
+          message: '产品&应用',
           index: '2'
         },
         {
-          message: '机器人产业发展',
+          message: '技术',
           index: '3'
-        },
-        {
-          message: '传感器应用',
+        }, {
+          message: '工业',
           index: '4'
-        },
-        {
-          message: '3D打印材料&设备',
+        }, {
+          message: '产业发展',
           index: '5'
-        },
-        {
-          message: '传感器技术',
+        }
+      ],
+      // 3D打印
+      printing: [{
+          message: '应用',
           index: '6'
         },
         {
-          message: '3D打印应用',
+          message: '技术',
           index: '7'
-        },
-        {
-          message: '机器人应用',
+        }, {
+          message: '行业发展',
           index: '8'
-        },
-        {
-          message: '3D打印行业发展',
+        }, {
+          message: '设计建模&软件',
           index: '9'
-        },
-        {
-          message: '3D打印技术',
+        }, {
+          message: '材料&设备',
           index: '10'
-        },
-        {
-          message: '工业机器人',
-          index: '11'
-        },
-        {
-          message: '传感器行业发展',
-          index: '12'
-        },
-        {
-          message: '机器人技术',
-          index: '13'
-        },
-        {
-          message: '智能制造',
-          index: '14'
-        },
-        {
-          message: '机器人制造',
-          index: '15'
         }
       ],
+      // 传感器
+      sensor: [{
+        message: '产品',
+        index: '11'
+      }, {
+        message: '应用',
+        index: '12'
+      }, {
+        message: '技术',
+        index: '13'
+      }, {
+        message: '行业发展',
+        index: '14'
+      }],
+      // 智能制造
+      intelligence: [{
+        message: '智能制造',
+        index: '15'
+      }],
       selectIndex: [{
           sureid: false,
-          id: '4',
+          name: '机器人制造',
+          id: '15',
         },
         {
           sureid: false,
-          id: '18'
-        },
-        {
-          sureid: false,
-          id: '12'
-        },
-        {
-          sureid: false,
-          id: '5'
-        },
-        {
-          sureid: false,
-          id: '8'
-        },
-        {
-          sureid: false,
-          id: '6'
-        },
-        {
-          sureid: false,
-          id: '9'
-        },
-        {
-          sureid: false,
+          name: '机器人产品&应用',
           id: '48'
         },
         {
           sureid: false,
-          id: '10'
-        },
-        {
-          sureid: false,
-          id: '11'
-        },
-        {
-          sureid: false,
-          id: '13'
-        },
-        {
-          sureid: false,
-          id: '7'
-        },
-        {
-          sureid: false,
+          name: '机器人技术',
           id: '14'
         },
         {
           sureid: false,
-          id: '17'
+          name: '机器人工业',
+          id: '13'
         },
         {
           sureid: false,
-          id: '15'
+          name: '机器人产业发展',
+          id: '12'
+        },
+        {
+          sureid: false,
+          name: '3D打印应用',
+          id: '9'
+        },
+        {
+          sureid: false,
+          name: '3D打印技术',
+          id: '11'
+        },
+        {
+          sureid: false,
+          name: '3D打印行业发展',
+          id: '10'
+        },
+        {
+          sureid: false,
+          name: '3D打印设计建模&软件',
+          id: '18'
+        },
+        {
+          sureid: false,
+          name: '3D打印材料&设备',
+          id: '8'
+        },
+        {
+          sureid: false,
+          name: '传感器产品',
+          id: '4'
+        },
+        {
+          sureid: false,
+          name: '传感器应用',
+          id: '5'
+        },
+        {
+          sureid: false,
+          name: '传感器技术',
+          id: '6'
+        },
+        {
+          sureid: false,
+          name: '传感器行业发展',
+          id: '7'
+        },
+        {
+          sureid: false,
+          name: '智能制造',
+          id: '17'
         },
       ]
     })
   },
-
-
   //点击选择精选集
   selectRep: function(e) {
     var index = e.currentTarget.dataset.selectindex; //当前点击元素的自定义数据，这个很关键
@@ -153,7 +166,13 @@ Page({
       selectIndex: selectIndex //将已改变属性的json数组更新
     })
   },
+  goFirst: function(e) {
+    wx.redirectTo({
+      url: '../index/index',
+    });
+  },
   startApp: function() {
+    var that = this;
     var selectIndex = this.data.selectIndex;
     var selectData = "";
     for (var i = 0; i < selectIndex.length; i++) {
@@ -165,9 +184,7 @@ Page({
         }
       }
     }
-    console.log(selectData);
     if (selectData != "") {
-      console.log(selectData);
       wx.request({
         url: app.globalData.baseUrl + '/user/setAttention/rest', //仅为示例，并非真实的接口地址
         data: {
@@ -177,18 +194,24 @@ Page({
         },
         method: "GET",
         success(res) {
-          console.log(res.data)
         }
       })
       wx.redirectTo({
         url: '../index/index',
       });
-    }else{
-      wx.showToast({
-        title: '请选择你要订阅精选',
-      })
+    } else {
+      that.setData({
+        isShowDialog: true
+      });
+      setTimeout(function() {
+        that.setData({
+          isShowDialog: false
+        });
+      }, 2000)
+      // wx.showToast({
+      //   title: '请选择你喜欢的精选集',
+      // })
     }
-  
   },
   bindGetUserInfo: function(e) {
     if (e.detail.userInfo) {
@@ -234,13 +257,10 @@ Page({
                 success(res) {
                   var userInfo = getApp().globalData.userInfo; //获取用户信息
                   getApp().globalData.wxId = res.data.openid; //存储微信ID
-                  console.log(res);
                   var value = wx.getStorageSync("register");
-                  console.log(value);
                   if (value != "true") {
                     that.register();
                   } else {
-                    console.log("已注册")
                     wx.hideLoading();
                     that.startApp();
                   }
@@ -253,13 +273,12 @@ Page({
           })
 
         } else {
-          console.log('获取用户登录态失败！' + r.errMsg)
+          console.log('获取用户登录态失败！')
         }
       }
     });
   },
   register: function() {
-    console.log("======注册======");
     var that = this;
     var app = getApp();
     var userInfo = app.globalData.userInfo;
@@ -274,7 +293,6 @@ Page({
       },
       method: 'POST',
       success(res) {
-        console.log(res);
         wx.setStorageSync("register", "true");
         wx.hideLoading();
         that.startApp();
@@ -282,21 +300,17 @@ Page({
     });
   },
   onShareAppMessage: function() {
-
     return {
       title: '专知',
       path: 'pages/welcome/welcome',
       success: function(shareTickets) {
-        console.info(shareTickets + '成功');
         // 转发成功  
       },
       fail: function(res) {
-        console.log(res + '失败');
         // 转发失败  
       },
       complete: function() {
         // 不管成功失败都会执行  
-        console.log(res);
       }
     }
   }

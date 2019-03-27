@@ -12,6 +12,9 @@
   width: 100%;
 }
 
+.authorTitle {
+}
+
 .title {
   display: flex;
   margin-top: 76rpx;
@@ -141,7 +144,6 @@
   height: 80rpx;
   flex: initial;
 }
-
 
 .li_right {
   width: 174rpx;

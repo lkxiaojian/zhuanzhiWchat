@@ -1,0 +1,7 @@
+<view class="lookPdf">
+  <view class="title">{{ckwxTitle}}</view>
+  <view style="margin-top:34rpx;font-size:26rpx;">{{ckwxTime}}</view>
+  <view style="margin-top:50rpx">
+    {{ckwxUrl}}
+  </view>
+</view>

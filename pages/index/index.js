@@ -4,7 +4,9 @@ Page({
   data: {
     isHideNoMore: false,
     page: 0,
+    article_type_name: "",
     hasDingYue: [],
+    selected: [],
     arcticleList: [],
     arcticleType: [],
     imageUrl: "https://xiaochengxu.zhuanzhilink.com/weixin_img"
@@ -20,7 +22,6 @@ Page({
     })
     if (app.globalData.userInfo) {
       if (app.globalData.wxId) {
-        console.log(app.globalData.wxId);
         this.requestData();
       }
     } else {
@@ -34,14 +35,12 @@ Page({
   },
   /*页面相关事件处理函数--监听用户下拉动作*/
   onPullDownRefresh: function() { //下拉刷新
-    console.log("下拉刷新");
     this.data.page = 0;
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.requestData(); //刷新数据
   },
   onReachBottom: function() { //上拉加载更多
     this.data.page++;
-    console.log("上拉加载更多");
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.requestData(); //加载数据
   },
@@ -60,7 +59,6 @@ Page({
       },
       method: "GET",
       success: res => {
-        console.log(res);
         if (res.data.code == 0) { //请求数据不为空
           var totalAll = [];
           var article = res.data.result.article;
@@ -78,14 +76,25 @@ Page({
             }
             if (that.data.page == 0) { //是不是第一页
               this.data.hasDingYue = res.data.result.attention;
-              for(var i=0;i<this.data.hasDingYue.length;i++){
-                this.data.hasDingYue[i].article_type_name = this.data.hasDingYue[i].article_type_name.substring(0, 4)+"...";
+              this.data.selected = res.data.result.article;
+              for (var i = 0; i < this.data.hasDingYue.length; i++) {
+                this.data.hasDingYue[i].article_type_nameTop = this.data.hasDingYue[i].article_type_name.split(',')[1]
+                this.data.hasDingYue[i].article_type_nameBt = this.data.hasDingYue[i].article_type_name.split(',')[0]
               }
-              console.log(this.data.hasDingYue);
               this.data.arcticleList = totalAll;
+              for (var i = 0; i < this.data.selected.length; i++) {
+                this.data.arcticleList[i].firstItem.article_type_nameTop = this.data.selected[i].article_type_name.split(',')[0]
+
+                this.data.arcticleList[i].firstItem.article_type_nameBt = this.data.selected[i].article_type_name.split(',')[1]
+              }
             } else {
-              this.data.arcticleList = that.data.arcticleList.concat(totalAll),
+              this.data.arcticleList = that.data.arcticleList.concat(totalAll);
               this.data.isHideNoMore = false;
+              this.data.selected = this.data.arcticleList;
+              for (var i = 0; i < this.data.selected.length; i++) {
+                this.data.arcticleList[i].firstItem.article_type_nameTop = this.data.selected[i].firstItem.article_type_name.split(',')[0]
+                this.data.arcticleList[i].firstItem.article_type_nameBt = this.data.selected[i].firstItem.article_type_name.split(',')[1]
+              }
             }
           } else {
             if (that.data.page == 0) { //是不是第一页
@@ -98,7 +107,6 @@ Page({
         }
         // this.data.isHideNoMore = true;
         this.setData(this.data);
-        console.log(that.data.isHideNoMore);
         wx.hideLoading();
       },
       complete: function() {
@@ -107,24 +115,18 @@ Page({
         wx.stopPullDownRefresh() //停止下拉刷新
         wx.hideLoading();
       },
-      fail:function(){
+      fail: function() {
         //请求失败
         wx.hideNavigationBarLoading() //完成停止加载
         wx.stopPullDownRefresh() //停止下拉刷新
         wx.hideLoading();
       }
-    
+
     });
   },
   toSearch: function() {
-    // wx.showLoading({
-    //  // title: '跳转中',
-    // });
     wx.navigateTo({
       url: '../search/search',
-      // complete:function(){
-      //   wx.hideLoading();
-      // }
     })
   },
   zhankai: function(e) {
@@ -142,13 +144,10 @@ Page({
       },
       method: 'GET',
       success: function(res) {
-        console.log(res);
         var list = that.data.arcticleList;
         if (list[index].page == 0) {
-          console.log('是第一页')
           list[index].childItems = res.data.result.article;
         } else {
-          console.log('不是第一页')
           list[index].childItems = list[index].childItems.concat(res.data.result.article);
         }
         list[index].firstItem.num_prods = res.data.result.count;
@@ -156,7 +155,6 @@ Page({
         that.setData({
           arcticleList: list
         })
-        console.log(that.data);
       },
     })
   },
@@ -190,38 +188,45 @@ Page({
         wx.hideLoading()
       }
     })
-
   },
   selectDetail: function(data) {
+    console.log(data,'f hvgjbkn')
     wx.showLoading({
       title: '跳转中',
     })
     var id = data.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../detail/detail?articleId=' + id,
-      complete: function() {
-        wx.hideLoading()
-      }
-    })
+    var articleKeyWord = data.currentTarget.dataset.name;
+    var contentType = data.currentTarget.dataset.type;
+    var stateType = data.currentTarget.dataset.postid;
+    if (contentType == 0 || contentType == 1) {
+      wx.navigateTo({
+        url: '../detail/detail?articleId=' + id + '&articleKeyWord=' + articleKeyWord + '&contentType=' + contentType + '&stateType=' + stateType,
+        complete: function() {
+          wx.hideLoading()
+        }
+      })
+    } else if (contentType == 2) {
+      wx.navigateTo({
+        url: '../paper/paper?articleId=' + id + '&articleKeyWord=' + articleKeyWord + '&contentType=' + contentType + '&stateType=' + stateType,
+        complete: function() {
+          wx.hideLoading()
+        }
+      })
+    }
   },
   onShareAppMessage: function() {
     return {
       title: '专知',
       path: 'pages/index/index',
       success: function(shareTickets) {
-        console.info(shareTickets + '成功');
         // 转发成功  
       },
       fail: function(res) {
-        console.log(res + '失败');
         // 转发失败  
       },
       complete: function() {
         // 不管成功失败都会执行  
-        console.log(res);
       }
     }
   },
-
 })
-

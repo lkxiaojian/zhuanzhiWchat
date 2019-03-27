@@ -1,50 +1,47 @@
-<!--pages/detail/detail.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
-<!-- <view class='status_toolbar' style='height:{{statusHeight+48}}rpx;'></view>
-<view class='toolbar'>
-  <image src='../../image/back.png' class='toolbar_logo' bindtap='back'></image>
-</view> -->
 <view>
   <view class='nav bg-white' style='height:{{navH}}px'>
     <view class='nav-title'>
       <image src='../../image/back.png' class='back' bindtap='back'></image>
     </view>
   </view>
-  <view class='bg-white container' style='margin-top:{{navH}}px; overflow-x:hidden;' wx-if='{{result!=null}}'>
-    <!-- <view class='nav bg-white' style='height:{{navH}}px'>
-    <view class='nav-title'>
-      <image src='../../image/back.png' class='back' bindtap='back'></image> 
-    </view>
-  </view> -->
-
+  <view class='bg-white container' style='margin-top:{{navH}}px; overflow-x:hidden;'>
     <view class='arcticleTitle'>{{result.article_title}}</view>
     <view wx:if='{{author}}' style='width:100%;'>
       <view class='title'>
-        <view wx:if="{{result.content_type != 1}}" style='width:100%;text-align:left;'>{{"作者："+result.author+" • 来源："+result.source+" • "+result.create_time}}</view>
-        <!--<view class='point'></view>
-        <view>{{"来源："+result.source}}</view>
-        <view class='point'></view>
-        <view>{{result.create_time}}</view>-->
+        <view style='width:100%;text-align:left;line-height:40rpx;color:rgb(49,49,49),font-size:20px'>
+          <!-- {{"作者："+result.author+" • 来源："+result.source+" • "+result.create_time}} -->
+          <view>来源：{{result.source}}
+          </view>
+          <view>期刊号：{{result.paper_create_time}}
+          </view>
+          <view>作者：{{result.author}}
+          </view>
+          <view>zuozhe:{{result.author_e}}
+          </view>
+        </view>
+        <view>
+          <view class='arcticleTitle'>关键词</view>
+          <view style='width:100%;text-align:left;line-height:40rpx;color:rgb(49,49,49),font-size:20px;margin-top:40rpx'>{{result.article_keyword}}</view>
+          <view style='width:100%;text-align:left;line-height:40rpx;color:rgb(49,49,49),font-size:20px;margin-top:40rpx'>{{result.article_keyword_e}}</view>
+        </view>
       </view>
     </view>
-    <view wx:else style='width:100%;'>
+    <!-- <view wx:else style='width:100%;'>
       <view class='title'>
-        <view wx:if="{{result.content_type != 1}}" style='width:100%;text-align:left;'>{{"来源："+result.source+" • "+result.create_time}}</view>
-        <!-- <view></view>
-        <view>{{result.create_time}}</view>-->
+        <view wx:if="{{result.content_type != 1}}" style='width:100%;text-align:left;'>
+        {{"来源："+result.source+" • "+result.create_time}}</view>
       </view>
-    </view>
-    <!--<view class='sub_title'>
-    <view class='share'>{{"分享数："+result.share_count}}</view>
-    <view class='love'>{{"收藏数："+result.collect_count}}</view>
-  </view>-->
+    </view> -->
     <view class='content'>
+      <view class='arcticleTitle' style="margin-bottom:60rpx;">摘要</view>
       <template is="wxParse" data="{{wxParseData:detailHtml.nodes}}">
       </template>
+      <view style="margin-top:60rpx">{{result.content_excerpt_e}}</view>
     </view>
     <view class='li_lines'></view>
     <view class='bottom'>本页面由专知用内容爬取技术爬取，在未对原始内容编辑的情况下，对排版做了优化，以提高阅读体验。</view>
-    <view class='article'>相关文章</view>
+    <view class='article'>相关论文</view>
     <view class='list'>
       <view class='li_container' wx:for='{{result.related}}'>
         <view class='li' data-id='{{item.article_id}}' bindtap='selectDetail'>
@@ -60,7 +57,7 @@
   </view>
   <view class='bnt'>
     <!-- <image src='{{result.collect_state==1?"../../image/love.png":"../../image/had_love.png"}}' bindtap='share'></image> -->
-    <!-- <button wx:if="{{result.pdf_path != ''}}" bindtap='lookPdflookPdf'>
+    <button wx:if="{{result.pdf_path != ''}}" bindtap='lookPdf'>
       <image src='../../image/pdft.png'></image>
     </button>
     <button wx:elif="{{result.pdf_path == ''}}" bindtap='lookImg'>
@@ -68,9 +65,9 @@
     </button>
     <button wx:else>
     </button>
-    <button bindtap='ckwx'>
+    <button bindtap='ckwx' wx:if="{{result.reference != ''}}">
       <image src='../../image/ckwx.png'></image>
-    </button> -->
+    </button>
     <button open-type='share'>
       <image src='../../image/fx.png' bindtap='fxShare'></image>
     </button>

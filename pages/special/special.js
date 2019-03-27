@@ -1,23 +1,17 @@
 // pages/special/special.js
 var isFalg = false;
-var sharetypeId=0;
+var sharetypeId = 0;
 Page({
-  /**
-   * 页面的初始数据
-   */
-
   data: {
     statusHeight: getApp().globalData.statusBarHeight,
     navH: getApp().globalData.navHeight,
-    articleTypes:[],
-    imageUrl: getApp().globalData.imageUrl
+    articleTypes: [],
+    imageUrl: getApp().globalData.imageUrl,
+    article_type_nameSp: [],
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this;
+    var a = [];
     sharetypeId = options.sharetypeId;
     wx.request({
       url: getApp().globalData.baseUrl + '/article/getalltype/rest',
@@ -26,14 +20,19 @@ Page({
       },
       method: "GET",
       success: res => {
+        this.data.articleTypes = res.data.result;
+        for (var i = 0; i < this.data.articleTypes.length; i++) {
+          this.data.articleTypes[i].article_type_nameSp = this.data.articleTypes[i].article_type_name.replace(/,/g, '')
+        }
         if (res.data.result.length > 0) {
           for (var i = 0; i < res.data.result.length; i++) {
             res.data.result[i].article_type_keyword = getApp().handleKeyWord(res.data.result[i].article_type_keyword);
           }
         }
         this.setData({
-          articleTypes: res.data.result
+          articleTypes: res.data.result,
         })
+
       }
     })
   },
@@ -41,86 +40,80 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
     return {
       title: '专知',
       path: 'pages/special/special?sharetypeId=1',
-      success: function (shareTickets) {
-        console.info(shareTickets + '成功');
+      success: function(shareTickets) {
         // 转发成功  
       },
-      fail: function (res) {
-        console.log(res + '失败');
+      fail: function(res) {
         // 转发失败  
       },
-      complete: function () {
+      complete: function() {
         // 不管成功失败都会执行  
-        console.log(res);
       }
     }
-
-
   },
-  back:function(){
-    console.log('返回上级目录');
+  back: function() {
     if (sharetypeId == 1) {
       wx.redirectTo({
         url: '../welcome/welcome',
       });
 
-    }else if (isFalg){
+    } else if (isFalg) {
       wx.navigateTo({
-      url: '../index/index'
+        url: '../index/index'
       })
 
-    }else{
+    } else {
       wx.navigateBack();
     }
 
   },
-  dingyue:function(e){
+  dingyue: function(e) {
     var that = this;
     var app = getApp();
     isFalg = true;
@@ -140,10 +133,10 @@ Page({
       }
     })
   },
-  quxiao:function(e){
+  quxiao: function(e) {
     var app = getApp();
     var that = this;
-    isFalg=true;
+    isFalg = true;
     var index = e.currentTarget.dataset.index;
     wx.request({
       url: app.globalData.baseUrl + '/user/setAttention/rest', //仅为示例，并非真实的接口地址
@@ -154,19 +147,19 @@ Page({
       },
       method: "GET",
       success(res) {
-        if(res.data.code==0){
-          that.data.articleTypes[index].type_id =2;
+        if (res.data.code == 0) {
+          that.data.articleTypes[index].type_id = 2;
           that.setData(that.data);
         }
       }
     })
   },
-  selectAll:function(e){
-   var name =  e.currentTarget.dataset.name;
-   var id= e.currentTarget.dataset.id;
-   var image = e.currentTarget.dataset.image;
-   wx.navigateTo({
-     url: '../article/article?typeName='+name+"&typeId="+id+"&imageUrl="+image,
-   })
+  selectAll: function(e) {
+    var name = e.currentTarget.dataset.name;
+    var id = e.currentTarget.dataset.id;
+    var image = e.currentTarget.dataset.image;
+    wx.navigateTo({
+      url: '../article/article?typeName=' + name + "&typeId=" + id + "&imageUrl=" + image,
+    })
   }
 })

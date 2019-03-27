@@ -1,15 +1,40 @@
 <!--pages/welcome/welcome.wxml-->
 <!-- <view class='status_toolbar' style='height:{{statusHeight}}px;'></view> -->
 <view wx-if="{{isFlat!='true'}}">
-    <view class='top_line' style='padding-top:{{navH}}px;'>
-      <text class='top_title'>请选择你喜欢的精选集{{isFlage}}</text>
-      <button class='top_menu,free-btn-bordernone' bindgetuserinfo="bindGetUserInfo" id='jupt' open-type='getUserInfo' style='outline:0 line !; padding-top:10rpx'>跳过</button>
-    </view>
+  <view class='top_line' style='padding-top:{{navH}}px;'>
+    <text class='top_title'>请选择你喜欢的精选集{{isFlage}}</text>
+    <view class='top_menu,free-btn-bordernone' bindtap="goFirst" bindgetuserinfo="bindGetUserInfo" id='jupt' open-type='getUserInfo'>跳过</view>
+  </view>
   <view class='container'>
+    <view class="dialog_style" wx-if="{{isShowDialog}}">请选择您喜欢的精选集</view>
     <view class="moddle">
-      <text wx:for="{{repContent}}" class="{{selectIndex[index].sureid? hasSelect+item.index : noSelect+item.index}}" data-selectIndex="{{item.index}}" bindtap="selectRep">{{item.message}}</text>
+      <!-- <text wx:for="{{repContent}}" wx:key="{{item.id}}" class="{{selectIndex[index].sureid? hasSelect+item.index : noSelect+item.index}}" data-selectIndex="{{item.index}}" bindtap="selectRep">{{item.message}}</text> -->
+      <!-- 机器人 -->
+      <view class="wel_bt">
+        <view class="wel_line"></view>
+        <view class="wel_title">机器人</view>
+        <text wx:for="{{robot}}" wx:key="{{item.id}}" class="{{selectIndex[index].sureid? hasSelect+item.index : noSelect+item.index}}" data-selectIndex="{{item.index}}" bindtap="selectRep">{{item.message}}</text>
+      </view>
+      <!-- 3D打印 -->
+      <view class="wel_bt">
+        <view class="wel_line"></view>
+        <view class="wel_title">3D打印</view>
+        <text wx:for="{{printing}}" wx:key="{{item.id}}" class="{{selectIndex[index+5].sureid? hasSelect+item.index : noSelect+item.index}}" data-selectIndex="{{item.index}}" bindtap="selectRep">{{item.message}}</text>
+      </view>
+      <!-- 传感器 -->
+      <view class="wel_bt">
+        <view class="wel_line"></view>
+        <view class="wel_title">传感器</view>
+        <text wx:for="{{sensor}}" wx:key="{{item.id}}" class="{{selectIndex[index + 10].sureid? hasSelect+item.index : noSelect+item.index}}" data-selectIndex="{{item.index}}" bindtap="selectRep">{{item.message}}</text>
+      </view>
+      <!-- 智能制造 -->
+      <view class="wel_bt">
+        <view class="wel_line"></view>
+        <view class="wel_title">智能制造</view>
+        <text wx:for="{{intelligence}}" wx:key="{{item.id}}" class="{{selectIndex[index + 14].sureid? hasSelect+item.index : noSelect+item.index}}" data-selectIndex="{{item.index}}" bindtap="selectRep">{{item.message}}</text>
+      </view>
     </view>
-    <text class='bottom_text'>高品质专业内容，一键触达</text>
+    <text class='bottom_text'>专业就是价值</text>
     <button class='startApp' id='bntStart' bindgetuserinfo="bindGetUserInfo" open-type='getUserInfo'>立即开启</button>
   </view>
 </view>

@@ -18,13 +18,9 @@ Page({
     nowTime: "",
     timeStart: "",
     contentType: 0,
-    stateType:0,
     timeEnd: "",
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function(options) {
     var that = this;
     // var articleId = 289;
@@ -33,7 +29,6 @@ Page({
       articleKeyWord: options.articleKeyWord,
       articleIds: options.articleId,
       articleContentType: options.contentType,
-      stateType: options.stateType,
     })
     typeId = options.typeId;
     wx.showLoading({
@@ -44,7 +39,7 @@ Page({
       url: getApp().globalData.baseUrl + '/article/message/rest',
       data: {
         articleId: articleId,
-        state: options.stateType,
+        state: options.contentType,
         wechatid: getApp().globalData.wxId
       },
       method: 'GET',
@@ -70,21 +65,26 @@ Page({
   fxShare: function() {
     this.onShareAppMessage();
   },
-  // ckwx: function() {
-  //   wx.navigateTo({
-  //     url: '../ckwx/ckwx'
-  //   })
-  // },
-  // lookImg: function() {
-  //   wx.navigateTo({
-  //     url: '../lookImg/lookImg'
-  //   })
-  // },
-  // lookPdf: function() {
-  //   wx.navigateTo({
-  //     url: '../lookPdf/lookPdf'
-  //   })
-  // },
+  ckwx: function() {
+    var results = this.data.results
+    wx.navigateTo({
+      url: '../ckwx/ckwx?ckwxUrl = ' + results.reference + '&ckwxTime=' + results.paper_create_time + '&ckwxTitle=' + results.article_title
+    })
+
+  },
+  lookImg: function() {
+    var results = this.data.results
+    wx.navigateTo({
+      url: '../lookImg/lookImg?imgContent = ' + results.image_back + '&imgTime=' + results.paper_create_time + '&imgTitle=' + results.article_title
+
+    })
+  },
+  lookPdf: function() {
+    var results = this.data.results
+    wx.navigateTo({
+      url: '../lookPdf/lookPdf?pdfContent = ' + results.pdf_path + '&pdfTime=' + results.paper_create_time + '&pdfTitle=' + results.article_title
+    })
+  },
   love: function() {
     if (this.data.result.collect_state == 1) {
       this.updateStatus(3, "collect");

@@ -1,11 +1,12 @@
-<view class='nav bg-white' style='height:{{navH}}px'>
-  <view class='nav-title'> 首页</view>
+<view class='nav bg-white' style='height:{{navH}}px;background:rgb(242,242,242)'>
+  <view class='nav-title'>专知</view>
 </view>
-<view class='bg-white container' style='margin-top:{{navH}}px'>
-  <view class='top_search' bindtap='toSearch'>
-    <input type='text' confirm-type='search' placeholder='搜索精选、文摘、公众号、作者.....' placeholder-class='top_search_placeholder' bindfocus='toSearch' disabled='true'> </input>
-    <view class='top_search_line'></view>
+<view class='bg-white container' style='margin-top:{{navH}}px;background:rgb(242,242,242)'>
+  <view class='top_searchs' bindtap='toSearch'>
     <image src='../../image/search.png' class='top_search_icon'></image>
+    <view>搜索</view>
+    <!-- <input type='text' confirm-type='search' placeholder='搜索' placeholder-class='top_search_placeholder' bindfocus='toSearch' disabled='true'> </input> -->
+    <!-- <view class='top_search_line'></view> -->
   </view>
   <view class='qikan'>
     <text class='had_qikan'>已订阅的精选</text>
@@ -14,32 +15,45 @@
     </view>
   </view>
   <view class='line'></view>
-
   <view class='slide'>
-    <view wx:for="{{hasDingYue}}" class='slide_item'>
+    <view wx:for="{{hasDingYue}}" wx:key="{{item.id}}" class='slide_item'>
       <view class='qikan_line_item' bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}' src='{{imageUrl+item.iamge_icon}}'>
-        <image class='circle' src='{{imageUrl+item.iamge_icon}}'>
-        </image>
-        <view class='circle_title'>{{item.article_type_name}}</view>
+        <view class="cr_mask">
+          <view class="img_text">{{item.article_type_nameBt}}</view>
+          <image class='circle' src='{{imageUrl+item.iamge_icon}}'>
+          </image>
+        </view>
+        <view class='circle_title'>
+          <view class="cr_text" wx-if="{{item.type == 1}}">
+            <view class="circle_cr"></view>{{item.article_type_nameTop}}</view>
+          <view class="cr_texts" wx-if="{{item.type == 2}}">
+            {{item.article_type_nameTop}}</view>
+        </view>
       </view>
     </view>
   </view>
   <view class='list'>
-    <view class='cart' wx:for="{{arcticleList}}" wx:for-item="item">
+    <view class='cart' wx:for="{{arcticleList}}" wx:key="{{item.id}}" wx:for-item="item">
       <view class='cart_head' bindtap='startType' data-index="{{index}}">
         <image class='yellow_circle' src='{{imageUrl+item.firstItem.iamge_icon}}'></image>
-        <text class='name'>{{item.firstItem.article_type_name}}</text>
+        <text class='name'>{{item.firstItem.article_type_nameTop}}{{item.firstItem.article_type_nameBt}}</text>
         <text class='time'>{{item.firstItem.create_time}}</text>
       </view>
-      <view class='cart_line'></view>
-      <view class='cart_content' data-id='{{item.firstItem.article_id}}' bindtap='selectDetail'>
-        <text class='title'>{{item.firstItem.article_title}}</text>
+      <!-- <view class='cart_line'></view> -->
+      <view class='cart_content' data-id='{{item.firstItem.article_id}}' data-name='{{item.firstItem.article_keyword}}' data-type='{{item.firstItem.content_type}}' data-postid='{{item.firstItem.state}}' bindtap='selectDetail'>
+        <view>
+          <text wx:if="{{item.firstItem.state == 0}}" style="margin-left:-20rpx;">【专知阅读】</text>
+          <text wx:if="{{item.firstItem.state == 1}}" style="margin-left:-20rpx;">【学术论文】</text>
+          <text class='title' style="text-indent:-14rpx;">{{item.firstItem.article_title}}</text>
+          <image wx:if="{{item.firstItem.state == 1 && item.firstItem.pdf_path != ''}}" src="../../image/pdf.png" class="pdfStyle"></image>
+          <image wx:if="{{item.firstItem.state == 1 && item.firstItem.pdf_path == ''}}" src="../../image/jpg.png" class="pdfStyle"></image>
+        </view>
         <text class='sub_title'>{{item.firstItem.article_keyword}}</text>
         <view class='content' style='margin-bottom:{{item.firstItem.num_prods==0?"40":"0"}}rpx;'>{{item.firstItem.content_excerpt}}</view>
         <view class='cart_line' wx-if='{{item.childItems.length>0}}'></view>
       </view>
-      <view class='cart_content' wx:for="{{item.childItems}}" wx:for-item="arr" wx:for-index="idx" data-id='{{arr.article_id}}' bindtap='selectDetail'>
-        <text class='title'>{{arr.article_title}}</text>
+      <view class='cart_content' wx:for="{{item.childItems}}" wx:key="{{item.id}}" wx:for-item="arr" wx:for-index="idx" data-id='{{arr.article_id}}' data-type='{{item.firstItem.content_type}}' data-postid='{{item.firstItem.state}}' bindtap='selectDetail'>
+        <text class='title' style="text-indent:-14rpx;">{{arr.article_title}}</text>
         <text class='sub_title'>{{arr.article_keyword}}</text>
         <view class='content' style='margin-bottom:{{idx==item.childItems.length-1?"40":"0"}}rpx;'>{{arr.content_excerpt}}</view>
         <view class='cart_line' wx-if='{{idx<item.childItems.length-1 }}'></view>
@@ -52,4 +66,4 @@
     </view>
   </view>
   <view class='bottom' wx-if="{{isHideNoMore}}">各位看官，专知会继续努力，为大家找到更多更好的内容！</view>
-  </view>
+</view>

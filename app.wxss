@@ -14,12 +14,29 @@
   overflow-x: hidden;
 }
 
+.li_sub_title {
+  color: rgb(26, 34, 46);
+  font-size: 20rpx;
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 96%;
+}
+
 /*隐藏滚动条*/
 
 ::-webkit-scrollbar {
   width: 0;
   height: 0;
   color: transparent;
+}
+
+.pdfStyle {
+  width: 28rpx;
+  height: 28rpx;
+  margin-left: 12rpx;
 }
 
 /*灰色圆形*/
@@ -44,8 +61,7 @@
 
 .top_search {
   padding: 5rpx 22rpx;
-  border-radius: 45rpx;
-  border: solid 1px #c6c6c6;
+  /* border-radius: 45rpx; *//* border: solid 1px #c6c6c6; */
   display: flex;
   align-items: center;
   width: 75%;
@@ -126,11 +142,13 @@
 .had_qikan {
   padding-left: 40rpx;
   flex: 1;
-  font-size: 28rpx;
+  font-size: 34rpx;
+  color: rgb(26, 34, 46);
 }
 
 .all_qikan {
-  font-size: 24rpx;
+  font-size: 26rpx;
+  color: rgb(149, 149, 149);
 }
 
 .all_qikan_image {
@@ -169,6 +187,7 @@
   height: 12rpx;
   width: 100%;
   background: #f1f1f1;
+  margin-top: 20rpx;
 }
 
 .group_title {
@@ -188,11 +207,10 @@
 }
 
 .cart {
-  margin-top: 20rpx;
+  margin-top: 40rpx;
   background-color: #fafafa;
   border-radius: 4rpx;
-  box-shadow: 1px 2px 5px #bcc8ce;
-  border: solid 1px #e2e2e2;
+  /* box-shadow: 1px 2px 5px #bcc8ce; *//* border: solid 1px #e2e2e2; */
   margin-left: 20rpx;
   margin-right: 20rpx;
   height: auto;
@@ -202,61 +220,60 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 20rpx;
-  padding-right: 20rpx;
-  padding-top: 20rpx;
+  padding: 20rpx;
+  background: rgb(246, 246, 246);
+  margin-bottom: 32rpx;
 }
 
 .yellow_circle {
-  width: 60rpx;
-  height: 60rpx;
+  width: 56rpx;
+  height: 56rpx;
   background: #c98e45;
   border-radius: 50%;
-  margin-right: 30rpx;
+  margin-right: 18rpx;
 }
 
 .name {
   flex: 1;
-  font-size: 32rpx;
-  color: #7f7e7e;
+  font-size: 28rpx;
+  color: rgb(142, 142, 147);
 }
 
 .time {
-  font-size: 24rpx;
-  color: #ababab;
+  font-size: 20rpx;
+  color: rgb(171, 171, 171);
 }
 
 .cart_line {
-  background: #d4d4d4;
+  background: rgb(212, 212, 212);
   height: 1px;
-  margin-left: 16rpx;
-  margin-right: 16rpx;
-  margin-top: 32rpx;
-  margin-bottom: 32rpx;
+  margin: 32rpx 26rpx;
 }
 
 .cart_content {
+  width: 90%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding-left: 22rpx;
-  padding-right: 22rpx;
 }
 
 .title {
   font-size: 34rpx;
-  color: #1a222e;
+  color: rgb(26, 34, 46);
 }
 
 .sub_title {
-  font-size: 26rpx;
-  color: #ababab;
-  margin-top: 28rpx;
-  margin-bottom: 24rpx;
+  font-size: 30rpx;
+  color: rgb(171, 171, 171);
+  margin-top: 32rpx;
+  margin-bottom: 32rpx;
 }
 
 .content {
-  color: #757575;
+  color: rgb(117, 117, 117);
   font-size: 32rpx;
+  line-height: 52rpx;
+  letter-spacing: 2rpx;
 }
 
 .cart_footer {
@@ -317,7 +334,7 @@
 }
 
 .li_line {
-  background: #d4d4d4;
+  background: rgb(220, 220, 220);
   height: 1px;
   margin-left: 28rpx;
   margin-right: 28rpx;

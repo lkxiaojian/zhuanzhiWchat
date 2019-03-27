@@ -18,9 +18,10 @@
             <text wx:else>{{item.str}}</text>
             </text>
           </view>
-          <view class='li_subTitle'>{{item.article_type_keyword}}</view>
+          <!-- <view class='li_subTitle'>{{item.article_type_keyword}}</view> -->
         </view>
-        <image class='right_icon' src='../../image/success.png' wx:if="{{item.type_id==1}}" data-index='{{index}}'></image>
+         <view class="dingyue" wx:if="{{item.type_id==1}}"  data-index='{{index}}' >已订阅</view>
+        <!-- <image class='right_icon' src='../../image/success.png' wx:if="{{item.type_id==1}}" data-index='{{index}}'></image> -->
       </view>
       <view class='li_line'></view>
     </view>

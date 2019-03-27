@@ -1,7 +1,7 @@
 {
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "精选",
+  "navigationBarTitleText": "专知精选",
   "backgroundColor": "#8C8C8C",
   "backgroundTextStyle": "light",
   "enablePullDownRefresh": true

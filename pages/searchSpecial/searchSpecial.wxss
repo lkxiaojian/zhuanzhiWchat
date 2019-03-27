@@ -1,1 +1,13 @@
 /* pages/searchSpecial.wxss */
+
+.dingyue {
+  width: 130rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  color: rgb(255, 255, 255);
+  background: rgb(220, 149, 62);
+  border:1px solid rgb(222,131,19);
+}

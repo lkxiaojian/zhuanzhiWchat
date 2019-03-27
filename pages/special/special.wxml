@@ -1,25 +1,28 @@
 <!--pages/special/special.wxml-->
- <view class='nav bg-white' style='height:{{navH}}px'>
-    <view class='nav-title'>
-      精选
-      <image src='../../image/back.png' class='back' bindtap='back'></image> 
-    </view>
+<view class='nav bg-white' style='height:{{navH}}px;background:rgb(242,242,242)'>
+  <view class='nav-title'>
+    精选
+    <image src='../../image/back.png' class='back' bindtap='back'></image>
   </view>
+</view>
 
-<view class='bg-white container' style='margin-top:{{navH}}px;'>
-
+<view class='bg-white container' style='margin-top:{{navH}}px;background:rgb(242,242,242)'>
   <view class='ul'>
     <view class='li' wx:for="{{articleTypes}}">
       <view class='item'>
-        <image class='circle' bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}' src='{{imageUrl+item.iamge_icon}}'></image>
+        <image class='img_circle' bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}' src='{{imageUrl+item.iamge_icon}}'></image>
         <view class='li_content' bindtap='selectAll' data-name='{{item.article_type_name}}' data-id='{{item.article_type_id}}' data-image='{{item.iamge_back}}'>
-          <view class='li_title'>{{item.article_type_name}}</view>
-          <view class='li_subTitle'>{{item.article_type_keyword}}</view>
+          <view class='li_title' style="margin-left:42rpx;">{{item.article_type_nameSp}}</view>
+          <!-- <view class='li_title' style="margin-left:42rpx;">{{item.articleLeft}}{{item.articleRight}}</view> -->
+          <!-- <view class='li_subTitle'>{{item.article_type_keyword}}</view> -->
         </view>
-        <image class='right_icon' src='../../image/success.png' wx:if="{{item.type_id==1}}" data-index='{{index}}' bindtap='quxiao'></image>
-        <image class='right_icon' src='../../image/dingyue.png' wx:elif="{{item.type_id==2}}" data-index='{{index}}' bindtap='dingyue'></image>
+        <view class="quxiao" wx:if="{{item.type_id==1}}" data-index='{{index}}' bindtap='quxiao'>取消</view>
+        <view class="dingyue" wx:elif="{{item.type_id==2}}" data-index='{{index}}' bindtap='dingyue'>订阅</view>
+        <!-- <image class='right_icon' src='../../image/success.png' wx:if="{{item.type_id==1}}" data-index='{{index}}' ></image>
+        <image class='right_icon' src='../../image/dingyue.png' wx:elif="{{item.type_id==2}}" data-index='{{index}}' bindtap='dingyue'></image> -->
       </view>
-      <view class='li_line'></view>
+      <view class='li_lines'></view>
+      <view class='li_liness'></view>
     </view>
   </view>
 </view>

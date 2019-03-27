@@ -1,16 +1,22 @@
 /**index.wxss**/
-.toolbar{
+
+.toolbar {
   color: #1a222e;
   font-size: 40rpx;
   margin-bottom: 0rpx;
 }
-.top_search {
+
+.top_searchs {
   margin-top: 40rpx;
-  border-radius: 45rpx;
-  border: solid 1px #c6c6c6;
   display: flex;
-  width: 88%;
+  width: 20%;
   align-items: center;
+  background: white;
+  height: 80rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #ababab;
+  padding: 0 270rpx;
 }
 
 .top_search input {
@@ -18,7 +24,6 @@
   height: 72rpx;
   line-height: 72rpx;
 }
-
 .top_search_line {
   margin-top: 10rpx;
   margin-bottom: 10rpx;
@@ -29,15 +34,16 @@
 }
 
 .top_search_icon {
-  margin-left: 20rpx;
-  width: 36rpx;
-  height: 36rpx;
+  margin-right: 20rpx;
+  width: 30rpx;
+  height: 30rpx;
 }
 
 .top_search_placeholder {
   color: #8e8e93;
   font-size: 26rpx;
 }
+
 .qikan {
   margin-top: 48rpx;
   display: flex;
@@ -55,59 +61,120 @@
   padding-right: 35rpx;
   font-size: 24rpx;
 }
-.all_qikan image{
-height:23rpx;
-width:18rpx;
-margin-left:15rpx;
-margin-right:10rpx;
 
+.all_qikan image {
+  height: 23rpx;
+  width: 18rpx;
+  margin-left: 15rpx;
+  margin-right: 10rpx;
 }
-.qikan_line{
+
+.qikan_line {
   margin-top: 48rpx;
   display: flex;
   padding-left: 80rpx;
-  overflow:hidden;
+  overflow: hidden;
   width: 100%;
   scrollbar-highlight-color: #fff;
   margin-bottom: 20rpx;
   height: 250rpx;
 }
-.slide{
+
+.slide {
   padding-left: 130rpx;
 }
-.qikan_line_item{
+
+.qikan_line_item {
   margin-right: 49rpx;
   align-items: flex-start;
   display: inline-block;
 }
-.circle{
+
+.cr_mask {
+  position: relative;
   width: 108rpx;
   height: 108rpx;
   border-radius: 50%;
-  background-color: #A2A2A2;
+  z-index: 32;
 }
 
-.circle_title{
+.circle {
+  position: relative;
+  width: 108rpx;
+  height: 108rpx;
+  border-radius: 50%;
+  background-color: #a2a2a2;
+}
+
+.img_text {
+  position: absolute;
+  border-radius: 50%;
+  width: 108rpx;
+  height: 108rpx;
   font-size: 24rpx;
+  text-align: center;
+  line-height: 108rpx;
+  z-index: 10;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: rgba(4, 0, 0, 0.3);
+  white-space: nowrap;
+  color: white;
+  opacity: 1;
+}
+
+.circle_title {
+  display: flex;
+  font-size: 24rpx;
+  text-align: center;
   color: #7f7e7e;
   margin-top: 20rpx;
-  width: 118rpx;
+  margin-left: -32rpx;
+  width: 158rpx;
 }
 
-.not_zhankai{
-  color: #dc953e;
-  font-size: 30rpx;
+.circle_cr {
+  display: inline-block;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background: #70c25e;
+  margin-right: 10rpx;
+  margin-top: -4rpx;
+  vertical-align: middle;
+}
+
+.cr_text {
+  width: 158rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cr_texts {
+  width: 138rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 20rpx;
+}
+
+.not_zhankai {
+  color: rgb(220, 149, 62);
+  font-size: 26rpx;
   padding-left: 22rpx;
   padding-right: 22rpx;
   flex: 1;
 }
-.zhankai{
-  width: 30rpx;
-  height: 16rpx;
+
+.zhankai {
+  width: 26rpx;
+  height: 14rpx;
   margin-right: 60rpx;
-  margin-top: 8rpx;
+  margin-top: 2rpx;
 }
-.bottom{
+
+.bottom {
   margin-top: 6rpx;
   font-size: 24rpx;
   color: #020101;

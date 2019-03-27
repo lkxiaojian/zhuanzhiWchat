@@ -1,1 +1,40 @@
 /* pages/special/special.wxss */
+.img_circle {
+  width: 104rpx;
+  height: 104rpx;
+  border-radius: 50%;
+  /* background-color: #a2a2a2; */
+}
+.quxiao, .dingyue {
+  width: 118rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+}
+
+.dingyue {
+  color: rgb(255, 255, 255);
+  background: rgb(222, 131, 19);
+}
+
+.quxiao {
+  color: rgb(220, 149, 62);
+  border: 1px solid rgb(222, 131, 19);
+}
+.li_lines {
+  background: #d4d4d4;
+  height: 1rpx;
+  margin-left: 28rpx;
+  margin-right: 28rpx;
+  margin-top: 32rpx;
+}
+.li_liness {
+  /* background: rgb(255, 255, 255); */
+  border-top:1rpx solid rgb(255, 255, 255);
+  height: 1rpx;
+  margin-left: 28rpx;
+  margin-right: 28rpx;
+  margin-bottom: 32rpx;
+}

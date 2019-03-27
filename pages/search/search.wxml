@@ -1,102 +1,119 @@
 <!-- pages/search/search.wxml -->
 <view>
-<view class='nav bg-white' style='height:{{navH}}px'>
+  <view class='nav bg-gray' style='height:{{navH}}px'>
     <view class='nav-title'>
-     搜索
-      <image src='../../image/back.png' class='back' bindtap='back'></image> 
+      专知精选
+      <image src='../../image/back.png' class='back' bindtap='back'></image>
     </view>
   </view>
-<view class='bg-white container' style='margin-top:{{navH}}px' >
-   <view class='top'>
-    <view class='top_search'>
-      <image src='../../image/search.png' class='top_search_icon'></image>
-      <input type='text' confirm-type='search' bindconfirm='searchArticle' auto-focus='true'
-       style='caret-color:#16af12;'></input>
-    </view>
-    <text class='top_cancel' bindtap='back'>取消</text>
-  </view>
-  <view class='search_result' >
-    <view class='qikan'  wx-if='{{articleType.length>0}}'>
-      <view class='had_qikan'>精选</view>
-      <view class='all_qikan' bindtap='selectAllSpecial' bindtap='moreType'>更多
+  <view class='bg-gray container' style='margin-top:{{navH}}px'>
+    <view class='top'>
+      <view class='top_search bg-white' style="border-radius:8rpx">
+        <image src='../../image/search.png' class='top_search_icon'></image>
+        <input type='text' confirm-type='search' value="{{inputSearchLog}}" placeholder='搜索' bindconfirm='searchArticle' auto-focus='true' onkeyup="this.value.replace(/\s+/g,'')" style='caret-color:#16af12;' clearble></input>
+        <view class="clearIcon" bindtap='clearInfo'>+</view>
       </view>
-      <image src='../../image/right.png' class='all_qikan_image'></image>
+      <text class='top_cancel' bindtap='back'>取消</text>
     </view>
-    <view  wx-if='{{articleType.length>0}}' class='li_line' style='width:94%'></view>
-    <view class='slide' wx-if='{{articleType.length>0}}'>
-      <view class='silde_item' data-id='{{articleType[0].article_type_id}}' data-name='{{articleType[0].article_type_name}}' data-image='{{articleType[0].iamge_back}}' bindtap='startType'>
-        <image class='yellow_circle' style='width:102rpx; height:102rpx;' src='{{imageUrl+articleType[0].iamge_icon}}'></image>
-        <!-- <view class='green_text' style="{{articleType[0].article_type_name == keyword ? 'color:#16af12' : '' }}">{{articleType[0].article_type_name}}</view> -->
+    <view class="empty bg-gray"></view>
+    <view class='search_result bg-white'>
+      <view class='qikan' wx-if='{{articleType.length>0}}'>
+        <view class='had_qikan'>精选</view>
+        <view class='all_qikan' bindtap='selectAllSpecial' bindtap='moreType'>更多
+        </view>
+        <image src='../../image/right.png' class='all_qikan_image'></image>
+      </view>
+      <view wx-if='{{articleType.length>0}}' class='li_line' style='width:94%'></view>
+      <view class='slide' wx-if='{{articleType.length>0}}'>
+        <view class='silde_item' data-id='{{articleType[0].article_type_id}}' data-name='{{articleType[0].article_type_name}}' data-image='{{articleType[0].iamge_back}}' bindtap='startType'>
+          <image class='yellow_circle' style='width:102rpx; height:102rpx;' src='{{imageUrl+articleType[0].iamge_icon}}'></image>
+          <!-- <view class='green_text' style="{{articleType[0].article_type_name == keyword ? 'color:#16af12' : '' }}">{{articleType[0].article_type_name}}</view> -->
 
-        <block class='title' wx:for="{{articleType[0].article_type_names}}" wx:for-item="itemTitles">
-          <text class='title' wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
-          <text class='title' wx:else>{{itemTitles.str}}</text>
-        </block>
+          <block class='title' wx:for="{{articleType[0].article_type_names}}" wx:key="{{item.id}}" wx:for-item="itemTitles">
+            <text class='title' wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
+            <!-- <text class='title' wx:else>{{itemTitles.str}}</text> -->
+            <text class='title' wx:else>{{articleLeft}}</text>
+          </block>
+        </view>
       </view>
-    </view>
-    <view class='list' wx-if='searchResult==1'>
-      <view class='love_list' wx-if='{{searchList.loveList.length}}'>
-        <view class='gray_gap'  wx-if='{{articleType.length>0}}'></view>
-        <view class='group_title'>已订阅精选的文章</view>
-        <view class='cart' wx:for="{{searchList.loveList}}">
-          <view class='cart_content'  data-id='{{item.article_id}}' bindtap='selectDetail'>
-            <view class='tittle'>
-                <text wx:for="{{item.article_titles}}" wx:for-item="itemTitles">
+      <view class='list' wx-if='searchResult==1'>
+        <view class='love_list' wx-if='{{searchList.loveList.length}}'>
+          <view class='gray_gap' wx-if='{{articleType.length>0}}'></view>
+          <view class='group_titles'>已订阅精选的文章</view>
+          <view class='carts' wx:for="{{searchList.loveList}}" wx:for-item="item" wx:key="{{item.id}}">
+            <view class='cart_content' data-type='{{item.content_type}}' data-id='{{item.article_id}}' data-postid='{{item.state}}' bindtap='selectDetail'>
+              <view class='tittle'>
+                <text wx:if="{{item.state == 0}}" style="margin-left:-20rpx;">【专知阅读】</text>
+                <text wx:if="{{item.state == 1}}" style="margin-left:-20rpx;">【学术论文】</text>
+                <text wx:for="{{item.article_titles}}" wx:for-item="itemTitles" wx:key="{{item.id}}">
                 <text wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
-                <text wx:else>{{itemTitles.str}}</text>
-              </text>
-            </view>
-
-            <view class='sub_title'>
-              <text wx:for="{{item.article_keywords}}" wx:for-item="itemTitles">
+                <text wx:else style="text-indent:0">{{itemTitles.str}}</text>
+                </text>
+                <image wx:if="{{item.state == 1 && item.pdf_path != ''}}" src="../../image/pdf.png" class="pdfStyle"></image>
+                <image wx:if="{{item.state == 1 && item.pdf_path == ''}}" src="../../image/jpg.png" class="pdfStyle"></image>
+              </view>
+              <view class='sub_title'>
+                <text wx:for="{{item.article_keywords}}" wx:for-item="itemTitles" wx:key="{{item.id}}">
                 <!-- <text  style="color:red;" class='sub_title'>{{"#"+item.article_keyword}}</text> -->
                 <text wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
                 <text wx:else>{{itemTitles.str}}</text>
-              </text>
-            </view>
-            <view class='content'>
-              <text wx:for="{{item.content_excerpts}}" wx:for-item="itemTitles">
+                </text>
+              </view>
+              <view class='content'>
+                <text wx:for="{{item.content_excerpts}}" wx:for-item="itemTitles" wx:key="{{item.id}}">
                 <text  wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
                 <text wx:else>{{itemTitles.str}}</text>
-              </text>
+                </text>
+              </view>
             </view>
           </view>
         </view>
-      </view>
-      <view class='no_love_list' wx-if='{{searchList.noLoveList.length}}'>
-        <view class='gray_gap'  wx-if='{{articleType.length>0}}'></view>
-        <view class='group_title'>相关文章</view>
-        <view class='cart' wx:for="{{searchList.noLoveList}}">
-          <view class='cart_content'  data-id='{{item.article_id}}' bindtap='selectDetail'>
-            <!-- <text class='title' style="{{item.article_title == keyword ? 'color:#16af12' : '' }}">{{item.article_title}}</text>
+        <view class='no_love_list' wx-if='{{searchList.noLoveList.length}}'>
+          <view class='gray_gap' wx-if='{{articleType.length>0}}'></view>
+          <view class='group_title'>相关文章</view>
+          <view class='cart' wx:for="{{searchList.noLoveList}}">
+            <view class='cart_content' data-id='{{item.article_id}}' data-type='{{item.content_type}}' data-postid='{{item.state}}' bindtap='selectDetail'>
+              <!-- <text class='title' style="{{item.article_title == keyword ? 'color:#16af12' : '' }}">{{item.article_title}}</text>
             <text class='sub_title'>{{"#"+item.article_keyword}}</text>
             <view class='content' style="{{item.content_excerpt == keyword ? 'color:#16af12' : '' }}">{{item.content_excerpt}}</view> -->
-            <view class='title'>
-              <text wx:for="{{item.article_titles}}" wx:for-item="itemTitles">
-                <text wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
-              <text wx:else>{{itemTitles.str}}</text>
-              </text>
-            </view>
-            <view class='sub_title'>
-              <text wx:for="{{item.article_keywords}}" wx:for-item="itemTitles" >
+              <view class='title'>
+                <text wx:if="{{item.state == 0}}" style="margin-left:-20rpx;">【专知阅读】</text>
+                <text wx:if="{{item.state == 1}}" style="margin-left:-20rpx;">【学术论文】</text>
+                <text wx:for="{{item.article_titles}}" wx:for-item="itemTitles" wx:key="{{item.id}}">
                 <text wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
                 <text wx:else>{{itemTitles.str}}</text>
-              </text>
-            </view>
-            <view class='content'>
-              <text wx:for="{{item.content_excerpts}}" wx:for-item="itemTitles">
-                <text  wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
+                </text>
+                <image wx:if="{{item.state == 1 && item.pdf_path != ''}}" src="../../image/pdf.png" class="pdfStyle"></image>
+                <image wx:if="{{item.state == 1 && item.pdf_path == ''}}" src="../../image/jpg.png" class="pdfStyle"></image>
+              </view>
+              <view class='sub_title'>
+                <text wx:for="{{item.article_keywords}}" wx:for-item="itemTitles" wx:key="{{item.id}}">
+                <text wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
                 <text wx:else>{{itemTitles.str}}</text>
-              </text>
+                </text>
+              </view>
+              <view class='content'>
+                <text wx:for="{{item.content_excerpts}}" wx:for-item="itemTitles" wx:key="{{item.id}}">
+                <text wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
+                <text wx:else>{{itemTitles.str}}</text>
+                </text>
+              </view>
             </view>
           </view>
         </view>
+        <view class='bottom' wx-if="{{hasMore==2}}">没有更多搜索结果</view>
+        <view class='bottom' wx-if="{{hasMore==3}}">上拉加载更多</view>
       </view>
-      <view class='bottom' wx-if="{{hasMore==2}}">没有更多搜索结果</view>
-      <view class='bottom' wx-if="{{hasMore==3}}">上拉加载更多</view>
-
+    </view>
+    <view class='no_search_result bg-gray' wx-if='{{searchResult==0}}'>没有相关内容</view>
+    <!-- 缓存的数据 -->
+    <view wx-if='{{searchResult==-1}}' style="width:100%;height:1034rpx">
+      <view class="srcenter" wx:if="{{getSearch != 0}}">
+        <view class="scn" wx:for="{{getSearch}}" wx:for-index="idx" bindtap='searchLog' wx:for-item="itemName" wx:key="idx" data-value="{{itemName}}" wx:key="{{item.id}}" style="font-size:30rpx">
+          <view wx:if="{{itemName != ''}}">{{itemName}}</view>
+        </view>
+      </view>
+      <view class="clear" bindtap="clearstorg" wx:if="{{getSearch != 0}}">清空所有记录</view>
     </view>
   </view>
-  <view class='no_search_result' wx-if='{{searchResult==0}}'>没有相关内容</view>
-</view>
 </view>
