@@ -1,6 +1,6 @@
 // pages/detail/detail.js
 const util = require('../../utils/util.js')
-var WxParse = require('../../wxParse/wxParse.js');
+// var WxParse = require('../../wxParse/wxParse.js');
 var typeId = 0;
 Page({
 
@@ -39,15 +39,15 @@ Page({
       url: getApp().globalData.baseUrl + '/article/message/rest',
       data: {
         articleId: articleId,
-        state: options.contentType,
+        state: options.stateType,
         wechatid: getApp().globalData.wxId
       },
       method: 'GET',
       success: function(res) {
         var author = false;
-        if (res.data.result.content_manual) {
-          WxParse.wxParse('detailHtml', 'html', res.data.result.content_manual, that, 0);
-        }
+        // if (res.data.result.content_manual) {
+        //   WxParse.wxParse('detailHtml', 'html', res.data.result.content_manual, that, 0);
+        // }
         if (res.data.result.author && res.data.result.author.length > 0) {
           author = true;
         }
