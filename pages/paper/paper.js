@@ -29,6 +29,7 @@ Page({
       articleKeyWord: options.articleKeyWord,
       articleIds: options.articleId,
       articleContentType: options.contentType,
+      stateType: options.stateType
     })
     typeId = options.typeId;
     wx.showLoading({
@@ -39,7 +40,7 @@ Page({
       url: getApp().globalData.baseUrl + '/article/message/rest',
       data: {
         articleId: articleId,
-        state: options.contentType,
+        state: options.stateType,
         wechatid: getApp().globalData.wxId
       },
       method: 'GET',
