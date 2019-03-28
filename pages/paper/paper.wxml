@@ -35,8 +35,8 @@
     </view> -->
     <view class='content'>
       <view class='arcticleTitle' style="margin-bottom:60rpx;">摘要</view>
-      <template is="wxParse" data="{{wxParseData:detailHtml.nodes}}">
-      </template>
+      <!-- <template is="wxParse" data="{{wxParseData:detailHtml.nodes}}">
+      </template> -->
       <view style="margin-top:60rpx">{{result.content_excerpt_e}}</view>
     </view>
     <view class='li_lines'></view>
