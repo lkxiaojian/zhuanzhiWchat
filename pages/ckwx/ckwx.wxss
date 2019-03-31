@@ -33,7 +33,13 @@
   left: 20rpx;
   padding: 10px 15px;
 }
-
+/* .back {
+  font-size: 50rpx;
+  margin-left: 26rpx;
+  margin-top: 50rpx;
+  height: 100rpx;
+  position: relative;
+} */
 image {
   width: 320px;
   height: 240px;
@@ -57,13 +63,7 @@ image {
   letter-spacing: 4rpx;
 }
 
-.back {
-  font-size: 50rpx;
-  margin-left: 26rpx;
-  margin-top: 50rpx;
-  height: 100rpx;
-  position: relative;
-}
+
 
 .zhankai {
   width: 32rpx;

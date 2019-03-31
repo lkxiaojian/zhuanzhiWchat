@@ -31,8 +31,8 @@
 
           <block class='title' wx:for="{{articleType[0].article_type_names}}" wx:key="{{item.id}}" wx:for-item="itemTitles">
             <text class='title' wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
-            <!-- <text class='title' wx:else>{{itemTitles.str}}</text> -->
-            <text class='title' wx:else>{{articleLeft}}</text>
+            <text class='title' wx:else>{{itemTitles.str}}</text>
+            <!-- <text class='title' wx:else>{{articleLeft}}</text> -->
           </block>
         </view>
       </view>

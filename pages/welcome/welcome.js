@@ -5,11 +5,9 @@ Page({
   data: {
     isShowDialog: false,
   },
-  /**
-   * 页面的初始数据
-   */
   onLoad(options) {
     getApp().login();
+    var that = this;
     isFlage = wx.getStorageSync("register");
     if (isFlage != 'true') {
       isFlage = 'false';
@@ -155,6 +153,16 @@ Page({
         },
       ]
     })
+    wx.request({
+      url: getApp().globalData.baseUrl + '/select/articleType/rest',
+      method: 'GET',
+      success: function (res) {
+        console.log(res.data.result,'fghjkl')
+        that.setData({
+          // result: res.data.result,
+        })
+      },
+    })
   },
   //点击选择精选集
   selectRep: function(e) {
@@ -185,7 +193,7 @@ Page({
     }
     if (selectData != "") {
       wx.request({
-        url: app.globalData.baseUrl + '/user/setAttention/rest', //仅为示例，并非真实的接口地址
+        url: app.globalData.baseUrl + '/user/setAttention/rest',
         data: {
           wechatid: app.globalData.wxId,
           attentions: selectData,

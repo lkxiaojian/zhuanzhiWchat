@@ -2,7 +2,7 @@
   <view class="nav bg-white" style="height:66px">
     <view class="nav-title" bindtap='back'>
       <image class="back" src="../../image/back.png"></image>
-      <view style="font-size:38rpx">参考文献</view>
+      <view  style="font-size:38rpx;height:36rpx;left:250rpx;margin-top:14rpx">参考文献</view>
     </view>
   </view>
   <view class="lookPdf">
