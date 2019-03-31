@@ -1,9 +1,75 @@
-.lookPdf{
-  width:84%;
-  margin:0 auto;
-  margin-top:140rpx;
+.nav {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }
-.title{
+
+.bg-white {
+  background-color: #fff;
+}
+
+.nav-title {
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  font-family: PingFang-SC-Medium;
+  font-size: 36rpx;
+  letter-spacing: 2px;
+}
+
+.nav .back {
+  width: 20rpx;
+  height: 35rpx;
+  position: absolute;
+  bottom: 0;
+  left: 20rpx;
+  padding: 10px 15px;
+}
+
+image {
+  width: 320px;
+  height: 240px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.lookPdf {
+  width: 84%;
+  margin: 0 auto;
+  margin-top: 140rpx;
+  padding-bottom: 30rpx;
+}
+
+.title {
   font-size: 46rpx;
-  color:rgb(26,34,46)
+}
+
+.ckwx {
+  line-height: 50rpx;
+  letter-spacing: 4rpx;
+}
+
+.back {
+  font-size: 50rpx;
+  margin-left: 26rpx;
+  margin-top: 50rpx;
+  height: 100rpx;
+  position: relative;
+}
+
+.zhankai {
+  width: 32rpx;
+  height: 22rpx;
+  margin-right: 60rpx;
+  margin-top: -56rpx;
+  transform: rotate(90deg);
+  position: fixed;
 }

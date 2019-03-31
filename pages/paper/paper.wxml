@@ -5,15 +5,17 @@
       <image src='../../image/back.png' class='back' bindtap='back'></image>
     </view>
   </view>
-  <view class='bg-white container' style='margin-top:{{navH}}px; overflow-x:hidden;'>
+  <view class='bg-white container' style='margin-top:{{navH}}px; overflow-x:hidden;padding-bottom:30rpx'>
     <view class='arcticleTitle'>{{result.article_title}}</view>
     <view wx:if='{{author}}' style='width:100%;'>
       <view class='title'>
-        <view style='width:100%;text-align:left;line-height:40rpx;color:rgb(49,49,49),font-size:20px'>
+        <view style='margin-top:40rpx;width:100%;text-align:left;line-height:40rpx;color:rgb(49,49,49),font-size:20px'>
           <!-- {{"作者："+result.author+" • 来源："+result.source+" • "+result.create_time}} -->
-          <view>来源：{{result.source}}
+          <!-- <view>来源：{{result.source}}
+          </view> -->
+           <view>期刊名称：{{result.posting_name}}
           </view>
-          <view>期刊号：{{result.paper_create_time}}
+          <view>刊出日期：{{result.paper_create_time}}
           </view>
           <view>作者：{{result.author}}
           </view>
@@ -21,9 +23,9 @@
           </view>
         </view>
         <view>
-          <view class='arcticleTitle'>关键词</view>
-          <view style='width:100%;text-align:left;line-height:40rpx;color:rgb(49,49,49),font-size:20px;margin-top:40rpx'>{{result.article_keyword}}</view>
-          <view style='width:100%;text-align:left;line-height:40rpx;color:rgb(49,49,49),font-size:20px;margin-top:40rpx'>{{result.article_keyword_e}}</view>
+          <view class='arcticleTitles' style="margin-top:40rpx;">关键词</view>
+          <view class="styleTitle" style='margin-top:40rpx'>{{result.article_keyword}}</view>
+          <view class="styleTitle" style='margin-top:14rpx'>{{result.article_keyword_e}}</view>
         </view>
       </view>
     </view>
@@ -34,16 +36,17 @@
       </view>
     </view> -->
     <view class='content'>
-      <view class='arcticleTitle' style="margin-bottom:60rpx;">摘要</view>
+      <view class='arcticleTitles' >摘要</view>
       <!-- <template is="wxParse" data="{{wxParseData:detailHtml.nodes}}">
       </template> -->
+      <view style="margin-top:60rpx">{{result.content_excerpt}}</view>
       <view style="margin-top:60rpx">{{result.content_excerpt_e}}</view>
     </view>
     <view class='li_lines'></view>
     <view class='bottom'>本页面由专知用内容爬取技术爬取，在未对原始内容编辑的情况下，对排版做了优化，以提高阅读体验。</view>
     <view class='article'>相关论文</view>
     <view class='list'>
-      <view class='li_container' wx:for='{{result.related}}'>
+      <view class='li_container' wx:for='{{fRelated}}' wx:key="{{item.id}}">
         <view class='li' data-id='{{item.article_id}}' bindtap='selectDetail'>
           <view class='li_left'>
             <view class='li_title'>{{item.article_title}}</view>
@@ -54,17 +57,26 @@
         <view class='line'></view>
       </view>
     </view>
+     <view class='list' wx:if="{{result.related.length != 0}}"  style="margin-top:-28rpx;margin-bottom:30rpx;">
+      <view class='li_container' >
+        <view class='li' data-id='{{lRelated.article_id}}' bindtap='selectDetail'>
+          <view class='li_left'>
+            <view class='li_title'>{{lRelated.article_title}}</view>
+            <view class='li_sub_title'>{{"#"+lRelated.article_keyword}}</view>
+          </view>
+          <image class='li_right' src='{{imageUrl+result.iamge_back}}'></image>
+        </view>
+      </view>
+    </view>
   </view>
   <view class='bnt'>
     <!-- <image src='{{result.collect_state==1?"../../image/love.png":"../../image/had_love.png"}}' bindtap='share'></image> -->
     <button wx:if="{{result.pdf_path != ''}}" bindtap='lookPdf'>
       <image src='../../image/pdft.png'></image>
     </button>
-    <button wx:elif="{{result.pdf_path == ''}}" bindtap='lookImg'>
+    <!-- <button wx:if="{{result.pdf_path == ''}}" bindtap='lookImg'>
       <image src='../../image/yl.png'></image>
-    </button>
-    <button wx:else>
-    </button>
+    </button> -->
     <button bindtap='ckwx' wx:if="{{result.reference != ''}}">
       <image src='../../image/ckwx.png'></image>
     </button>

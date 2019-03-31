@@ -36,12 +36,12 @@
           </block>
         </view>
       </view>
-      <view class='list' wx-if='searchResult==1'>
+      <view  wx-if='searchResult==1'>
         <view class='love_list' wx-if='{{searchList.loveList.length}}'>
           <view class='gray_gap' wx-if='{{articleType.length>0}}'></view>
           <view class='group_titles'>已订阅精选的文章</view>
           <view class='carts' wx:for="{{searchList.loveList}}" wx:for-item="item" wx:key="{{item.id}}">
-            <view class='cart_content' data-type='{{item.content_type}}' data-id='{{item.article_id}}' data-postid='{{item.state}}' bindtap='selectDetail'>
+            <view class='cart_content' data-type='{{item.content_type}}' data-id='{{item.article_id}}' data-postid='{{item.state}}' data-name='{{item.article_keyword}}' bindtap='selectDetail'>
               <view class='tittle'>
                 <text wx:if="{{item.state == 0}}" style="margin-left:-20rpx;">【专知阅读】</text>
                 <text wx:if="{{item.state == 1}}" style="margin-left:-20rpx;">【学术论文】</text>
@@ -50,7 +50,7 @@
                 <text wx:else style="text-indent:0">{{itemTitles.str}}</text>
                 </text>
                 <image wx:if="{{item.state == 1 && item.pdf_path != ''}}" src="../../image/pdf.png" class="pdfStyle"></image>
-                <image wx:if="{{item.state == 1 && item.pdf_path == ''}}" src="../../image/jpg.png" class="pdfStyle"></image>
+                <!-- <image wx:if="{{item.state == 1 && item.pdf_path == ''}}" src="../../image/jpg.png" class="pdfStyle"></image> -->
               </view>
               <view class='sub_title'>
                 <text wx:for="{{item.article_keywords}}" wx:for-item="itemTitles" wx:key="{{item.id}}">
@@ -84,7 +84,7 @@
                 <text wx:else>{{itemTitles.str}}</text>
                 </text>
                 <image wx:if="{{item.state == 1 && item.pdf_path != ''}}" src="../../image/pdf.png" class="pdfStyle"></image>
-                <image wx:if="{{item.state == 1 && item.pdf_path == ''}}" src="../../image/jpg.png" class="pdfStyle"></image>
+                <!-- <image wx:if="{{item.state == 1 && item.pdf_path == ''}}" src="../../image/jpg.png" class="pdfStyle"></image> -->
               </view>
               <view class='sub_title'>
                 <text wx:for="{{item.article_keywords}}" wx:for-item="itemTitles" wx:key="{{item.id}}">
@@ -107,7 +107,7 @@
     </view>
     <view class='no_search_result bg-gray' wx-if='{{searchResult==0}}'>没有相关内容</view>
     <!-- 缓存的数据 -->
-    <view wx-if='{{searchResult==-1}}' style="width:100%;height:1034rpx">
+    <view wx-if='{{searchResult==-1}}' style="width:100%;height:1248rpx">
       <view class="srcenter" wx:if="{{getSearch != 0}}">
         <view class="scn" wx:for="{{getSearch}}" wx:for-index="idx" bindtap='searchLog' wx:for-item="itemName" wx:key="idx" data-value="{{itemName}}" wx:key="{{item.id}}" style="font-size:30rpx">
           <view wx:if="{{itemName != ''}}">{{itemName}}</view>

@@ -3,7 +3,17 @@
   margin:0 auto;
   margin-top:140rpx;
 }
-.title{
-  font-size: 46rpx;
-  color:rgb(26,34,46)
+.back {
+  font-size: 50rpx;
+  margin-left: 56rpx;
+  margin-top: 50rpx;
+  color: rgb(89, 89, 89);
+}
+
+.zhankai {
+  width: 32rpx;
+  height: 22rpx;
+  margin-right: 60rpx;
+  margin-top: 2rpx;
+  transform: rotate(90deg);
 }

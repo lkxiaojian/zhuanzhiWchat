@@ -46,7 +46,7 @@
           <text wx:if="{{item.firstItem.state == 1}}" style="margin-left:-20rpx;">【学术论文】</text>
           <text class='title' style="text-indent:-14rpx;">{{item.firstItem.article_title}}</text>
           <image wx:if="{{item.firstItem.state == 1 && item.firstItem.pdf_path != ''}}" src="../../image/pdf.png" class="pdfStyle"></image>
-          <image wx:if="{{item.firstItem.state == 1 && item.firstItem.pdf_path == ''}}" src="../../image/jpg.png" class="pdfStyle"></image>
+          <!-- <image wx:if="{{item.firstItem.state == 1 && item.firstItem.pdf_path == ''}}" src="../../image/jpg.png" class="pdfStyle"></image> -->
         </view>
         <text class='sub_title'>{{item.firstItem.article_keyword}}</text>
         <view class='content' style='margin-bottom:{{item.firstItem.num_prods==0?"40":"0"}}rpx;'>{{item.firstItem.content_excerpt}}</view>

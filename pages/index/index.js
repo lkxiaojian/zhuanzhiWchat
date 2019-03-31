@@ -190,7 +190,6 @@ Page({
     })
   },
   selectDetail: function(data) {
-    console.log(data,'f hvgjbkn')
     wx.showLoading({
       title: '跳转中',
     })

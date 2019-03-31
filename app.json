@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/welcome/welcome",
-    "pages/lookPdf/lookPdf",
     "pages/lookImg/lookImg",
     "pages/ckwx/ckwx",
     "pages/detail/detail",

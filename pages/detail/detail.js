@@ -20,6 +20,8 @@ Page({
     contentType: 0,
     stateType:0,
     timeEnd: "",
+    fRelated:[],
+    lRelated:{},
   },
 
   /**
@@ -45,7 +47,7 @@ Page({
       data: {
         articleId: articleId,
         state: options.stateType,
-        wechatid: getApp().globalData.wxId
+        wechatid: getApp().globalData.wxId,
       },
       method: 'GET',
       success: function(res) {
@@ -60,9 +62,10 @@ Page({
         res.data.result.article_keyword = getApp().handleKeyWord(res.data.result.article_keyword);
         that.setData({
           result: res.data.result,
+          fRelated: res.data.result.related.slice(0, res.data.result.related.length - 1),
+          lRelated: res.data.result.related[res.data.result.related.length-1],
           author: author
         })
-
         wx.hideLoading();
       },
     })

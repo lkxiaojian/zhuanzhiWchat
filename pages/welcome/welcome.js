@@ -15,7 +15,6 @@ Page({
       isFlage = 'false';
     }
     this.setData({
-
       statusHeight: getApp().globalData.statusBarHeight,
       navH: getApp().globalData.navHeight,
       noSelect: 'title title',

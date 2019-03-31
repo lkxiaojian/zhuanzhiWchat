@@ -1,9 +1,0 @@
-.lookPdf{
-  width:84%;
-  margin:0 auto;
-  margin-top:140rpx;
-}
-.title{
-  font-size: 46rpx;
-  color:rgb(26,34,46)
-}

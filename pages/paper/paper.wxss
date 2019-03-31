@@ -12,12 +12,21 @@
   width: 100%;
 }
 
-.authorTitle {
+.arcticleTitles {
+  color: rgb(49, 49, 49);
+  font-size: 46rpx;
+  width: 100%;
+}
+
+.styleTitle {
+  line-height: 40rpx;
+  color: rgb(49, 49, 49);
+  font-size: 28rpx;
 }
 
 .title {
   display: flex;
-  margin-top: 76rpx;
+  /* margin-top: 76rpx; */
   color: rgb(49, 49, 49);
   font-size: 20rpx;
   flex-wrap: wrap;
@@ -146,8 +155,8 @@
 }
 
 .li_right {
-  width: 174rpx;
-  height: 157rpx;
+  width: 154rpx;
+  height: 158rpx;
   margin-left: 20rpx;
   border-radius: 8rpx;
 }

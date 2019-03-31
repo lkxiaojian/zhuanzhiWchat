@@ -26,7 +26,7 @@
   margin-top: 20rpx;
   margin-left: 30rpx;
   width: 80%;
-  height: 240rpx;
+  height: 260rpx;
 }
 
 .scn {
@@ -40,6 +40,10 @@
   line-height: 34rpx;
   font-size: 20rpx;
   padding: 10rpx 15rpx;
+  max-width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .clear {
@@ -105,7 +109,7 @@
 .search_result, .love_list, .no_love_list {
   display: flex;
   flex-direction: column;
-  /* width: 100%; */
+  width: 100%;
 }
 
 .no_search_result {

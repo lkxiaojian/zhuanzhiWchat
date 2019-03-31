@@ -1,7 +1,15 @@
-<view class="lookPdf">
-  <view class="title">{{ckwxTitle}}</view>
-  <view style="margin-top:34rpx;font-size:26rpx;">{{ckwxTime}}</view>
-  <view style="margin-top:50rpx">
-    {{ckwxUrl}}
+<view>
+  <view class="nav bg-white" style="height:66px">
+    <view class="nav-title" bindtap='back'>
+      <image class="back" src="../../image/back.png"></image>
+      <view style="font-size:38rpx">参考文献</view>
+    </view>
+  </view>
+  <view class="lookPdf">
+    <view class="title">{{result.article_title}}</view>
+    <view style="margin-top:34rpx;font-size:26rpx;">{{result.paper_create_time}}</view>
+    <view class='ckwx' style="margin-top:50rpx">
+      {{result.reference}}
+    </view>
   </view>
 </view>

@@ -8,75 +8,63 @@ Page({
     articleTypes: [],
     imageUrl: getApp().globalData.imageUrl,
     article_type_nameSp: [],
+    page: 0,
   },
   onLoad: function(options) {
     var that = this;
     var a = [];
     sharetypeId = options.sharetypeId;
+    this.requestData();
+
+  },
+  requestData: function() {
+    var that = this;
     wx.request({
       url: getApp().globalData.baseUrl + '/article/getalltype/rest',
       data: {
-        wechatid: getApp().globalData.wxId
+        wechatid: getApp().globalData.wxId,
+        page: that.data.page
       },
       method: "GET",
       success: res => {
-        this.data.articleTypes = res.data.result;
-        for (var i = 0; i < this.data.articleTypes.length; i++) {
-          this.data.articleTypes[i].article_type_nameSp = this.data.articleTypes[i].article_type_name.replace(/,/g, '')
+        var articleTypes = res.data.result;
+        for (var i = 0; i < articleTypes.length; i++) {
+          articleTypes[i].article_type_nameSp = articleTypes[i].article_type_name.replace(/,/g, '')
         }
+
         if (res.data.result.length > 0) {
           for (var i = 0; i < res.data.result.length; i++) {
             res.data.result[i].article_type_keyword = getApp().handleKeyWord(res.data.result[i].article_type_keyword);
           }
+          if (that.data.page == 0) { //是不是第一页
+            that.setData({
+              articleTypes: articleTypes,
+            })
+          } else {
+            that.setData({
+              articleTypes: that.data.articleTypes.concat(res.data.result),
+            })
+          }
         }
-        this.setData({
-          articleTypes: res.data.result,
-        })
-
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.data.page = 0;
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.requestData(); //刷新数据
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    this.data.page++;
+    wx.showNavigationBarLoading() //在标题栏中显示加载
+    this.requestData(); //加载数据
   },
 
   /**

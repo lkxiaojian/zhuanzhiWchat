@@ -96,7 +96,7 @@ Page({
           if (res.data.articleType) {
             if (res.data.articleType && res.data.articleType.length > 0) {
               res.data.articleType[0].article_type_names = that.hilight_word('', res.data.articleType[0].article_type_name);
-              that.data.articleLeft = res.data.articleType[0].article_type_names[1].str.replace(/,/g, '')
+              that.data.articleLeft = res.data.articleType[0].article_type_names[0].str.replace(/,/g, '')
               that.data.articleType = res.data.articleType;
             }
           }
@@ -295,9 +295,10 @@ Page({
     var id = data.currentTarget.dataset.id;
     var contentType = data.currentTarget.dataset.type;
     var stateType = data.currentTarget.dataset.postid;
+    var articleKeyWord = data.currentTarget.dataset.name;
     if (contentType == 0 || contentType == 1) {
       wx.navigateTo({
-        url: '../detail/detail?articleId=' + id + '&contentType=' + contentType + '&stateType=' + stateType,
+        url: '../detail/detail?articleId=' + id + '&contentType=' + contentType + '&stateType=' + stateType + '&articleKeyWord=' + articleKeyWord,
         complete: function() {
           wx.hideLoading()
         }

@@ -263,10 +263,14 @@
 }
 
 .sub_title {
+  width:94%;
   font-size: 30rpx;
   color: rgb(171, 171, 171);
   margin-top: 32rpx;
   margin-bottom: 32rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .content {

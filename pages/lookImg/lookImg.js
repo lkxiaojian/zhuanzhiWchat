@@ -2,33 +2,28 @@
 Page({
   data: {
     imgContent: "",
-    imgTime: "",
-    imgTitle: "",
   },
   onLoad: function(options) {
+    var that = this;
     this.setData({
-      imgContent: options.imgContent.split(','),
-      imgTime: options.imgTime,
-      imgTitle: options.imgTitle,
+      articleIds: options.articleId,
+      stateType: options.stateType
+    })
+    var imgArrays = [];
+    var imgArray = options.imgContent.split(',')
+    imgArray.forEach(i => {
+      var imgs = getApp().globalData.baseUrl + i
+      imgArrays.push(imgs)
+    })
+    this.setData({
+      imgContent: imgArrays,
     })
   },
-  onReady: function() {},
-
-  onShow: function() {
-
+  back: function () {
+    wx.redirectTo({
+      url: '../paper/paper?articleId=' + this.data.articleIds + '&stateType=' + this.data.stateType
+    })
   },
-
-  onHide: function() {
-
-  },
-
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function() {
 
   },

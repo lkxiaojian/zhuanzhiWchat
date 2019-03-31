@@ -1,7 +1,7 @@
-<!--pages/detail/lookPdf/lookPdf.wxml-->
+<view class="back" bindtap='back'>
+  <image src="../../image/down.png" class='zhankai'></image>
+</view>
 <view class="lookPdf">
-  <view class="title">{{imgTitle}}</view>
-  <view style="margin-top:34rpx;font-size:26rpx;">{{imgTime}}</view>
   <view style="margin-top:50rpx" wx:for="{{imgContent}}" wx:key="{{item}}">
     <image src="{{item}}"></image>
   </view>

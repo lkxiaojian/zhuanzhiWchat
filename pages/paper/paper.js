@@ -1,12 +1,6 @@
-// pages/detail/detail.js
 const util = require('../../utils/util.js')
-// var WxParse = require('../../wxParse/wxParse.js');
 var typeId = 0;
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     statusHeight: getApp().globalData.statusBarHeight,
     imageUrl: getApp().globalData.imageUrl,
@@ -18,7 +12,10 @@ Page({
     nowTime: "",
     timeStart: "",
     contentType: 0,
+    pdfPath: "",
     timeEnd: "",
+    fRelated: [],
+    lRelated: {},
   },
 
   onLoad: function(options) {
@@ -56,34 +53,44 @@ Page({
         res.data.result.article_keyword = getApp().handleKeyWord(res.data.result.article_keyword);
         that.setData({
           result: res.data.result,
+          fRelated: res.data.result.related.slice(0, res.data.result.related.length - 1),
+          lRelated: res.data.result.related[res.data.result.related.length - 1],
+          pdfPath: res.data.result.pdf_path,
           author: author
         })
-
         wx.hideLoading();
       },
+    })
+  },
+  ckwx: function () {
+    wx.navigateTo({
+      url: '../ckwx/ckwx?articleId=' + this.data.articleIds + '&stateType=' + this.data.stateType 
     })
   },
   fxShare: function() {
     this.onShareAppMessage();
   },
-  ckwx: function() {
-    var results = this.data.results
-    wx.navigateTo({
-      url: '../ckwx/ckwx?ckwxUrl = ' + results.reference + '&ckwxTime=' + results.paper_create_time + '&ckwxTitle=' + results.article_title
-    })
 
-  },
   lookImg: function() {
     var results = this.data.results
     wx.navigateTo({
-      url: '../lookImg/lookImg?imgContent = ' + results.image_back + '&imgTime=' + results.paper_create_time + '&imgTitle=' + results.article_title
-
+      url: '../lookImg/lookImg?imgContent=' + results.image_back + '&articleId=' + this.data.articleIds + '&stateType=' + this.data.stateType 
     })
   },
   lookPdf: function() {
-    var results = this.data.results
-    wx.navigateTo({
-      url: '../lookPdf/lookPdf?pdfContent = ' + results.pdf_path + '&pdfTime=' + results.paper_create_time + '&pdfTitle=' + results.article_title
+    var that = this;
+    const pdfUrl = getApp().globalData.imageUrl + that.data.pdfPath
+    wx.downloadFile({
+      url: pdfUrl,
+      // url:'https://xiaochengxu.zhuanzhilink.com/weixin_img/resources/pdf/paper/2019-03-28_46/%E5%9F%BA%E4%BA%8E2%E7%BB%B4%E6%BF%80%E5%85%89%E9%9B%B7%E8%BE%BE%E7%9A%84%E5%B0%8F%E5%9E%8B%E5%9C%B0%E9%9D%A2%E7%A7%BB%E5%8A%A8%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%87%AA%E4%B8%BB%E5%9B%9E%E6%94%B6%E6%96%B9%E6%B3%95.pdf',
+      success: function(res) {
+        var filePath = res.tempFilePath
+        wx.openDocument({
+          filePath: filePath,
+          success: function (res) {
+          },
+        })
+      }
     })
   },
   love: function() {
