@@ -4,6 +4,8 @@ var isFlage = 'false';
 Page({
   data: {
     isShowDialog: false,
+    result:[],
+    sureid:false,
   },
   onLoad(options) {
     getApp().login();
@@ -157,15 +159,15 @@ Page({
       url: getApp().globalData.baseUrl + '/select/articleType/rest',
       method: 'GET',
       success: function (res) {
-        console.log(res.data.result,'fghjkl')
         that.setData({
-          // result: res.data.result,
+          result: res.data.result,
         })
       },
     })
   },
   //点击选择精选集
   selectRep: function(e) {
+    console.log(e,'eeehnjk')
     var index = e.currentTarget.dataset.selectindex; //当前点击元素的自定义数据，这个很关键
     var selectIndex = this.data.selectIndex; //取到data里的selectIndex
     selectIndex[index - 1].sureid = !selectIndex[index - 1].sureid; //点击就赋相反的值
@@ -173,6 +175,17 @@ Page({
       selectIndex: selectIndex //将已改变属性的json数组更新
     })
   },
+
+//  selectRep: function(e) {
+//     console.log(e,'eeehnjk')
+//     var index = e.currentTarget.dataset.selectindex; //当前点击元素的自定义数据，这个很关键
+//     var selectIndex = this.data.selectIndex; //取到data里的selectIndex
+//     selectIndex[index - 1] = !selectIndex[index - 1]; //点击就赋相反的值
+//     this.setData({
+//       selectIndex: selectIndex //将已改变属性的json数组更新
+//     })
+//   },
+
   goFirst: function(e) {
     wx.redirectTo({
       url: '../index/index',
@@ -220,6 +233,48 @@ Page({
       // })
     }
   },
+  // startApp: function () {
+  //   var that = this;
+  //   var selectIndex = this.data.selectIndex;
+  //   var selectData = "";
+  //   for (var i = 0; i < selectIndex.length; i++) {
+  //     if (selectIndex[i]) {
+  //       if (i == selectIndex.length - 1) {
+  //         selectData = selectData + selectIndex[i].id;
+  //       } else {
+  //         selectData = selectData + selectIndex[i].id + ",";
+  //       }
+  //     }
+  //   }
+  //   if (selectData != "") {
+  //     wx.request({
+  //       url: app.globalData.baseUrl + '/user/setAttention/rest',
+  //       data: {
+  //         wechatid: app.globalData.wxId,
+  //         attentions: selectData,
+  //         type: ''
+  //       },
+  //       method: "GET",
+  //       success(res) {
+  //       }
+  //     })
+  //     wx.redirectTo({
+  //       url: '../index/index',
+  //     });
+  //   } else {
+  //     that.setData({
+  //       isShowDialog: true
+  //     });
+  //     setTimeout(function () {
+  //       that.setData({
+  //         isShowDialog: false
+  //       });
+  //     }, 2000)
+  //     // wx.showToast({
+  //     //   title: '请选择你喜欢的精选集',
+  //     // })
+  //   }
+  // },
   bindGetUserInfo: function(e) {
     if (e.detail.userInfo) {
       wx.showLoading({

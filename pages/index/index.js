@@ -140,7 +140,8 @@ Page({
         page: this.data.arcticleList[index].page,
         type: this.data.arcticleList[index].firstItem.type,
         time: this.data.arcticleList[index].firstItem.create_time,
-        article_id: this.data.arcticleList[index].firstItem.article_id
+        article_id: this.data.arcticleList[index].firstItem.article_id,
+        state: this.data.arcticleList[index].firstItem.state,
       },
       method: 'GET',
       success: function(res) {
