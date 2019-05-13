@@ -1,11 +1,8 @@
-/**index.wxss**/
-
 .toolbar {
   color: #1a222e;
   font-size: 40rpx;
   margin-bottom: 0rpx;
 }
-
 .top_searchs {
   margin-top: 40rpx;
   display: flex;
@@ -92,18 +89,18 @@
 
 .cr_mask {
   position: relative;
-  width: 108rpx;
-  height: 108rpx;
+  width: 138rpx;
+  height: 138rpx;
   border-radius: 50%;
   z-index: 32;
 }
 
 .circle {
   position: relative;
-  width: 108rpx;
-  height: 108rpx;
+  width: 138rpx;
+  height: 138rpx;
   border-radius: 50%;
-  background-color: #a2a2a2;
+  /* background-color: #a2a2a2; */
 }
 
 .img_text {
@@ -117,7 +114,7 @@
   z-index: 10;
   overflow: hidden;
   text-overflow: ellipsis;
-  background-color: rgba(4, 0, 0, 0.3);
+  /* background-color: rgba(4, 0, 0, 0.3); */
   white-space: nowrap;
   color: white;
   opacity: 1;
@@ -129,7 +126,8 @@
   text-align: center;
   color: #7f7e7e;
   margin-top: 20rpx;
-  margin-left: -32rpx;
+  /* margin-left: -32rpx; */
+  margin-left: -20rpx;
   width: 158rpx;
 }
 

@@ -1,12 +1,8 @@
-<!--pages/article/article.wxml-->
-
 <view class='nav bg-white' style='height:{{navH}}px;background:rgb(242,242,242)'>
   <view class='nav-title'>
-    <!-- {{typeName}} -->
     <image src='../../image/back.png' class='back' bindtap='back'></image>
   </view>
 </view>
-
 <view class="article_content" style='margin-top:{{navH}}px'>
   <view class="article_top">
     <image src='{{imageBack}}' class='photo'></image>
@@ -22,7 +18,7 @@
       <view class="at_bot_right">
         <view class="bt_right">
           <view class="left_text">
-            <view class="right_circle"></view>论文</view>
+            <view class="right_circle"></view>学术论文</view>
           <view class="left-nums">{{articleNum}}</view>
         </view>
       </view>
@@ -32,11 +28,11 @@
     <view class='cart' wx:for="{{arcticleList}}" bindtap='selectDetail'  data-postid='{{item.state}}' data-type='{{item.content_type}}' data-id='{{item.article_id}}'>
       <view class='cart_content'>
         <view>
-          <text wx:if="{{item.state == 0}}" style="margin-left:-20rpx;">【专知阅读】</text>
+          <text wx:if="{{item.state == 0}}" style="margin-left:-20rpx;">【公众号精选】</text>
           <text wx:if="{{item.state == 1}}" style="margin-left:-20rpx;">【学术论文】</text>
           <text class='title'>{{item.article_title}}</text>
           <image wx:if="{{item.state == 1 && item.pdf_path != '' }}" src="../../image/pdf.png" class="pdfStyle"></image>
-          <!-- <image wx:if="{{item.state == 1 && item.pdf_path == ''  }}" src="../../image/jpg.png" class="pdfStyle"></image> -->
+          <image wx:if="{{item.state == 1 && item.pdf_path == ''  }}" src="../../image/jpg.png" class="pdfStyle"></image>
         </view>
         <view class='sub_title'>{{item.article_keyword}}</view>
         <view class='content'>{{item.content_excerpt}}</view>

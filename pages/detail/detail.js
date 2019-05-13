@@ -3,10 +3,6 @@ const util = require('../../utils/util.js')
 var WxParse = require('../../wxParse/wxParse.js');
 var typeId = 0;
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     statusHeight: getApp().globalData.statusBarHeight,
     imageUrl: getApp().globalData.imageUrl,
@@ -23,13 +19,9 @@ Page({
     fRelated:[],
     lRelated:{},
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function(options) {
+    console.log(options,'options')
     var that = this;
-    // var articleId = 289;
     var articleId = options.articleId
     this.setData({
       articleKeyWord: options.articleKeyWord,
@@ -73,21 +65,6 @@ Page({
   fxShare: function() {
     this.onShareAppMessage();
   },
-  // ckwx: function() {
-  //   wx.navigateTo({
-  //     url: '../ckwx/ckwx'
-  //   })
-  // },
-  // lookImg: function() {
-  //   wx.navigateTo({
-  //     url: '../lookImg/lookImg'
-  //   })
-  // },
-  // lookPdf: function() {
-  //   wx.navigateTo({
-  //     url: '../lookPdf/lookPdf'
-  //   })
-  // },
   love: function() {
     if (this.data.result.collect_state == 1) {
       this.updateStatus(3, "collect");
@@ -114,7 +91,7 @@ Page({
       data: {
         articleId: articleId,
         userId: getApp().globalData.wxId,
-        articleType: articleKeyWord,
+        articleType: that.data.articleKeyWord,
         statisticsType: 3,
         countNum: time,
       },
@@ -125,10 +102,6 @@ Page({
   onUnload() {
     this.onHide()
   },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function() {
     var that = this;
     var articleId = this.data.articleId;
@@ -140,24 +113,26 @@ Page({
         // 转发成功  
         that.updateStatus(2, "share");
         // 统计用户停留时间
-        wx.request({
-          url: getApp().globalData.baseUrl + '/statistics/insertStatisticsInfo/rest', //仅为示例，并非真实的接口地址
-          data: {
-            articleId: articleId,
-            userId: getApp().globalData.wxId,
-            articleType: articleKeyWord,
-            statisticsType: 2,
-            countNum: 1
-          },
-          method: "GET",
-          success(res) {}
-        })
+        
       },
       fail: function(res) {
         // 转发失败  
       },
       complete: function() {
+
         // 不管成功失败都会执行  
+        wx.request({
+          url: getApp().globalData.baseUrl + '/statistics/insertStatisticsInfo/rest', //仅为示例，并非真实的接口地址
+          data: {
+            articleId: articleId,
+            userId: getApp().globalData.wxId,
+            articleType: that.data.articleKeyWord,
+            statisticsType: 2,
+            countNum: 1
+          },
+          method: "GET",
+          success(res) { }
+        })
       }
     }
   },
@@ -211,8 +186,10 @@ Page({
       title: '跳转中',
     })
     var id = data.currentTarget.dataset.id;
+    var contentType = this.data.articleContentType;
+    var stateType = this.data.stateType;
     wx.navigateTo({
-      url: '../detail/detail?articleId=' + id,
+      url: '../detail/detail?articleId=' + id + '&contentType=' + contentType + '&stateType=' + stateType,
       complete: function() {
         wx.hideLoading()
       }

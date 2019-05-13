@@ -1,15 +1,16 @@
-// pages/welcome/welcome.js
 var app = getApp();
 var isFlage = 'false';
 Page({
   data: {
     isShowDialog: false,
-    result:[],
-    sureid:false,
+    result: [],
+    sureid: false,
+    arr: [],
   },
   onLoad(options) {
     getApp().login();
     var that = this;
+    let isIpx = app.globalData.isIpx;
     isFlage = wx.getStorageSync("register");
     if (isFlage != 'true') {
       isFlage = 'false';
@@ -17,193 +18,62 @@ Page({
     this.setData({
       statusHeight: getApp().globalData.statusBarHeight,
       navH: getApp().globalData.navHeight,
-      noSelect: 'title title',
+      noSelect: 'title titles',
       hasSelect: 'title title_on',
       isFlat: isFlage,
-      // 机器人
-      robot: [{
-          message: '制造',
-          index: '1'
-        },
-        {
-          message: '产品&应用',
-          index: '2'
-        },
-        {
-          message: '技术',
-          index: '3'
-        }, {
-          message: '工业',
-          index: '4'
-        }, {
-          message: '产业发展',
-          index: '5'
-        }
-      ],
-      // 3D打印
-      printing: [{
-          message: '应用',
-          index: '6'
-        },
-        {
-          message: '技术',
-          index: '7'
-        }, {
-          message: '行业发展',
-          index: '8'
-        }, {
-          message: '设计建模&软件',
-          index: '9'
-        }, {
-          message: '材料&设备',
-          index: '10'
-        }
-      ],
-      // 传感器
-      sensor: [{
-        message: '产品',
-        index: '11'
-      }, {
-        message: '应用',
-        index: '12'
-      }, {
-        message: '技术',
-        index: '13'
-      }, {
-        message: '行业发展',
-        index: '14'
-      }],
-      // 智能制造
-      intelligence: [{
-        message: '智能制造',
-        index: '15'
-      }],
-      selectIndex: [{
-          sureid: false,
-          name: '机器人制造',
-          id: '15',
-        },
-        {
-          sureid: false,
-          name: '机器人产品&应用',
-          id: '48'
-        },
-        {
-          sureid: false,
-          name: '机器人技术',
-          id: '14'
-        },
-        {
-          sureid: false,
-          name: '机器人工业',
-          id: '13'
-        },
-        {
-          sureid: false,
-          name: '机器人产业发展',
-          id: '12'
-        },
-        {
-          sureid: false,
-          name: '3D打印应用',
-          id: '9'
-        },
-        {
-          sureid: false,
-          name: '3D打印技术',
-          id: '11'
-        },
-        {
-          sureid: false,
-          name: '3D打印行业发展',
-          id: '10'
-        },
-        {
-          sureid: false,
-          name: '3D打印设计建模&软件',
-          id: '18'
-        },
-        {
-          sureid: false,
-          name: '3D打印材料&设备',
-          id: '8'
-        },
-        {
-          sureid: false,
-          name: '传感器产品',
-          id: '4'
-        },
-        {
-          sureid: false,
-          name: '传感器应用',
-          id: '5'
-        },
-        {
-          sureid: false,
-          name: '传感器技术',
-          id: '6'
-        },
-        {
-          sureid: false,
-          name: '传感器行业发展',
-          id: '7'
-        },
-        {
-          sureid: false,
-          name: '智能制造',
-          id: '17'
-        },
-      ]
+      isIpx: isIpx,
     })
     wx.request({
       url: getApp().globalData.baseUrl + '/select/articleType/rest',
       method: 'GET',
+      // success: function(res) {
+      //   that.setData({
+      //     result: res.data.result,
+      //   })
+      // },
       success: function (res) {
+        for (var i = 0; i < res.data.result.length; i++) {
+          for (var j = 0; j < res.data.result[i].item.length; j++) {
+            var pattern = /[\u3002|\uff0c]/;
+            var nameS = res.data.result[i].item[j].article_type_name;
+            let typeNameS = pattern.test(nameS) ? nameS : nameS.replace(/,/g, '')
+            res.data.result[i].item[j].article_type_name = typeNameS;
+          }
+        }
         that.setData({
           result: res.data.result,
         })
       },
     })
   },
-  //点击选择精选集
   selectRep: function(e) {
-    console.log(e,'eeehnjk')
     var index = e.currentTarget.dataset.selectindex; //当前点击元素的自定义数据，这个很关键
-    var selectIndex = this.data.selectIndex; //取到data里的selectIndex
-    selectIndex[index - 1].sureid = !selectIndex[index - 1].sureid; //点击就赋相反的值
-    this.setData({
-      selectIndex: selectIndex //将已改变属性的json数组更新
+    this.data.result.forEach(i => {
+      i.item.forEach(j => {
+        if (index == j.article_type_id) {
+          if (j.sureid == 'false') {
+            j.sureid = 'true'
+          } else {
+            j.sureid = 'false'
+          }
+        }
+      })
     })
-  },
-
-//  selectRep: function(e) {
-//     console.log(e,'eeehnjk')
-//     var index = e.currentTarget.dataset.selectindex; //当前点击元素的自定义数据，这个很关键
-//     var selectIndex = this.data.selectIndex; //取到data里的selectIndex
-//     selectIndex[index - 1] = !selectIndex[index - 1]; //点击就赋相反的值
-//     this.setData({
-//       selectIndex: selectIndex //将已改变属性的json数组更新
-//     })
-//   },
-
-  goFirst: function(e) {
-    wx.redirectTo({
-      url: '../index/index',
-    });
+    this.setData({
+      result: this.data.result,
+    })
   },
   startApp: function() {
     var that = this;
-    var selectIndex = this.data.selectIndex;
+    var selectIndex = this.data.result;
     var selectData = "";
-    for (var i = 0; i < selectIndex.length; i++) {
-      if (selectIndex[i].sureid) {
-        if (i == selectIndex.length - 1) {
-          selectData = selectData + selectIndex[i].id;
-        } else {
-          selectData = selectData + selectIndex[i].id + ",";
+    selectIndex.forEach(i => {
+      i.item.forEach(j => {
+        if (j.sureid == 'true') {
+          selectData = selectData + j.article_type_id + ",";
         }
-      }
-    }
+      })
+    })
     if (selectData != "") {
       wx.request({
         url: app.globalData.baseUrl + '/user/setAttention/rest',
@@ -213,8 +83,7 @@ Page({
           type: ''
         },
         method: "GET",
-        success(res) {
-        }
+        success(res) {}
       })
       wx.redirectTo({
         url: '../index/index',
@@ -228,53 +97,13 @@ Page({
           isShowDialog: false
         });
       }, 2000)
-      // wx.showToast({
-      //   title: '请选择你喜欢的精选集',
-      // })
     }
   },
-  // startApp: function () {
-  //   var that = this;
-  //   var selectIndex = this.data.selectIndex;
-  //   var selectData = "";
-  //   for (var i = 0; i < selectIndex.length; i++) {
-  //     if (selectIndex[i]) {
-  //       if (i == selectIndex.length - 1) {
-  //         selectData = selectData + selectIndex[i].id;
-  //       } else {
-  //         selectData = selectData + selectIndex[i].id + ",";
-  //       }
-  //     }
-  //   }
-  //   if (selectData != "") {
-  //     wx.request({
-  //       url: app.globalData.baseUrl + '/user/setAttention/rest',
-  //       data: {
-  //         wechatid: app.globalData.wxId,
-  //         attentions: selectData,
-  //         type: ''
-  //       },
-  //       method: "GET",
-  //       success(res) {
-  //       }
-  //     })
-  //     wx.redirectTo({
-  //       url: '../index/index',
-  //     });
-  //   } else {
-  //     that.setData({
-  //       isShowDialog: true
-  //     });
-  //     setTimeout(function () {
-  //       that.setData({
-  //         isShowDialog: false
-  //       });
-  //     }, 2000)
-  //     // wx.showToast({
-  //     //   title: '请选择你喜欢的精选集',
-  //     // })
-  //   }
-  // },
+  goFirst: function(e) {
+    wx.redirectTo({
+      url: '../index/index',
+    });
+  },
   bindGetUserInfo: function(e) {
     if (e.detail.userInfo) {
       wx.showLoading({
@@ -282,7 +111,6 @@ Page({
       })
       getApp().globalData.userInfo = e.detail.userInfo;
       this.login();
-      // getApp().getUserInfo();
     } else {
       wx.showModal({
         title: '警告',
@@ -333,7 +161,6 @@ Page({
               console.log('获取用户信息失败')
             }
           })
-
         } else {
           console.log('获取用户登录态失败！')
         }
@@ -376,5 +203,4 @@ Page({
       }
     }
   }
-
 })

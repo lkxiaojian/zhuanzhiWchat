@@ -1,5 +1,3 @@
-/* pages/searchSpecial.wxss */
-
 .dingyue {
   width: 130rpx;
   height: 54rpx;

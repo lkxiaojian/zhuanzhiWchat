@@ -1,9 +1,8 @@
 /* pages/special/special.wxss */
 .img_circle {
-  width: 104rpx;
-  height: 104rpx;
+  width: 138rpx;
+  height: 138rpx;
   border-radius: 50%;
-  /* background-color: #a2a2a2; */
 }
 .quxiao, .dingyue {
   width: 118rpx;
@@ -31,7 +30,6 @@
   margin-top: 32rpx;
 }
 .li_liness {
-  /* background: rgb(255, 255, 255); */
   border-top:1rpx solid rgb(255, 255, 255);
   height: 1rpx;
   margin-left: 28rpx;

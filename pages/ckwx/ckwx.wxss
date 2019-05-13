@@ -33,13 +33,6 @@
   left: 20rpx;
   padding: 10px 15px;
 }
-/* .back {
-  font-size: 50rpx;
-  margin-left: 26rpx;
-  margin-top: 50rpx;
-  height: 100rpx;
-  position: relative;
-} */
 image {
   width: 320px;
   height: 240px;
@@ -50,26 +43,18 @@ image {
 .lookPdf {
   width: 84%;
   margin: 0 auto;
-  margin-top: 140rpx;
+  margin-top: 170rpx;
   padding-bottom: 30rpx;
 }
-
-.title {
+.ckwx_style{
+  margin-top:30rpx;
   font-size: 46rpx;
+  color:rgb(26,34,46);
+  font-weight: bold;
 }
-
 .ckwx {
   line-height: 50rpx;
   letter-spacing: 4rpx;
-}
+  color:rgb(117, 117, 117);
 
-
-
-.zhankai {
-  width: 32rpx;
-  height: 22rpx;
-  margin-right: 60rpx;
-  margin-top: -56rpx;
-  transform: rotate(90deg);
-  position: fixed;
 }

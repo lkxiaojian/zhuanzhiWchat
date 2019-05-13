@@ -15,7 +15,6 @@ Page({
     var a = [];
     sharetypeId = options.sharetypeId;
     this.requestData();
-
   },
   requestData: function() {
     var that = this;
@@ -31,7 +30,6 @@ Page({
         for (var i = 0; i < articleTypes.length; i++) {
           articleTypes[i].article_type_nameSp = articleTypes[i].article_type_name.replace(/,/g, '')
         }
-
         if (res.data.result.length > 0) {
           for (var i = 0; i < res.data.result.length; i++) {
             res.data.result[i].article_type_keyword = getApp().handleKeyWord(res.data.result[i].article_type_keyword);
@@ -49,27 +47,16 @@ Page({
       }
     })
   },
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function() {
     this.data.page = 0;
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.requestData(); //刷新数据
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function() {
     this.data.page++;
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.requestData(); //加载数据
   },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function() {
     return {
       title: '专知',
@@ -143,7 +130,7 @@ Page({
     })
   },
   selectAll: function(e) {
-    var name = e.currentTarget.dataset.name;
+    var name =  encodeURIComponent(e.currentTarget.dataset.name);
     var id = e.currentTarget.dataset.id;
     var image = e.currentTarget.dataset.image;
     wx.navigateTo({

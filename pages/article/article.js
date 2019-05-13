@@ -16,8 +16,11 @@ Page({
   },
   onLoad: function(options) {
     sharetypeId = options.sharetypeId;
+    var typeNames = decodeURIComponent(options.typeName)
+    var pattern = /[\u3002|\uff0c]/;
+    var typeNameS = pattern.test(typeNames) ? typeNames : typeNames.replace(/,/g, '') 
     this.setData({
-      typeName: options.typeName.replace(/,/g, ''),
+      typeName: typeNameS,
       typeId: options.typeId,
     });
     this.requestData();
@@ -27,10 +30,6 @@ Page({
     wx.showNavigationBarLoading() //在标题栏中显示加载
     this.requestData(); //刷新数据
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom: function() {
     this.data.page++;
     wx.showNavigationBarLoading() //在标题栏中显示加载
@@ -108,7 +107,6 @@ Page({
       wx.redirectTo({
         url: '../welcome/welcome',
       });
-
     } else {
       wx.navigateBack();
     }

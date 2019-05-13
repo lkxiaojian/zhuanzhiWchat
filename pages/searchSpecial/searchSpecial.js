@@ -3,36 +3,50 @@ var sharetypeId=0;
 var messageItem='';
 var keyword='';
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
     statusHeight: getApp().globalData.statusBarHeight,
     articleTypes: [],
     imageUrl: getApp().globalData.imageUrl,
-    navH: getApp().globalData.navHeight
+    navH: getApp().globalData.navHeight,
+    articleTypeList:[],
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
+    console.log(options,'dfdf')
     sharetypeId = options.sharetypeId;
     keyword = options.keyword;
     var that = this;
-    messageItem=options.item;
-    var tar = this.cleanSpelChar(messageItem);
-    let item = JSON.parse(tar);
-    that.data.articleTypes=item;
-    if(item.length>0){
-      for(var i=0;i<item.length;i++){
-        item[i].article_type_names = that.hilight_word(keyword, item[i].article_type_name);
-        item[i].article_type_keyword = getApp().handleKeyWord(item[i].article_type_keyword);
+    // messageItem=options.item;
+    // var tar = this.cleanSpelChar(messageItem);
+    // let item = JSON.parse(tar);
+    // that.data.articleTypes = item;
+   
+    wx.request({
+      url: getApp().globalData.baseUrl + '/article/search/rest', //仅为示例，并非真实的接口地址
+      data: {
+        wechatid: getApp().globalData.wxId,
+        message: options.item,
+        page: 0
+      },
+      method: "GET",
+      success(res) {
+        if (res.data.code == 0) {
+          let item = res.data.articleType;
+          that.data.articleTypes = item;
+          if (item.length > 0) {
+            for (var i = 0; i < item.length; i++) {
+              let pattern = /[\u3002|\uff0c]/;
+              let nameS = item[i].article_type_name
+              let typeNameS = pattern.test(nameS) ? nameS: nameS.replace(/,/g, '')
+              item[i].article_type_names = that.hilight_word(keyword, typeNameS);
+              item[i].article_type_keyword = getApp().handleKeyWord(item[i].article_type_keyword);
+            }
+          }
+          that.setData({
+            articleTypes: item,
+          })
+        }
       }
-    }
-     this.setData({
-          articleTypes: item,
-      })
+    })
   },
   hilight_word: function (key, word) {
     let idx = word.indexOf(key), t = [];
@@ -51,13 +65,7 @@ Page({
     }
     return [{ key: false, str: word }];
   },
-
-  /**
-   * 用户点击右上角分享
-   *  // path: '/pages/searchSpecial/searchSpecial?sharetypeId=1&item=' + messageItem + '&keyword=' +keyword
-   */
   onShareAppMessage: function () {
-
     return {
       title: '专知',
       path: `/pages/searchSpecial/searchSpecial?sharetypeId=1&item=${messageItem}&keyword=${keyword}`,
@@ -73,8 +81,6 @@ Page({
     }else{
       wx.navigateBack();
     }
-
-   
   },
   dingyue: function (e) {
     var that = this;

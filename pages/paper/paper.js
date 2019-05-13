@@ -62,9 +62,9 @@ Page({
       },
     })
   },
-  ckwx: function () {
+  ckwx: function() {
     wx.navigateTo({
-      url: '../ckwx/ckwx?articleId=' + this.data.articleIds + '&stateType=' + this.data.stateType 
+      url: '../ckwx/ckwx?articleId=' + this.data.articleIds + '&stateType=' + this.data.stateType
     })
   },
   fxShare: function() {
@@ -72,9 +72,9 @@ Page({
   },
 
   lookImg: function() {
-    var results = this.data.results
+    var results = this.data.result
     wx.navigateTo({
-      url: '../lookImg/lookImg?imgContent=' + results.image_back + '&articleId=' + this.data.articleIds + '&stateType=' + this.data.stateType 
+      url: '../lookImg/lookImg?imgContent=' + results.image_path + '&articleId=' + this.data.articleIds + '&stateType=' + this.data.stateType
     })
   },
   lookPdf: function() {
@@ -87,8 +87,7 @@ Page({
         var filePath = res.tempFilePath
         wx.openDocument({
           filePath: filePath,
-          success: function (res) {
-          },
+          success: function(res) {},
         })
       }
     })
@@ -119,7 +118,7 @@ Page({
       data: {
         articleId: articleId,
         userId: getApp().globalData.wxId,
-        articleType: articleKeyWord,
+        articleType: that.data.articleKeyWord,
         statisticsType: 3,
         countNum: time,
       },
@@ -144,18 +143,19 @@ Page({
       success: function(shareTickets) {
         // 转发成功  
         that.updateStatus(2, "share");
-        // 统计用户停留时间
+        // 统计用户转发时间
         wx.request({
           url: getApp().globalData.baseUrl + '/statistics/insertStatisticsInfo/rest', //仅为示例，并非真实的接口地址
           data: {
             articleId: articleId,
             userId: getApp().globalData.wxId,
-            articleType: articleKeyWord,
+            articleType: that.data.articleKeyWord,
             statisticsType: 2,
             countNum: 1
           },
           method: "GET",
-          success(res) {}
+          success(res) { 
+          }
         })
       },
       fail: function(res) {
@@ -165,6 +165,7 @@ Page({
         // 不管成功失败都会执行  
       }
     }
+   
   },
   back: function() {
     if (typeId == 1) {
@@ -211,13 +212,22 @@ Page({
       mask: true,
     })
   },
+  // var id = data.currentTarget.dataset.id;
+  // var articleKeyWord = data.currentTarget.dataset.name;
+  // var contentType = data.currentTarget.dataset.type;
+  // var stateType = data.currentTarget.dataset.postid;
+  // url: '../paper/paper?articleId=' + id + '&articleKeyWord=' + articleKeyWord + '&contentType=' + contentType + '&stateType=' + stateType,
   selectDetail: function(data) {
     wx.showLoading({
       title: '跳转中',
     })
     var id = data.currentTarget.dataset.id;
+    // var contentType = this.data.articleContentType;
+    // var stateType = this.data.stateType;
+    var contentType = data.currentTarget.dataset.type;
+    var stateType = data.currentTarget.dataset.postid;
     wx.navigateTo({
-      url: '../detail/detail?articleId=' + id,
+      url: '../paper/paper?articleId=' + id + '&contentType=' + contentType + '&stateType=' + stateType,
       complete: function() {
         wx.hideLoading()
       }

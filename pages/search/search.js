@@ -44,29 +44,11 @@ Page({
     });
     this.requestData(); //加载数据
   },
-  /**
-   * 用户点击右上角分享
-   */
-  // onShareAppMessage: function () {
-  //   return {
-  //     title: '专知',
-  //     path: 'pages/search/search?sharetypeId=1',
-  //     success: function (shareTickets) {
-  //       // 转发成功  
-  //     },
-  //     fail: function (res) {
-  //       // 转发失败  
-  //     },
-  //     complete: function () {
-  //       // 不管成功失败都会执行  
-  //     }
-  //   }
-
-  // },
   requestData: function() {
     var app = getApp();
     var that = this;
     let localStorageValue = [];
+    let keyword = this.data.keyword
     //调用API从本地缓存中获取数据
     if (that.data.keyword != "") {
       var searchData = wx.getStorageSync('searchData') || []
@@ -77,11 +59,12 @@ Page({
       url: getApp().globalData.baseUrl + '/article/search/rest',
       data: {
         wechatid: getApp().globalData.wxId,
-        message: that.data.keyword,
+        message: keyword,
         page: that.data.page
       },
       method: 'GET',
       success: function(res) {
+        let p = /,/g
         var more = 1; //1 初始话  2 无数据  3 加载更多
         if (!res.data.loveArticle) {
           if (!res.data.notLoveArticle) {
@@ -93,9 +76,13 @@ Page({
           }
         }
         if (that.data.page == 0) {
-          if (res.data.articleType) {
+          // console.log(res.data.articleType, 'sdsdsd')
+          if (res.data.articleType.length != 0) {
+            let pattern = /[\u3002|\uff0c]/;
+            let nameS = res.data.articleType[0].article_type_name
+            let typeNameS = pattern.test(nameS) ? nameS: nameS.replace(/,/g, '')
             if (res.data.articleType && res.data.articleType.length > 0) {
-              res.data.articleType[0].article_type_names = that.hilight_word('', res.data.articleType[0].article_type_name);
+              res.data.articleType[0].article_type_names = that.hilight_word('', typeNameS);
               that.data.articleLeft = res.data.articleType[0].article_type_names[0].str.replace(/,/g, '')
               that.data.articleType = res.data.articleType;
             }
@@ -113,6 +100,7 @@ Page({
             if (res.data.notLoveArticle.length > 0) {
               for (var i = 0; i < res.data.notLoveArticle.length; i++) {
                 res.data.notLoveArticle[i].article_keyword = getApp().handleKeyWord(res.data.notLoveArticle[i].article_keyword);
+                
               }
             }
             // that.data.searchList.noLoveList = res.data.notLoveArticle;
@@ -216,10 +204,11 @@ Page({
   },
   moreType: function() {
     var page = this;
-    let str = JSON.stringify(page.data.articleType);
-    var item = page.cleanSpelChar(str)
+    // let str = JSON.stringify(page.data.articleType);
+    // var item = page.cleanSpelChar(str)
     wx.navigateTo({
-      url: '../searchSpecial/searchSpecial?item=' + item + "&keyword=" + page.data.keyword,
+      // url: '../searchSpecial/searchSpecial?item=' + item + "&keyword=" + page.data.keyword,
+      url: '../searchSpecial/searchSpecial?item=' + page.data.inputSearchLog,
     })
   },
   cleanSpelChar: function(localData) {
@@ -255,7 +244,7 @@ Page({
     for (var i = 0; i < data.length; i++) {
       data[i].article_titles = that.hilight_word(that.key, data[i].article_title, data[i].state);
       data[i].article_keywords = that.hilight_word(that.key, data[i].article_keyword, data[i].state);
-      data[i].content_excerpts = that.hilight_word(that.key, data[i].content_excerpt, data[i].state);
+      data[i].content_excerpts = that.hilight_word(that.key, data[i].content_excerpt, data[i].state);      
     }
     return data;
   },

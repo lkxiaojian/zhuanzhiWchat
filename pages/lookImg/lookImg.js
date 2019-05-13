@@ -4,6 +4,7 @@ Page({
     imgContent: "",
   },
   onLoad: function(options) {
+    // imgContent
     var that = this;
     this.setData({
       articleIds: options.articleId,
@@ -12,7 +13,7 @@ Page({
     var imgArrays = [];
     var imgArray = options.imgContent.split(',')
     imgArray.forEach(i => {
-      var imgs = getApp().globalData.baseUrl + i
+      var imgs = getApp().globalData.imgBackUrl + i
       imgArrays.push(imgs)
     })
     this.setData({
@@ -24,21 +25,4 @@ Page({
       url: '../paper/paper?articleId=' + this.data.articleIds + '&stateType=' + this.data.stateType
     })
   },
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
-  }
 })
