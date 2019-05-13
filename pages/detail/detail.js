@@ -91,7 +91,7 @@ Page({
       data: {
         articleId: articleId,
         userId: getApp().globalData.wxId,
-        articleType: that.data.articleKeyWord,
+        articleType: that.data.result.article_type_id,
         statisticsType: 3,
         countNum: time,
       },
@@ -126,7 +126,7 @@ Page({
           data: {
             articleId: articleId,
             userId: getApp().globalData.wxId,
-            articleType: that.data.articleKeyWord,
+            articleType: that.data.result.article_type_id,
             statisticsType: 2,
             countNum: 1
           },

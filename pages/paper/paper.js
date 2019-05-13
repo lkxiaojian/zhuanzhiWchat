@@ -111,14 +111,15 @@ Page({
       timeEnd: Date.parse(new Date())
     })
     var time = this.data.timeEnd - this.data.timeStart;
-    var articleId = this.data.articleIds
+    var articleId = this.data.articleIds;
+    var articleTypeId = this.data.result.article_type_id
     // 统计用户停留时间
     wx.request({
       url: getApp().globalData.baseUrl + '/statistics/insertStatisticsInfo/rest', //仅为示例，并非真实的接口地址
       data: {
         articleId: articleId,
         userId: getApp().globalData.wxId,
-        articleType: that.data.articleIds,
+        articleType: articleTypeId,
         statisticsType: 3,
         countNum: time,
       },
@@ -148,7 +149,7 @@ Page({
           data: {
             articleId: articleId,
             userId: getApp().globalData.wxId,
-            articleType: that.data.articleId,
+            articleType: that.data.result.article_type_id,
             statisticsType: 2,
             countNum: 1
           },
