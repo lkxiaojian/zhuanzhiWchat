@@ -19,6 +19,7 @@ Page({
   },
 
   onLoad: function(options) {
+    console.log(options,'optionsoptions')
     var that = this;
     // var articleId = 289;
     var articleId = options.articleId
@@ -111,14 +112,13 @@ Page({
     })
     var time = this.data.timeEnd - this.data.timeStart;
     var articleId = this.data.articleIds
-    var articleKeyWord = this.data.articleKeyWord
     // 统计用户停留时间
     wx.request({
       url: getApp().globalData.baseUrl + '/statistics/insertStatisticsInfo/rest', //仅为示例，并非真实的接口地址
       data: {
         articleId: articleId,
         userId: getApp().globalData.wxId,
-        articleType: that.data.articleKeyWord,
+        articleType: that.data.articleIds,
         statisticsType: 3,
         countNum: time,
       },
@@ -136,7 +136,6 @@ Page({
   onShareAppMessage: function() {
     var that = this;
     var articleId = this.data.articleId;
-    var articleKeyWord = this.data.articleKeyWord;
     return {
       title: that.data.result.article_title,
       path: 'pages/detail/detail?articleId=' + that.data.result.article_id + '&typeId=1',
@@ -149,7 +148,7 @@ Page({
           data: {
             articleId: articleId,
             userId: getApp().globalData.wxId,
-            articleType: that.data.articleKeyWord,
+            articleType: that.data.articleId,
             statisticsType: 2,
             countNum: 1
           },
@@ -165,7 +164,6 @@ Page({
         // 不管成功失败都会执行  
       }
     }
-   
   },
   back: function() {
     if (typeId == 1) {
