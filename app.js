@@ -93,6 +93,10 @@ App({
         //   that.globalData.statusBarHeight = 144;
         // }
         that.globalData.navHeight = res.statusBarHeight + 46;
+        var name = 'iPhone X'
+        if (res.model.indexOf(name) > -1) {
+          that.globalData.isIpx = true
+        }
       },
       fail(err) {
       }
@@ -127,8 +131,8 @@ App({
     var char = "";
     if (str) {
       var arr = str.split(",");
-      if (arr.length > 3) {
-        for (var i = 0; i < 3; i++) {
+      if (arr.length > 20) {
+        for (var i = 0; i < 20; i++) {
           char = char + "#" + arr[i];
         }
       } else {
@@ -143,8 +147,10 @@ App({
     statusBarHeight: 0,
     userInfo: null,
     wxId: "",
+    isIpx: false,
     baseUrl: "https://xiaochengxu.zhuanzhilink.com/api",
-    imageUrl: "https://xiaochengxu.zhuanzhilink.com/weixin_img"
+    imageUrl: "https://xiaochengxu.zhuanzhilink.com/weixin_img",
+    imgBackUrl:'https://www.zhuanzhichinalink.com/images/'
   }
   // baseUrl: "http://localhost:7903",      baseUrl: "https://xiaochengxu.zhuanzhilink.com/api",
 

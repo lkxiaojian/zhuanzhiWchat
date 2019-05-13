@@ -22,7 +22,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 96%;
+  width: 460rpx;
 }
 
 /*隐藏滚动条*/
@@ -42,10 +42,10 @@
 /*灰色圆形*/
 
 .circle {
-  width: 102rpx;
-  height: 102rpx;
+  width: 138rpx;
+  height: 138rpx;
   border-radius: 50%;
-  background-color: #a2a2a2;
+  /* background-color: #a2a2a2; */
 }
 
 /*顶部搜索框*/
@@ -201,7 +201,7 @@
 .list {
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   margin-bottom: 28rpx;
   width: 100%;
 }
@@ -226,9 +226,9 @@
 }
 
 .yellow_circle {
-  width: 56rpx;
-  height: 56rpx;
-  background: #c98e45;
+  width: 96rpx;
+  height: 96rpx;
+  /* background: #c98e45; */
   border-radius: 50%;
   margin-right: 18rpx;
 }
