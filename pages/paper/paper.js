@@ -136,10 +136,10 @@ Page({
    */
   onShareAppMessage: function() {
     var that = this;
-    var articleId = this.data.articleId;
+    var articleId = this.data.articleIds;
     return {
       title: that.data.result.article_title,
-      path: 'pages/detail/detail?articleId=' + that.data.result.article_id + '&typeId=1',
+      path: 'pages/detail/detail?articleId=' + articleId + '&typeId=1&state=1',
       success: function(shareTickets) {
         // 转发成功  
         that.updateStatus(2, "share");
@@ -151,7 +151,8 @@ Page({
             userId: getApp().globalData.wxId,
             articleType: that.data.result.article_type_id,
             statisticsType: 2,
-            countNum: 1
+            countNum: 1,
+          
           },
           method: "GET",
           success(res) { 
