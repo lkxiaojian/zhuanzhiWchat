@@ -19,6 +19,7 @@ Page({
     this.setData({
       imgContent: imgArrays,
     })
+    console.log(this.data.imgContent,'ff')
   },
   back: function () {
     wx.redirectTo({

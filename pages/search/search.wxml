@@ -50,8 +50,8 @@
                 <text wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
                 <text wx:else style="text-indent:0">{{itemTitles.str}}</text>
                 </text>
-                <image wx:if="{{item.state == 1 && item.pdf_path != ''}}" src="../../image/pdf.png" class="pdfStyle"></image>
-                <image wx:if="{{item.state == 1 && item.pdf_path == ''}}" src="../../image/jpg.png" class="pdfStyle"></image>
+                <image wx:if="{{item.state == 1 && item.pdf_path != ''  && item.pdf_path != null}}" src="../../image/pdf.png" class="pdfStyle"></image>
+                <image wx:if="{{item.state == 1 && item.image_path != '' && item.image_path != null}}" src="../../image/jpg.png" class="pdfStyle"></image>
               </view>
               <view class='sub_title'>
                 <text wx:for="{{item.article_keywords}}" wx:for-item="itemTitles" wx:key="{{item.id}}">
@@ -84,8 +84,8 @@
                 <text wx:if="{{itemTitles.key == true}}" style="color:#16af12;">{{itemTitles.str}}</text>
                 <text wx:else>{{itemTitles.str}}</text>
                 </text>
-                <image wx:if="{{item.state == 1 && item.pdf_path != ''}}" src="../../image/pdf.png" class="pdfStyle"></image>
-                <!-- <image wx:if="{{item.state == 1 && item.pdf_path == ''}}" src="../../image/jpg.png" class="pdfStyle"></image> -->
+                <image wx:if="{{item.state == 1 && item.pdf_path != '' && item.pdf_path != null}}" src="../../image/pdf.png" class="pdfStyle"></image>
+                <image wx:if="{{item.state == 1 && item.image_path != '' && item.image_path != null}}" src="../../image/jpg.png" class="pdfStyle"></image>
               </view>
               <view class='sub_title'>
                 <text wx:for="{{item.article_keywords}}" wx:for-item="itemTitles" wx:key="{{item.id}}">

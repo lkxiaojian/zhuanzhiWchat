@@ -21,7 +21,7 @@
           </view>
           <view wx:if="{{result.author != '' }}">作者：{{result.author}}
           </view>
-          <view wx:if="{{result.author_e != ''}} ">zuozhe:{{result.author_e}}
+          <view wx:if="{{result.author_e != ''}}">zuozhe:{{result.author_e}}
           </view>
         </view>
         <view>

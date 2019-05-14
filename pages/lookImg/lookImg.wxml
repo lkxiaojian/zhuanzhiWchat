@@ -3,6 +3,6 @@
 </view>
 <view class="lookPdf">
   <view style="margin-top:50rpx" wx:for="{{imgContent}}" wx:key="{{item}}">
-    <image src="{{item}}"></image>
+    <image src="{{item}}" mode="widthFix"></image>
   </view>
 </view>
