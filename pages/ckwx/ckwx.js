@@ -13,7 +13,7 @@ Page({
       url: getApp().globalData.baseUrl + '/article/message/rest',
       data: {
         articleId: options.articleId,
-        state: options.stateType,
+        state: 1,
         wechatid: getApp().globalData.wxId
       },
       method: 'GET',
