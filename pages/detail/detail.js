@@ -104,7 +104,7 @@ Page({
   },
   onShareAppMessage: function() {
     var that = this;
-    var articleId = this.data.articleId;
+    var articleId = this.data.articleIds;
     var articleKeyWord = this.data.articleKeyWord;
     wx.request({
       url: getApp().globalData.baseUrl + '/statistics/insertStatisticsInfo/rest', //仅为示例，并非真实的接口地址
