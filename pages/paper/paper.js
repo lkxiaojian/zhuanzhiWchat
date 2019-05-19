@@ -160,7 +160,6 @@ Page({
         // 转发成功  
         that.updateStatus(2, "share");
         // 统计用户转发时间
-
       },
       fail: function (res) {
         // 转发失败  

@@ -12,7 +12,8 @@ Page({
     wx.request({
       url: getApp().globalData.baseUrl + '/article/message/rest',
       data: {
-        articleId: options.articleId,
+        // articleId: options.articleId,
+        articleId: that.data.articleIds,
         state: 1,
         wechatid: getApp().globalData.wxId
       },
