@@ -24,8 +24,8 @@ App({
                   var userInfo = getApp().globalData.userInfo; //获取用户信息
                   getApp().globalData.wxId = res.data.openid; //存储微信ID
                   var value = wx.getStorageSync("register");
-                  if (value != "true") {
-                    that.register();
+                  if (value != "true" || res.data.count==0) {
+                    that.register(0);
                   } else {
                     // 已注册
                     wx.redirectTo({
@@ -44,7 +44,7 @@ App({
       }
     });
   },
-  register: function() {
+  register: function(count) {
     var app = getApp();
     var userInfo = app.globalData.userInfo;
     wx.request({ //用户进行注册
@@ -59,7 +59,13 @@ App({
       method: 'POST',
       success(res) {
         wx.setStorageSync("register", "true");
+        if (count==0) {
+          wx.redirectTo({
+            url: '../index/index',
+          })
+        }
       }
+   
     });
   },
   getUserInfo: function() {
