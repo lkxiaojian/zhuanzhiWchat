@@ -27,7 +27,7 @@ Page({
   },
   back: function() {
     wx.redirectTo({
-      url: '../paper/paper?articleId=' + this.data.articleIds + '&stateType=' + this.data.stateType
+      url: '../paper/paper?articleId=' + this.data.articleIds + '&stateType=' + this.data.stateType + '&typeId=1'
     })
   },
 })

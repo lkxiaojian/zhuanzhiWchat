@@ -20,6 +20,11 @@ Page({
 
   onLoad: function(options) {
     var that = this;
+    if (options.come && options.come == 'share') {
+      wx.redirectTo({
+        url: 'pages/welcome/welcome',
+      })
+    }
     // var articleId = 289;
     var articleId = options.articleId
     this.setData({
@@ -155,8 +160,8 @@ Page({
     })
     return {
       title: that.data.result.article_title,
-      path: 'pages/paper/paper?articleId=' + articleId  + '&typeId=1',
-      success: function () {
+      path: 'pages/paper/paper?articleId=' + articleId + '&typeId=1' + '&state=' + states + '&come = share',
+      success: function () {states
         // 转发成功  
         that.updateStatus(2, "share");
         // 统计用户转发时间
