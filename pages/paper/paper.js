@@ -19,8 +19,12 @@ Page({
   },
 
   onLoad: function(options) {
-    console.log(options,'optionsoptions')
     var that = this;
+    if (options.come && options.come == 'share') {
+      wx.redirectTo({
+        url: 'pages/welcome/welcome',
+      })
+    }
     // var articleId = 289;
     var articleId = options.articleId
     this.setData({
@@ -38,7 +42,8 @@ Page({
       url: getApp().globalData.baseUrl + '/article/message/rest',
       data: {
         articleId: articleId,
-        state: options.stateType,
+        // state: options.stateType,
+        state: 1,
         wechatid: getApp().globalData.wxId
       },
       method: 'GET',
@@ -137,32 +142,34 @@ Page({
   onShareAppMessage: function() {
     var that = this;
     var articleId = this.data.articleIds;
+    let wechatid = this.data.wechatid;
+    // let states = this.data.stateType;
+    let states = 1;
+    wx.request({
+      url: getApp().globalData.baseUrl + '/statistics/insertStatisticsInfo/rest', //仅为示例，并非真实的接口地址
+      data: {
+        articleId: articleId,
+        userId: getApp().globalData.wxId,
+        articleType: that.data.result.article_type_id,
+        statisticsType: 2,
+        countNum: 1,
+      },
+      method: "GET",
+      success(res) {
+      }
+    })
     return {
       title: that.data.result.article_title,
-      path: 'pages/detail/detail?articleId=' + articleId + '&typeId=1&state=1',
-      success: function(shareTickets) {
+      path: 'pages/paper/paper?articleId=' + articleId + '&typeId=1' + '&state=' + states + '&come = share',
+      success: function () {states
         // 转发成功  
         that.updateStatus(2, "share");
         // 统计用户转发时间
-        wx.request({
-          url: getApp().globalData.baseUrl + '/statistics/insertStatisticsInfo/rest', //仅为示例，并非真实的接口地址
-          data: {
-            articleId: articleId,
-            userId: getApp().globalData.wxId,
-            articleType: that.data.result.article_type_id,
-            statisticsType: 2,
-            countNum: 1,
-          
-          },
-          method: "GET",
-          success(res) { 
-          }
-        })
       },
-      fail: function(res) {
+      fail: function (res) {
         // 转发失败  
       },
-      complete: function() {
+      complete: function () {
         // 不管成功失败都会执行  
       }
     }

@@ -20,7 +20,6 @@ Page({
     lRelated:{},
   },
   onLoad: function(options) {
-    console.log(options,'options')
     var that = this;
     var articleId = options.articleId
     this.setData({
@@ -38,7 +37,8 @@ Page({
       url: getApp().globalData.baseUrl + '/article/message/rest',
       data: {
         articleId: articleId,
-        state: options.stateType,
+        // state: options.stateType,
+        state: 0,
         wechatid: getApp().globalData.wxId,
       },
       method: 'GET',
@@ -104,8 +104,20 @@ Page({
   },
   onShareAppMessage: function() {
     var that = this;
-    var articleId = this.data.articleId;
+    var articleId = this.data.articleIds;
     var articleKeyWord = this.data.articleKeyWord;
+    wx.request({
+      url: getApp().globalData.baseUrl + '/statistics/insertStatisticsInfo/rest', //仅为示例，并非真实的接口地址
+      data: {
+        articleId: articleId,
+        userId: getApp().globalData.wxId,
+        articleType: that.data.result.article_type_id,
+        statisticsType: 2,
+        countNum: 1
+      },
+      method: "GET",
+      success(res) { }
+    })
     return {
       title: that.data.result.article_title,
       path: 'pages/detail/detail?articleId=' + that.data.result.article_id + '&typeId=1',
@@ -121,18 +133,7 @@ Page({
       complete: function() {
 
         // 不管成功失败都会执行  
-        wx.request({
-          url: getApp().globalData.baseUrl + '/statistics/insertStatisticsInfo/rest', //仅为示例，并非真实的接口地址
-          data: {
-            articleId: articleId,
-            userId: getApp().globalData.wxId,
-            articleType: that.data.result.article_type_id,
-            statisticsType: 2,
-            countNum: 1
-          },
-          method: "GET",
-          success(res) { }
-        })
+       
       }
     }
   },

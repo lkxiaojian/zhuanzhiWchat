@@ -12,8 +12,9 @@ Page({
     wx.request({
       url: getApp().globalData.baseUrl + '/article/message/rest',
       data: {
-        articleId: options.articleId,
-        state: options.stateType,
+        // articleId: options.articleId,
+        articleId: that.data.articleIds,
+        state: 1,
         wechatid: getApp().globalData.wxId
       },
       method: 'GET',
@@ -26,7 +27,7 @@ Page({
   },
   back: function() {
     wx.redirectTo({
-      url: '../paper/paper?articleId=' + this.data.articleIds + '&stateType=' + this.data.stateType
+      url: '../paper/paper?articleId=' + this.data.articleIds + '&stateType=' + this.data.stateType + '&typeId=1'
     })
   },
 })
